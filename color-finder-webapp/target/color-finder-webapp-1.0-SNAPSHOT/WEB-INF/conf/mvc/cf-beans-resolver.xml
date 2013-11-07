@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+    
+    <!--
+                 Ceci est le view resolver, il permet de définir la technologie de vue
+                 utilisée et comment sélectionner une vue. Ici on prendra la solution
+                 la plus simple, elle permet de mapper le nom de la vue retournée avec
+                 la sélection d'une jsp. Exemple si le nom de la vue retournée est
+                 "foo/bar/hello" alors on utilisera le fichier /jsp/foo/bar/hello.jsp
+                 pour constuire la vue.
+    -->
+    
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    
+</beans>
