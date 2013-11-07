@@ -19,6 +19,8 @@ public class ColorResultFactoryImpl implements ColorResultFactory {
         ColorResult colorResult = new ColorResultImpl();
         colorResult.setColor(foundColor);
         colorResult.setComparisonColor(comparisonColor);
+        colorResult.setHexaColor(foundColor);
+        colorResult.setHexaColorComp(comparisonColor);
         return colorResult;
     }
     

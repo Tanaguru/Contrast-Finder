@@ -11,6 +11,7 @@ import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.factory.ColorFinderFactory;
 import org.opens.colorfinder.result.ColorResult;
+import org.opens.colorfinder.result.factory.ColorResultFactory;
 import org.opens.utils.colorconvertor.ColorConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -92,7 +93,7 @@ public class IndexController {
             Collection<ColorResult> colorResults =
                     colorFinderFactory.getColorFinder().findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
             model.addAttribute("colorResult", colorResults);
-            
+
             return formView;
         }
 

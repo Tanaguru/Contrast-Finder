@@ -50,7 +50,7 @@
                         <abbr title="Français">FR</abbr>
                     </a>
                 </div> 
-                <h1> ColorFinder Open-S </h1>
+                <h1>Tanaguru Contrast-Finder</h1>
                 <p><fmt:message key="form.description"/></p>
 
             </div><!-- class="page-header' -->
@@ -123,7 +123,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-default col-lg-offset-3 col-lg-3" name="Valider"/>
+                            <fmt:message key="form.validate" var="validateButton"/>
+                            <input type="submit" class="btn btn-default col-lg-offset-3 col-lg-3" name="commit" value="${validateButton}"/>
                         </div>
                     </form:form>
                 </div><!-- class="col-lg-12' -->
@@ -155,10 +156,13 @@
                                     <div class="col-lg-2">
                                         <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
                                         <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
+                                        <div class="color-value-rgb">hex(${result.hexaColorComp})</div>
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
                                         <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
+                                        <div class="color-value-rgb">hex(${result.hexaColor})</div>
+
                                     </div>
                                     <span class="col-lg-5" style="
                                           color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
@@ -171,15 +175,17 @@
                         <c:if test="${!colorModel.isBackgroundTested}">
                             <c:forEach var="result" items="${colorResult}"> 
                                 <div class="row">
-                                    <div class="col-lg-1">
+                                    <div class="col-lg-2">
                                         <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
                                         <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
+                                        <div class="color-value-rgb">hex(${result.hexaColor})</div>
                                     </div>
-                                    <div class="col-lg-offset-1 col-lg-1">
+                                    <div class="col-lg-2">
                                         <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
                                         <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
+                                        <div class="color-value-rgb">hex(${result.hexaColorComp})</div>
                                     </div> 
-                                    <span class="col-lg-offset-1 col-lg-5" style="
+                                    <span class="col-lg-5" style="
                                           background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
                                           color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})">
                                         <fmt:message key="form.sampleRight"/> ${result.contrast}

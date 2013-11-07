@@ -8,16 +8,17 @@ import java.awt.Color;
 import org.opens.utils.contrastchecker.ContrastChecker;
 
 /**
- * 
+ *
  * @author alingua
  */
 public class ColorResultImpl implements ColorResult {
-    
+
     private static int HASH = 7;
     private static int HASH_OFFSET = 63;
-    
     private Color color;
     private Color comparisonColor;
+    private String hexaColor;
+    private String hexaColorComp;
 
     public ColorResultImpl() {
     }
@@ -62,6 +63,22 @@ public class ColorResultImpl implements ColorResult {
         this.comparisonColor = color;
     }
 
+    public String getHexaColor() {
+        return hexaColor;
+    }
+
+    public void setHexaColor(Color color) {
+        this.hexaColor = String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+    }
+
+    public String getHexaColorComp() {
+        return hexaColorComp;
+    }
+
+    public void setHexaColorComp(Color color) {
+        this.hexaColorComp = String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -87,5 +104,4 @@ public class ColorResultImpl implements ColorResult {
         hash = HASH_OFFSET * hash + (this.comparisonColor != null ? this.comparisonColor.hashCode() : 0);
         return hash;
     }
-
 }

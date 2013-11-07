@@ -7,46 +7,44 @@ package org.opens.utils.colorconvertor;
 import java.awt.Color;
 import org.apache.log4j.Logger;
 
-
-
 /**
  *
  * @author alingua
  */
-public final class ColorConverter  {
-    
+public final class ColorConverter {
+
     private static final int MAX_COMPONENT = 3;
     private static final int BRIGHTNESS = 2;
     private static final int SATURATION = 1;
     private static final int HUE = 0;
-    
     private static final int R_BEGIN_COLOR = 0;
     private static final int G_BEGIN_COLOR = 2;
     private static final int B_BEGIN_COLOR = 4;
     private static final int RGB_HEXA_LENGTH = 6;
     private static final int CONVERT_TO_BASE_16 = 16;
     private static final String HEXADECIMAL_DICTIONNARY = "[0-9A-Fa-f]+";
-    
+
     /**
      * Private constructor, utility class
      */
-    private ColorConverter(){}
-    
+    private ColorConverter() {
+    }
+
     /**
-     * 
+     *
      * @param bgColor
      * @param offsetHue
      * @param offsetSaturation
      * @param offsetBrightness
-     * @return 
+     * @return
      */
     public static Color offsetHsbColor(Color bgColor, float offsetHue, float offsetSaturation, float offsetBrightness) {
         Logger.getLogger(ColorConverter.class).debug("Color to modify" + bgColor.hashCode());
         float[] hsbValues = new float[MAX_COMPONENT];
         Float hue, saturation, brightness;
-        
+
         Color.RGBtoHSB(bgColor.getRed(), bgColor.getGreen(), bgColor.getBlue(), hsbValues);
-        
+
         // OFFSETING RSB VALUES
         hue = hsbValues[HUE] + offsetHue;
         saturation = hsbValues[SATURATION] + offsetSaturation;
@@ -60,7 +58,7 @@ public final class ColorConverter  {
         int col = Color.HSBtoRGB(getHue(color), getSaturation(color), Brightness);
         return new Color(col);
     }
-    
+
     public static Float getBrightness(Color bgColor) {
         float[] hsbValues = new float[MAX_COMPONENT];
         Float brightness;
@@ -68,7 +66,7 @@ public final class ColorConverter  {
         brightness = hsbValues[BRIGHTNESS];
         return brightness;
     }
-    
+
     public static Float getSaturation(Color bgColor) {
         float[] hsbValues = new float[MAX_COMPONENT];
         Float saturation;
@@ -84,19 +82,19 @@ public final class ColorConverter  {
         hue = hsbValues[HUE];
         return hue;
     }
-    
+
     /**
-     * 
+     *
      * @param bgColor
      * @param offsetRed
      * @param offsetGreen
      * @param offsetBlue
-     * @return 
+     * @return
      */
     public static Color offsetRgbColor(Color bgColor, int offsetRed, int offsetGreen, int offsetBlue) {
-        return new Color (bgColor.getRed() + offsetRed, bgColor.getGreen() + offsetGreen, bgColor.getBlue() + offsetBlue);
+        return new Color(bgColor.getRed() + offsetRed, bgColor.getGreen() + offsetGreen, bgColor.getBlue() + offsetBlue);
     }
-    
+
     /**
      *
      * @param colorStr
