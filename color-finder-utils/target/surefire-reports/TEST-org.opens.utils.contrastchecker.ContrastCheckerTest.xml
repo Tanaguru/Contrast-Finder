@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.062" errors="0" skipped="0" tests="1" name="org.opens.utils.contrastchecker.ContrastCheckerTest">
+<testsuite failures="0" time="0.054" errors="0" skipped="0" tests="1" name="org.opens.utils.contrastchecker.ContrastCheckerTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.26/jre/lib/i386"/>
@@ -58,5 +58,5 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.044" classname="org.opens.utils.contrastchecker.ContrastCheckerTest" name="testGetConstrastRatio"/>
+  <testcase time="0.04" classname="org.opens.utils.contrastchecker.ContrastCheckerTest" name="testGetConstrastRatio"/>
 </testsuite>

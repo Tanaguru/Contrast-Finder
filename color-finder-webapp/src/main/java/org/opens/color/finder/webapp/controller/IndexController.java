@@ -89,16 +89,10 @@ public class IndexController {
             boolean isBackgroundTested = colorModel.getIsBackgroundTested().equals("true");
             Float ratio = Float.valueOf(colorModel.getRatio());
 
-//            if (isBackgroundTested) {
-//                Collection<ColorResult> colorResults =
-//                        colorFinderFactory.getColorFinder().findColors(backgroundColor, foregroundColor, isBackgroundTested, ratio);
-//                model.addAttribute("colorResult", colorResults);
-//
-//            } else {
             Collection<ColorResult> colorResults =
                     colorFinderFactory.getColorFinder().findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
             model.addAttribute("colorResult", colorResults);
-//            }
+            
             return formView;
         }
 
