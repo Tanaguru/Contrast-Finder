@@ -6,8 +6,6 @@ package org.opens.color.finder.hsv;
 
 import java.awt.Color;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import junit.framework.TestCase;
 import org.apache.log4j.Logger;
 import org.opens.colorfinder.result.ColorResult;
@@ -37,6 +35,25 @@ public class ColorFinderHsvTest extends TestCase {
     /**
      * Test of findColors method, of class ColorFinderHsv.
      */
+    public void testFindColorsWithFgAndBg() {
+        System.out.println("findColors");
+        Color foregroundColor = new Color(127, 127, 127);
+        Color backgroundColor = new Color(128, 128, 128);
+        Float coefficientLevel = 4.5f;
+        ColorFinderHsv instance = new ColorFinderHsv();
+        Collection<ColorResult> result = instance.findColors(foregroundColor, backgroundColor, true, coefficientLevel);
+        for (ColorResult colorResult : result) {
+            LOGGER.debug("HashCode :" + colorResult.hashCode() + "    COLOR : " + colorResult.getContrast());
+        }
+//        result = instance.findColors(foregroundColor, backgroundColor, false, coefficientLevel);
+//        for (ColorResult colorResult : result) {
+//            LOGGER.debug("HashCode :" + colorResult.hashCode() + "    COLOR : " + colorResult.getContrast());
+//        }
+    }
+    
+    /**
+     * Test of findColors method, of class ColorFinderHsv.
+     */
     public void testFindColors() {
         System.out.println("findColors");
         Color colorToKeep = new Color(70, 136, 71);
@@ -44,9 +61,9 @@ public class ColorFinderHsvTest extends TestCase {
         Float coefficientLevel = 4.5f;
         ColorFinderHsv instance = new ColorFinderHsv();
         Collection<ColorResult> result = instance.findColors(colorToChange, colorToKeep, coefficientLevel);
-        for (ColorResult colorResult : result) {
-            LOGGER.debug("HashCode :" + colorResult.hashCode() + "    COLOR : " + colorResult.getContrast());
-        }
+        //for (ColorResult colorResult : result) {
+            //LOGGER.debug("HashCode :" + colorResult.hashCode() + "    COLOR : " + colorResult.getContrast());
+        //}
     }
 //    public void testFindColors2() {
 //        System.out.println("findColors2");

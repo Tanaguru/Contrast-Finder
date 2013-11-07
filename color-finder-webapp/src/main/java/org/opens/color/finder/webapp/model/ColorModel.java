@@ -31,14 +31,16 @@ public class ColorModel {
         this.background = background;
     }
     
-    private boolean isBackgroundTested = false;
-    public boolean getIsBackgroundTested() {
+    private String isBackgroundTested = "false";
+
+    public String getIsBackgroundTested() {
         return isBackgroundTested;
     }
 
-    public void setIsBackgroundTested(boolean isBackgroundTested) {
+    public void setIsBackgroundTested(String isBackgroundTested) {
         this.isBackgroundTested = isBackgroundTested;
     }
+
     private String ratio = DEFAULT_RATIO;
 
     public String getRatio() {

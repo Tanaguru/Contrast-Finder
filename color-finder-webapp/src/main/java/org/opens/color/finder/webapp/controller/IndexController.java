@@ -86,14 +86,19 @@ public class IndexController {
 
             Color foregroundColor = ColorConverter.hex2Rgb(colorModel.getForeground());
             Color backgroundColor = ColorConverter.hex2Rgb(colorModel.getBackground());
-            boolean isBackgroundTested = colorModel.getIsBackgroundTested();
+            boolean isBackgroundTested = colorModel.getIsBackgroundTested().equals("true");
             Float ratio = Float.valueOf(colorModel.getRatio());
 
+//            if (isBackgroundTested) {
+//                Collection<ColorResult> colorResults =
+//                        colorFinderFactory.getColorFinder().findColors(backgroundColor, foregroundColor, isBackgroundTested, ratio);
+//                model.addAttribute("colorResult", colorResults);
+//
+//            } else {
             Collection<ColorResult> colorResults =
                     colorFinderFactory.getColorFinder().findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
-
-//            model.addAttribute("colorModel", colorModel);
             model.addAttribute("colorResult", colorResults);
+//            }
             return formView;
         }
 
