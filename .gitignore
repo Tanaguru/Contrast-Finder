@@ -1,0 +1,21 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# maven
+target/
+
+
+### NetBeans ###
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+build.xml
+build.properties
