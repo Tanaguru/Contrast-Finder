@@ -144,96 +144,96 @@
             <c:if test="${not empty colorResult}">
                 <c:choose> 
                     <c:when test="${colorResult.combinaisonValid}">
-                <div class="row">
-                        <div class="alert-message block-message">
-                            <div class="result col-lg-12">
-                                <h2>Contraste Valide : ${colorResult.submittedCombinaisonColor.contrast}</h2>
-                                <p>Les couleurs que vous avez choisi sont valides</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="result col-lg-12">
-                            <img src="<c:url value="/Images/good.jpg"/>" alt="Correct contrast"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-offset-8">
-                            <a title="Creative Commons Attribution 3.0 License" href="http://creativecommons.org/licenses/by/3.0/">
-                                <img src="<c:url value="/Images/creative_common_logo.png"/>" alt="License"> </a>
-                            <a title="Flickr: Galerie de Thomas Hawk" href="http://www.flickr.com/photos/thomashawk">Thomas Hawk</a>
-                        </div>
-                </div>
-                </c:when>
-                <c:otherwise>
-                <div class="row">
-                    <div class="result col-lg-12">
-                        <h2><fmt:message key="form.results"/></h2>
-                        <h3> <fmt:message key="form.contrastOld"/></h3>
                         <div class="row">
-                            <div class="col-lg-2">
-                                <div class="cercle" style="background-color:${colorModel.foreground}"></div>
-                                <div class="color-value-rgb">${foregroundColor}</div>
-                                <div class="color-value-rgb">${colorModel.foreground}</div>
+                            <div class="alert-message block-message">
+                                <div class="result col-lg-12">
+                                    <h2>Contraste Valide : ${colorResult.submittedCombinaisonColor.contrast}</h2>
+                                    <p>Les couleurs que vous avez choisi sont valides</p>
+                                </div>
                             </div>
-                            <div class="col-lg-2">
-                                <div class="cercle" style="background-color:${colorModel.background}"></div>
-                                <div class="color-value-rgb">${backgroundColor}</div>
-                                <div class="color-value-rgb">${colorModel.background}</div>
-                            </div>
-                            <span class="col-lg-5" style="color:${colorModel.foreground};background-color:${colorModel.background}">
-                                <fmt:message key="form.sampleWrong"/>
-                            </span>
                         </div>
-                    </div>
-                    <div class ="col-lg-12">
-                        <h3> <fmt:message key="form.contrastNew"/></h3>
-                        <c:if test="${colorModel.isBackgroundTested}">
-                            <c:forEach var="result" items="${colorResult.suggestedColors}">
+                        <div class="row">
+                            <div class="result col-lg-12">
+                                <img src="<c:url value="/Images/good.jpg"/>" alt="Correct contrast"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-offset-8">
+                                <a title="Creative Commons Attribution 3.0 License" href="http://creativecommons.org/licenses/by/3.0/">
+                                    <img src="<c:url value="/Images/creative_common_logo.png"/>" alt="License"> </a>
+                                <a title="Flickr: Galerie de Thomas Hawk" href="http://www.flickr.com/photos/thomashawk">Thomas Hawk</a>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="row">
+                            <div class="result col-lg-12">
+                                <h2><fmt:message key="form.results"/></h2>
+                                <h3> <fmt:message key="form.contrastOld"/></h3>
                                 <div class="row">
                                     <div class="col-lg-2">
-                                        <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
-                                        <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
-                                        <div class="color-value-rgb">${result.hexaColorComp}</div>
+                                        <div class="cercle" style="background-color:${colorModel.foreground}"></div>
+                                        <div class="color-value-rgb">${foregroundColor}</div>
+                                        <div class="color-value-hexa">${colorModel.foreground}</div>
                                     </div>
                                     <div class="col-lg-2">
-                                        <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
-                                        <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
-                                        <div class="color-value-rgb">${result.hexaColor}</div>
+                                        <div class="cercle" style="background-color:${colorModel.background}"></div>
+                                        <div class="color-value-rgb">${backgroundColor}</div>
+                                        <div class="color-value-hexa">${colorModel.background}</div>
+                                    </div>
+                                    <span class="col-lg-5" style="color:${colorModel.foreground};background-color:${colorModel.background}">
+                                        <fmt:message key="form.sampleWrong"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class ="col-lg-12">
+                                <h3> <fmt:message key="form.contrastNew"/></h3>
+                                <c:if test="${colorModel.isBackgroundTested}">
+                                    <c:forEach var="result" items="${colorResult.suggestedColors}">
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
+                                                <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
+                                                <div class="color-value-hexa">${result.hexaColorComp}</div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
+                                                <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
+                                                <div class="color-value-hexa">${result.hexaColor}</div>
 
-                                    </div>
-                                    <span class="col-lg-5" style="
-                                          color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
-                                          background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})">
-                                        <fmt:message key="form.sampleRight"/> ${result.contrast}
-                                    </span>
-                                </div>
-                            </c:forEach>    
-                        </c:if>
-                        <c:if test="${!colorModel.isBackgroundTested}">
-                            <c:forEach var="result" items="${colorResult.suggestedColors}"> 
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
-                                        <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
-                                        <div class="color-value-rgb">${result.hexaColor}</div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
-                                        <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
-                                        <div class="color-value-rgb">${result.hexaColorComp}</div>
-                                    </div> 
-                                    <span class="col-lg-5" style="
-                                          background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
-                                          color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})">
-                                        <fmt:message key="form.sampleRight"/> ${result.contrast}
-                                    </span>
-                                </div>
-                            </c:forEach>
-                        </c:if>
-                    </div>
-                </div>
-                </c:otherwise>
+                                            </div>
+                                            <span class="col-lg-5" style="
+                                                  color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
+                                                  background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})">
+                                                <fmt:message key="form.sampleRight"/> ${result.contrast}
+                                            </span>
+                                        </div>
+                                    </c:forEach>    
+                                </c:if>
+                                <c:if test="${!colorModel.isBackgroundTested}">
+                                    <c:forEach var="result" items="${colorResult.suggestedColors}"> 
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
+                                                <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
+                                                <div class="color-value-hexa">${result.hexaColor}</div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
+                                                <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
+                                                <div class="color-value-hexa">${result.hexaColorComp}</div>
+                                            </div> 
+                                            <span class="col-lg-5" style="
+                                                  background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
+                                                  color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})">
+                                                <fmt:message key="form.sampleRight"/> ${result.contrast}
+                                            </span>
+                                        </div>
+                                    </c:forEach>
+                                </c:if>
+                            </div>
+                        </div>
+                    </c:otherwise>
                 </c:choose>        
             </c:if>
         </div>  <!-- class="container' -->

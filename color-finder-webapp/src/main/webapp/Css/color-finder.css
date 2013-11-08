@@ -22,7 +22,7 @@ body {
     margin : 30px;
 }
 
-#set-up-form #lang-switcher {
+#lang-switcher {
     text-align: right;
 }
 
@@ -36,11 +36,12 @@ body {
     margin-bottom: 70px;
 }
 
-color-value-rgb {
+color-value-rgb, 
+color-value-hexa {
     font-size:0.95em;
 }
 
-#set-up-form #footer-down {
+#footer-down {
     padding-top: 0;
     text-align: center;
     margin-top: 120px;
