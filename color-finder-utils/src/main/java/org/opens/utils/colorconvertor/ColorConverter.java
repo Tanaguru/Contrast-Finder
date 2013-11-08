@@ -24,6 +24,10 @@ public final class ColorConverter {
     private static final int CONVERT_TO_BASE_16 = 16;
     private static final String HEXADECIMAL_DICTIONNARY = "[0-9A-Fa-f]+";
 
+    public static String Rgb2hex(String backgroundColor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * Private constructor, utility class
      */
@@ -111,5 +115,16 @@ public final class ColorConverter {
                     Integer.valueOf(str.substring(B_BEGIN_COLOR, RGB_HEXA_LENGTH), CONVERT_TO_BASE_16));
         }
         return null;
+    }
+
+    public static String hex2Rgb(Color color) {
+        Integer red = color.getRed();
+        Integer green = color.getGreen();
+        Integer blue = color.getBlue();
+        return ("rgb(" + red.toString() + ", " + green.toString() + ", " + blue.toString() + ")");
+    }
+    
+    public static String Rgb2hex(Color color) {
+        return (String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()));
     }
 }

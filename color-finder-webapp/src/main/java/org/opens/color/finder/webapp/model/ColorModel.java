@@ -23,6 +23,7 @@ public class ColorModel {
         this.foreground = foreground;
     }
     private String background = DEFAULT_BACKGROUND;
+
     public String getBackground() {
         return background;
     }
@@ -30,7 +31,6 @@ public class ColorModel {
     public void setBackground(String background) {
         this.background = background;
     }
-    
     private String isBackgroundTested = "false";
 
     public String getIsBackgroundTested() {
@@ -40,7 +40,6 @@ public class ColorModel {
     public void setIsBackgroundTested(String isBackgroundTested) {
         this.isBackgroundTested = isBackgroundTested;
     }
-
     private String ratio = DEFAULT_RATIO;
 
     public String getRatio() {

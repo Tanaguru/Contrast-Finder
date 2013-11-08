@@ -11,7 +11,6 @@ import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.factory.ColorFinderFactory;
 import org.opens.colorfinder.result.ColorResult;
-import org.opens.colorfinder.result.factory.ColorResultFactory;
 import org.opens.utils.colorconvertor.ColorConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,7 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * @author Scub-Foundation
+ *
+ * @author alingua
  */
 @Controller
 public class IndexController {
@@ -61,7 +61,7 @@ public class IndexController {
      * @param model modele de la page
      * @return le nom de la page à afficher
      */
-    @RequestMapping(value = "form.mvc")
+    @RequestMapping(value = "form.html")
     public String initAccueil(final Model model) {
         ColorModel colorModel = new ColorModel();
 
@@ -70,20 +70,17 @@ public class IndexController {
     }
 
     /**
-     * Réception du résultat du formulaire
      *
-     * @param model modele de la page
-     * @param messagePersonneModel Modele retourné par le formulaire
-     * @param result Résultat du validateur
-     * @return le nom de la page à afficher
+     * @param model
+     * @param colorModel
+     * @param result
+     * @return
      */
-    @RequestMapping(value = "form.mvc", method = RequestMethod.POST)
+    @RequestMapping(value = "form.html", method = RequestMethod.POST)
     public String getInfoAccueil(final Model model, @Valid ColorModel colorModel, BindingResult result) {
-        // S'il y a des erreurs, on reste sur le formulaire
         if (result.hasErrors()) {
             return formView;
-        } // Sinon, on passe à la page d'affichage des informations
-        else {
+        } else {
 
             Color foregroundColor = ColorConverter.hex2Rgb(colorModel.getForeground());
             Color backgroundColor = ColorConverter.hex2Rgb(colorModel.getBackground());
@@ -93,6 +90,11 @@ public class IndexController {
             Collection<ColorResult> colorResults =
                     colorFinderFactory.getColorFinder().findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
             model.addAttribute("colorResult", colorResults);
+
+            String rgbBackground = ColorConverter.hex2Rgb(backgroundColor);
+            String rgbForeground = ColorConverter.hex2Rgb(foregroundColor);
+            model.addAttribute("backgroundColor", rgbBackground);
+            model.addAttribute("foregroundColor", rgbForeground);
 
             return formView;
         }

@@ -47,6 +47,8 @@ public class ColorResultImpl implements ColorResult {
         return ContrastChecker.getConstrastRatio(this.getColor(), this.getComparisonColor());
     }
 
+    
+    
     /**
      *
      * @return
