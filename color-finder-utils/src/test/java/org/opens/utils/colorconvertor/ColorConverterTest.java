@@ -88,8 +88,9 @@ public class ColorConverterTest extends TestCase {
      */
     public void testGetHue() {
         System.out.println("getHue");
-        Color bgColor = new Color(70, 136, 71);
-        Float result = ColorConverter.getHue(bgColor);
+        Color bgColor = new Color(128, 127, 127);
+        Color result = ColorConverter.offsetHsbColor(bgColor, 0.1f, 0, 0);
+        System.out.println(result.toString());
         System.out.println("Hue : " + result);
         // TODO review the generated test code and remove the default call to fail.
     }

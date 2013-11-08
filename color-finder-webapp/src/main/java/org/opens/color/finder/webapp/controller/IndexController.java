@@ -5,12 +5,11 @@
 package org.opens.color.finder.webapp.controller;
 
 import java.awt.Color;
-import java.util.Collection;
 import javax.validation.Valid;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
+import org.opens.colorfinder.ColorFinder;
 import org.opens.colorfinder.factory.ColorFinderFactory;
-import org.opens.colorfinder.result.ColorResult;
 import org.opens.utils.colorconvertor.ColorConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -50,7 +49,7 @@ public class IndexController {
     /**
      * Initialisation du validateur
      */
-    @InitBinder
+    @InitBinder("colorModel")
     protected void initBinder(WebDataBinder binder) {
         binder.setValidator(new ColorModelValidator());
     }
@@ -87,10 +86,11 @@ public class IndexController {
             boolean isBackgroundTested = colorModel.getIsBackgroundTested().equals("true");
             Float ratio = Float.valueOf(colorModel.getRatio());
 
-            Collection<ColorResult> colorResults =
-                    colorFinderFactory.getColorFinder().findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
-            model.addAttribute("colorResult", colorResults);
-
+            ColorFinder colorFinder = colorFinderFactory.getColorFinder();
+            colorFinder.findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
+            
+            model.addAttribute("colorResult", colorFinder.getColorResult());
+            
             String rgbBackground = ColorConverter.hex2Rgb(backgroundColor);
             String rgbForeground = ColorConverter.hex2Rgb(foregroundColor);
             model.addAttribute("backgroundColor", rgbBackground);

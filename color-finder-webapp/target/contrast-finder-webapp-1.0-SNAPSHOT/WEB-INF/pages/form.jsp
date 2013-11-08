@@ -4,6 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<!DOCTYPE html>
 <c:choose>
     <c:when test="${fn:contains(pageContext.response.locale, '_')}">
         <c:set var="lang">
@@ -16,8 +17,8 @@
 </c:choose>
 <html lang="${lang}">
     <head>
-
-        <title>ColorFinder Open-S</title>
+        <meta charset="utf-8">
+        <title>Tanaguru Contrast-Finder</title>
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/bootstrap.min.css"/>">
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/bootstrap-theme.min.css"/>">
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/color-finder.css"/>">
@@ -139,12 +140,14 @@
                     </form:form>
                 </div><!-- class="col-lg-12' -->
             </div><!-- class="row' -->
-            <!--
-            <c:if test="${empty colorResult}">
-                    <div class="row">
+
+            <c:if test="${not empty colorResult}">
+                <c:choose> 
+                    <c:when test="${colorResult.combinaisonValid}">
+                <div class="row">
                         <div class="alert-message block-message">
                             <div class="result col-lg-12">
-                                <h2>Contraste Valide</h2>
+                                <h2>Contraste Valide : ${colorResult.submittedCombinaisonColor.contrast}</h2>
                                 <p>Les couleurs que vous avez choisi sont valides</p>
                             </div>
                         </div>
@@ -160,10 +163,9 @@
                                 <img src="<c:url value="/Images/creative_common_logo.png"/>" alt="License"> </a>
                             <a title="Flickr: Galerie de Thomas Hawk" href="http://www.flickr.com/photos/thomashawk">Thomas Hawk</a>
                         </div>
-                    </div>
-            </c:if>
-            -->
-            <c:if test="${not empty colorResult}">
+                </div>
+                </c:when>
+                <c:otherwise>
                 <div class="row">
                     <div class="result col-lg-12">
                         <h2><fmt:message key="form.results"/></h2>
@@ -187,7 +189,7 @@
                     <div class ="col-lg-12">
                         <h3> <fmt:message key="form.contrastNew"/></h3>
                         <c:if test="${colorModel.isBackgroundTested}">
-                            <c:forEach var="result" items="${colorResult}">
+                            <c:forEach var="result" items="${colorResult.suggestedColors}">
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
@@ -209,7 +211,7 @@
                             </c:forEach>    
                         </c:if>
                         <c:if test="${!colorModel.isBackgroundTested}">
-                            <c:forEach var="result" items="${colorResult}"> 
+                            <c:forEach var="result" items="${colorResult.suggestedColors}"> 
                                 <div class="row">
                                     <div class="col-lg-2">
                                         <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
@@ -231,6 +233,8 @@
                         </c:if>
                     </div>
                 </div>
+                </c:otherwise>
+                </c:choose>        
             </c:if>
         </div>  <!-- class="container' -->
         <footer>

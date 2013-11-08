@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.util.Collection;
 import junit.framework.TestCase;
 import org.apache.log4j.Logger;
+import org.opens.colorfinder.result.ColorCombinaison;
 import org.opens.colorfinder.result.ColorResult;
 
 /**
@@ -37,13 +38,13 @@ public class ColorFinderHsvTest extends TestCase {
      */
     public void testFindColorsWithFgAndBg() {
         System.out.println("findColors");
-        Color foregroundColor = new Color(127, 127, 127);
+        Color foregroundColor = new Color(128, 127, 127);
         Color backgroundColor = new Color(128, 128, 128);
         Float coefficientLevel = 4.5f;
         ColorFinderHsv instance = new ColorFinderHsv();
-        Collection<ColorResult> result = instance.findColors(foregroundColor, backgroundColor, true, coefficientLevel);
-        for (ColorResult colorResult : result) {
-            LOGGER.debug("HashCode :" + colorResult.hashCode() + "    COLOR : " + colorResult.getContrast());
+        instance.findColors(foregroundColor, backgroundColor, true, coefficientLevel);
+        for (ColorCombinaison colorCombinaison : instance.getColorResult().getSuggestedColors()) {
+            LOGGER.debug("HashCode :" + colorCombinaison.hashCode() + "    COLOR : " + colorCombinaison.getContrast());
         }
 //        result = instance.findColors(foregroundColor, backgroundColor, false, coefficientLevel);
 //        for (ColorResult colorResult : result) {
@@ -60,10 +61,10 @@ public class ColorFinderHsvTest extends TestCase {
         Color colorToChange = new Color(223, 240, 216);
         Float coefficientLevel = 4.5f;
         ColorFinderHsv instance = new ColorFinderHsv();
-        Collection<ColorResult> result = instance.findColors(colorToChange, colorToKeep, coefficientLevel);
-        //for (ColorResult colorResult : result) {
-            //LOGGER.debug("HashCode :" + colorResult.hashCode() + "    COLOR : " + colorResult.getContrast());
-        //}
+//        instance.findColors();
+//        for (ColorCombinaison colorCombinaison : instance.getColorResult().getSuggestedColors()) {
+//            LOGGER.debug("HashCode :" + colorCombinaison.hashCode() + "    COLOR : " + colorCombinaison.getContrast());
+//        }
     }
 //    public void testFindColors2() {
 //        System.out.println("findColors2");

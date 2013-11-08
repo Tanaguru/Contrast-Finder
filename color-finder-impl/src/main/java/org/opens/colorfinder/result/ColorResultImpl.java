@@ -5,7 +5,11 @@
 package org.opens.colorfinder.result;
 
 import java.awt.Color;
-import org.opens.utils.contrastchecker.ContrastChecker;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import org.apache.log4j.Logger;
+import org.opens.colorfinder.result.factory.ColorCombinaisonFactory;
+import org.opens.colorfinder.result.factory.ColorCombinaisonFactoryImpl;
 
 /**
  *
@@ -13,97 +17,50 @@ import org.opens.utils.contrastchecker.ContrastChecker;
  */
 public class ColorResultImpl implements ColorResult {
 
-    private static int HASH = 7;
-    private static int HASH_OFFSET = 63;
-    private Color color;
-    private Color comparisonColor;
-    private String hexaColor;
-    private String hexaColorComp;
-
-    public ColorResultImpl() {
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Color getColor() {
-        return this.color;
-    }
-
-    /**
-     *
-     * @param color
-     */
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Double getContrast() {
-        return ContrastChecker.getConstrastRatio(this.getColor(), this.getComparisonColor());
-    }
-
+    private static int MAX_SUGGESTED_COLOR = 20;
     
+    private static final ColorCombinaisonFactory colorCombinaisonFactory = 
+                new ColorCombinaisonFactoryImpl();
     
-    /**
-     *
-     * @return
-     */
-    public Color getComparisonColor() {
-        return comparisonColor;
+    private ColorCombinaison submittedColors;
+    
+    Collection<ColorCombinaison> suggestedColors = new LinkedHashSet<ColorCombinaison>();
+    
+    public Float getThreashold() {
+        return Float.valueOf(submittedColors.getThreshold().floatValue());
     }
 
-    /**
-     *
-     * @param color
-     */
-    public void setComparisonColor(Color color) {
-        this.comparisonColor = color;
+    public void setSubmittedColors(Color foreground, Color background, Float threashold) {
+        submittedColors = 
+                colorCombinaisonFactory.getColorCombinaison(
+                    foreground, 
+                    background, 
+                    Double.valueOf(threashold));
     }
 
-    public String getHexaColor() {
-        return hexaColor;
+    public ColorCombinaison getSubmittedCombinaisonColor() {
+        return submittedColors;
     }
 
-    public void setHexaColor(Color color) {
-        this.hexaColor = String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+    public boolean isCombinaisonValid() {
+        return submittedColors.isContrastValid();
     }
 
-    public String getHexaColorComp() {
-        return hexaColorComp;
+    public Collection<ColorCombinaison> getSuggestedColors() {
+        return suggestedColors;
+    }
+    
+    public void addSuggestedColor(ColorCombinaison colorCombinaison) {
+        suggestedColors.add(colorCombinaison);
+        Logger.getLogger(this.getClass()).debug("new color added,  "+ suggestedColors.size() +" colors in collection");
     }
 
-    public void setHexaColorComp(Color color) {
-        this.hexaColorComp = String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
+    public int getNumberOfSuggestedColors() {
+        return suggestedColors.size();
+    }
+    
+    public boolean isSuggestedColorsFull() {
+        return getNumberOfSuggestedColors() >= MAX_SUGGESTED_COLOR;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ColorResultImpl other = (ColorResultImpl) obj;
-        if (this.color != other.color && (this.color == null || !this.color.equals(other.color))) {
-            return false;
-        }
-        if (this.comparisonColor != other.comparisonColor && (this.comparisonColor == null || !this.comparisonColor.equals(other.comparisonColor))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = HASH;
-        hash = HASH_OFFSET * hash + (this.color != null ? this.color.hashCode() : 0);
-        hash = HASH_OFFSET * hash + (this.comparisonColor != null ? this.comparisonColor.hashCode() : 0);
-        return hash;
-    }
 }

@@ -5,6 +5,7 @@
 package org.opens.colorfinder.result;
 
 import java.awt.Color;
+import java.util.Collection;
 
 /**
  *
@@ -13,52 +14,47 @@ import java.awt.Color;
 public interface ColorResult {
 
     /**
-     *
-     * @return
+     * 
+     * @param foreground
+     * @param backgroud
+     * @param threashold 
      */
-    Color getColor();
-
+    void setSubmittedColors(Color foreground, Color backgroud, Float threashold);
+    
     /**
-     *
-     * @param color
+     * 
+     * @return 
      */
-    void setColor(Color color);
-
+    ColorCombinaison getSubmittedCombinaisonColor();
+    
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
-    Double getContrast();
-
+    boolean isCombinaisonValid();
+    
     /**
-     *
-     * @return
+     * 
+     * @return 
      */
-    Color getComparisonColor();
-
+    Collection<ColorCombinaison> getSuggestedColors();
+    
     /**
-     *
-     * @param color
+     * 
+     * @return 
      */
-    void setComparisonColor(Color color);
-
+    int getNumberOfSuggestedColors();
+    
     /**
-     *
-     * @return
+     * 
+     * @param combinaison 
      */
-    public String getHexaColorComp();
-
+    void addSuggestedColor(ColorCombinaison combinaison);
+    
     /**
-     *
-     * @param color
+     * 
+     * @return 
      */
-    public void setHexaColorComp(Color color);
+    Float getThreashold();
 
-    public String getHexaColor();
-
-    /**
-     *
-     * @param color
-     */
-    public void setHexaColor(Color color);
 }

@@ -58,11 +58,6 @@ public final class ColorConverter {
         return color;
     }
 
-    public static Color setBrightnessToColor(Float Brightness, Color color) {
-        int col = Color.HSBtoRGB(getHue(color), getSaturation(color), Brightness);
-        return new Color(col);
-    }
-
     public static Float getBrightness(Color bgColor) {
         float[] hsbValues = new float[MAX_COMPONENT];
         Float brightness;

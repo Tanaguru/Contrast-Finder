@@ -13,12 +13,20 @@ import org.opens.colorfinder.result.ColorResult;
  */
 public interface ColorResultFactory {
     
+//    /**
+//     * 
+//     * @param foundColor
+//     * @param comparisonColor
+//     * @return 
+//     */
+//    ColorResult getColorResult(Color foundColor, Color comparisonColor);
+    
     /**
      * 
      * @param foundColor
      * @param comparisonColor
      * @return 
      */
-    ColorResult getColorResult(Color foundColor, Color comparisonColor);
+    ColorResult getColorResult();
     
 }

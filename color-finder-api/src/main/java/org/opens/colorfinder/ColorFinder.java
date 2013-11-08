@@ -5,7 +5,6 @@
 package org.opens.colorfinder;
 
 import java.awt.Color;
-import java.util.Collection;
 import org.opens.colorfinder.result.ColorResult;
 
 /**
@@ -22,12 +21,18 @@ public interface ColorFinder {
      * @param coefficientLevel
      * @return 
      */
-    Collection<ColorResult> findColors (
+    void findColors (
             Color foregroundColor, 
             Color backgroundColor, 
             boolean isBackgroundTested, 
             Float coefficientLevel);
 
+    /**
+     * 
+     * @return 
+     */
+    ColorResult getColorResult();
+    
     /**
      *
      * @return a key that represents the colorFinder
