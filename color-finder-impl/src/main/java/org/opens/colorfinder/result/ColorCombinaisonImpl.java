@@ -30,8 +30,8 @@ import org.opens.utils.contrastchecker.ContrastChecker;
  */
 public class ColorCombinaisonImpl implements ColorCombinaison {
 
-    private static int HASH = 7;
-    private static int HASH_OFFSET = 63;
+    private static final int HASH = 7;
+    private static final int HASH_OFFSET = 63;
     private Color color;
     private Color comparisonColor;
     private Double contrastRatio;
@@ -60,6 +60,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      *
      * @return
      */
+    @Override
     public Color getColor() {
         return this.color;
     }
@@ -68,6 +69,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      *
      * @param color
      */
+    @Override
     public void setColor(Color color) {
         this.color = color;
     }
@@ -76,6 +78,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      *
      * @return
      */
+    @Override
     public Double getContrast() {
         if (contrastRatio == null) {
             contrastRatio = 
@@ -91,6 +94,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      * 
      * @param threshold 
      */
+    @Override
     public void setThreshold(Double threshold) {
         this.threashold = threshold;
     }
@@ -99,6 +103,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      * 
      * @param threshold 
      */
+    @Override
     public Double getThreshold() {
         return this.threashold;
     }
@@ -107,6 +112,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      * 
      * @return 
      */
+    @Override
     public boolean isContrastValid() {
         return getContrast() > threashold;
     }
@@ -115,6 +121,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      *
      * @return
      */
+    @Override
     public Color getComparisonColor() {
         return comparisonColor;
     }
@@ -123,6 +130,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      *
      * @param color
      */
+    @Override
     public void setComparisonColor(Color color) {
         this.comparisonColor = color;
     }
@@ -131,6 +139,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      * 
      * @return 
      */
+    @Override
     public String getHexaColor() {
         return ColorConverter.Rgb2hex(color);
     }
@@ -139,6 +148,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      * 
      * @return 
      */
+    @Override
     public String getHexaColorComp() {
         return ColorConverter.Rgb2hex(comparisonColor);
     }

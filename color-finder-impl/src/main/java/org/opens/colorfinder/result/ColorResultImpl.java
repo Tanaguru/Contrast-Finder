@@ -25,7 +25,6 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import org.apache.log4j.Logger;
 import org.opens.colorfinder.result.factory.ColorCombinaisonFactory;
-import org.opens.colorfinder.result.factory.ColorCombinaisonFactoryImpl;
 
 /**
  *
@@ -35,17 +34,29 @@ public class ColorResultImpl implements ColorResult {
 
     private static int MAX_SUGGESTED_COLOR = 20;
     
-    private static final ColorCombinaisonFactory colorCombinaisonFactory = 
-                new ColorCombinaisonFactoryImpl();
+    /* the colorCombinaisonFactory instance*/
+    private ColorCombinaisonFactory colorCombinaisonFactory;
     
+    /* the submitted color combinaison*/
     private ColorCombinaison submittedColors;
     
-    Collection<ColorCombinaison> suggestedColors = new LinkedHashSet<ColorCombinaison>();
+    /* the suggested colors */
+    Collection<ColorCombinaison> suggestedColors = 
+            new LinkedHashSet<ColorCombinaison>();
     
+    /*
+     * Constructor
+     */
+    public ColorResultImpl(ColorCombinaisonFactory colorCombinaisonFactory) {
+        this.colorCombinaisonFactory = colorCombinaisonFactory;
+    }
+    
+    @Override
     public Float getThreashold() {
         return Float.valueOf(submittedColors.getThreshold().floatValue());
     }
 
+    @Override
     public void setSubmittedColors(Color foreground, Color background, Float threashold) {
         submittedColors = 
                 colorCombinaisonFactory.getColorCombinaison(
@@ -54,27 +65,36 @@ public class ColorResultImpl implements ColorResult {
                     Double.valueOf(threashold));
     }
 
+    @Override
     public ColorCombinaison getSubmittedCombinaisonColor() {
         return submittedColors;
     }
 
+    @Override
     public boolean isCombinaisonValid() {
         return submittedColors.isContrastValid();
     }
 
+    @Override
     public Collection<ColorCombinaison> getSuggestedColors() {
         return suggestedColors;
     }
     
+    @Override
     public void addSuggestedColor(ColorCombinaison colorCombinaison) {
         suggestedColors.add(colorCombinaison);
         Logger.getLogger(this.getClass()).debug("new color added,  "+ suggestedColors.size() +" colors in collection");
     }
 
+    @Override
     public int getNumberOfSuggestedColors() {
         return suggestedColors.size();
     }
     
+    /**
+     * 
+     * @return whether the max number suggested colors is reached
+     */
     public boolean isSuggestedColorsFull() {
         return getNumberOfSuggestedColors() >= MAX_SUGGESTED_COLOR;
     }

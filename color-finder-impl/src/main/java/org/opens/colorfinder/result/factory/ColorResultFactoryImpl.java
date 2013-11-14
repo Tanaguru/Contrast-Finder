@@ -31,21 +31,8 @@ public class ColorResultFactoryImpl implements ColorResultFactory {
 
     @Override
     public ColorResult getColorResult() {
-        ColorResult colorResult = new ColorResultImpl();
-//        colorResult.setColor(foundColor);
-//        colorResult.setComparisonColor(comparisonColor);
-//        colorResult.setHexaColor(foundColor);
-//        colorResult.setHexaColorComp(comparisonColor);
+        ColorResult colorResult = new ColorResultImpl(new ColorCombinaisonFactoryImpl());
         return colorResult;
     }
-//    @Override
-//    public ColorResult getColorResult(Color foundColor, Color comparisonColor) {
-//        ColorResult colorResult = new ColorResultImpl();
-////        colorResult.setColor(foundColor);
-////        colorResult.setComparisonColor(comparisonColor);
-////        colorResult.setHexaColor(foundColor);
-////        colorResult.setHexaColorComp(comparisonColor);
-//        return colorResult;
-//    }
     
 }

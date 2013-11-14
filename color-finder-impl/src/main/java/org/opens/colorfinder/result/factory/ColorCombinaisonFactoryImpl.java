@@ -32,8 +32,7 @@ public class ColorCombinaisonFactoryImpl implements ColorCombinaisonFactory {
 
     @Override
     public ColorCombinaison getColorCombinaison(Color color1, Color color2, Double threashold) {
-        ColorCombinaison colorCombinaison = new ColorCombinaisonImpl(color1, color2, threashold);
-        return colorCombinaison;
+        return new ColorCombinaisonImpl(color1, color2, threashold);
     }
     
 }

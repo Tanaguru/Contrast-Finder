@@ -1,7 +1,22 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+ * Contrast Finder
+ * Copyright (C) 2008-2013  Open-S Company
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Contact us by mail: open-s AT open-s DOT com
+ */ 
 package org.opens.colorfinder;
 
 import java.awt.Color;
@@ -16,9 +31,9 @@ import org.opens.utils.contrastchecker.ContrastChecker;
  *
  * @author alingua
  */
-public abstract class AbstractColorFinderImpl implements ColorFinder {
+public abstract class AbstractColorFinder implements ColorFinder {
 
-    private static final Logger LOGGER = Logger.getLogger(AbstractColorFinderImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(AbstractColorFinder.class);
     ColorResultFactory colorResultFactory;
     ColorCombinaisonFactory colorCombinaisonFactory;
     protected Color colorToKeep;
@@ -33,7 +48,7 @@ public abstract class AbstractColorFinderImpl implements ColorFinder {
     /**
      * Constructor
      */
-    public AbstractColorFinderImpl(
+    public AbstractColorFinder(
             ColorResultFactory colorResultFactory,
             ColorCombinaisonFactory colorCombinaisonFactory) {
         super();
