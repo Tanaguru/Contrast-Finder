@@ -8,41 +8,33 @@ body {
     font-size : 12px;
 }
 
-/* Vue formulaire*/ 
-#set-up-form h3 {
-    margin-bottom: 40px;    
-}
-
-#set-up-form span {
-    padding: 0.5em;
-    border-radius: 4px;
-}
-
-#set-up-form .row:before, .row:after {
-    margin : 30px;
-}
+/* Vue formulaire*/
 
 #lang-switcher {
     text-align: right;
+    float:right;
 }
 
 .cercle{
+    float:right;
     width:100px;
-    height:40px;
+    height:55px;
     border-radius: 0.3em;
+    margin-right: 5px;
 }
 
-.result {
-    margin-bottom: 70px;
-}
-
-.color-value-rgb, 
-.color-value-hexa,
-.color-value-hsl{
+.color-codes {
     font-size:0.95em;
+    list-style: none;
+    padding: 0;
 }
 
-#footer-down {
+.col01 {width:22%;}
+.col02 {width:22%;}
+.col03 {width:6%;}
+.text-sample p {margin:0}
+
+footer {
     padding-top: 0;
     text-align: center;
     margin-top: 120px;

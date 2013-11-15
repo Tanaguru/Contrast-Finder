@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contact us by mail: open-s AT open-s DOT com
- */ 
-
+ */
 package org.opens.utils.contrastchecker;
 
 import java.awt.Color;
@@ -91,6 +90,16 @@ public final class ContrastChecker {
             return computeContrast(fgLuminosity, bgLuminosity);
         } else {
             return computeContrast(bgLuminosity, fgLuminosity);
+        }
+    }
+
+    public static double getConstrastRatio5DigitRound(final Color fgColor, final Color bgColor) {
+        double fgLuminosity = getLuminosity(fgColor);
+        double bgLuminosity = getLuminosity(bgColor);
+        if (fgLuminosity > bgLuminosity) {
+            return (double) Math.round(computeContrast(fgLuminosity, bgLuminosity) * 100000) / 100000;
+        } else {
+            return (double) Math.round(computeContrast(bgLuminosity, fgLuminosity) * 100000) / 100000;
         }
     }
 

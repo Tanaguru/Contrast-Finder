@@ -27,6 +27,7 @@ import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.ColorFinder;
 import org.opens.colorfinder.factory.ColorFinderFactory;
 import org.opens.utils.colorconvertor.ColorConverter;
+import org.opens.utils.contrastchecker.ContrastChecker;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -111,12 +112,14 @@ public class IndexController {
             String rgbForeground = ColorConverter.hex2Rgb(foregroundColor);
             String hsvBackground = ColorConverter.RGB2hsl(backgroundColor);
             String hsvForeground = ColorConverter.RGB2hsl(foregroundColor);
+            Double oldContrast = ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor);
             int resultNumber = colorFinder.getColorResult().getNumberOfSuggestedColors();
             model.addAttribute("backgroundColor", rgbBackground);
             model.addAttribute("foregroundColor", rgbForeground);
             model.addAttribute("backgroundHSLColor", hsvBackground);
             model.addAttribute("foregroundHSLColor", hsvForeground);
             model.addAttribute("resultNumber", resultNumber);
+            model.addAttribute("oldContrast", oldContrast);
 
             return formView;
         }
