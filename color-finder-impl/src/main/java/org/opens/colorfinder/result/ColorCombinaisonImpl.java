@@ -86,7 +86,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
                     this.getColor(),
                     this.getComparisonColor()));
         }
-        return contrastRatio;
+        return (double) Math.round(contrastRatio * 100000) / 100000;
     }
 
     /**

@@ -23,7 +23,6 @@
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/bootstrap-theme.min.css"/>">
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/color-finder.css"/>">
     </head>
-
     <body id="set-up-form">
         <!-- Titre -->
         <div class="container">

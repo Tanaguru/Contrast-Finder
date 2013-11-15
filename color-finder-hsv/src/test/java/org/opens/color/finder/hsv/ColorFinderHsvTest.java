@@ -236,6 +236,7 @@ public class ColorFinderHsvTest extends TestCase {
         assertEquals(endColor, colorCombinaison.get(sizeList - 1).getColor());
     }
 
+
     public void testGetColorFinderKey() {
         System.out.println("Key");
         ColorFinderHsv instance = new ColorFinderHsv();

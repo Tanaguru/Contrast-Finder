@@ -36,9 +36,9 @@ body {
     margin-bottom: 70px;
 }
 
-color-value-rgb, 
-color-value-hexa,
-color-value-hsl{
+.color-value-rgb, 
+.color-value-hexa,
+.color-value-hsl{
     font-size:0.95em;
 }
 
