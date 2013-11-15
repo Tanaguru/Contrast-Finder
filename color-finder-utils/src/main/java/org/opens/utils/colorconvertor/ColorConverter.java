@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contact us by mail: open-s AT open-s DOT com
- */ 
-
+ */
 package org.opens.utils.colorconvertor;
 
 import java.awt.Color;
@@ -39,10 +38,6 @@ public final class ColorConverter {
     private static final int RGB_HEXA_LENGTH = 6;
     private static final int CONVERT_TO_BASE_16 = 16;
     private static final String HEXADECIMAL_DICTIONNARY = "[0-9A-Fa-f]+";
-
-    public static String Rgb2hex(String backgroundColor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * Private constructor, utility class
@@ -134,8 +129,19 @@ public final class ColorConverter {
         Integer blue = color.getBlue();
         return ("rgb(" + red.toString() + ", " + green.toString() + ", " + blue.toString() + ")");
     }
-    
+
     public static String Rgb2hex(Color color) {
         return (String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue())).toUpperCase();
+    }
+
+    public static String RGB2hsl(Color color) {
+        float[] hsvTab = new float[3];
+        Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsvTab);
+        float h = hsvTab[0] * 360;
+        float l = (2 - (hsvTab[1] * 100) / 100) * (hsvTab[2] * 100) / 2;
+        float s = (hsvTab[1] * 100) * (hsvTab[2] * 100) / (l < 50 ? l * 2 : 200 - l * 2);
+        return ("hsl(" + Float.valueOf(h).intValue()
+                + ", " + Float.valueOf(s).intValue() + "%"
+                + ", " + Float.valueOf(l).intValue() + "%" + ")");
     }
 }

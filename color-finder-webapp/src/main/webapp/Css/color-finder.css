@@ -37,7 +37,8 @@ body {
 }
 
 color-value-rgb, 
-color-value-hexa {
+color-value-hexa,
+color-value-hsl{
     font-size:0.95em;
 }
 

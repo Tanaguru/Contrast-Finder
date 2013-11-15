@@ -109,8 +109,14 @@ public class IndexController {
             
             String rgbBackground = ColorConverter.hex2Rgb(backgroundColor);
             String rgbForeground = ColorConverter.hex2Rgb(foregroundColor);
+            String hsvBackground = ColorConverter.RGB2hsl(backgroundColor);
+            String hsvForeground = ColorConverter.RGB2hsl(foregroundColor);
+            int resultNumber = colorFinder.getColorResult().getNumberOfSuggestedColors();
             model.addAttribute("backgroundColor", rgbBackground);
             model.addAttribute("foregroundColor", rgbForeground);
+            model.addAttribute("backgroundHSLColor", hsvBackground);
+            model.addAttribute("foregroundHSLColor", hsvForeground);
+            model.addAttribute("resultNumber", resultNumber);
 
             return formView;
         }

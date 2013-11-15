@@ -85,7 +85,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
                 colorCombinaisonFactory.getColorCombinaison(newColor, colorToKeep, Double.valueOf(coefficientLevel));
         if (colorCombinaison.isContrastValid()
                 && colorCombinaison.getContrast() < (coefficientLevel + 2.5)) {
-            LOGGER.debug("Adding a color to list in the Brightness Loop : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep));
+            LOGGER.debug("Adding a color to list : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep));
             colorResult.addSuggestedColor(colorCombinaison);
             return true;
         }

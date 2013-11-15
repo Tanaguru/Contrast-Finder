@@ -85,7 +85,19 @@ public interface ColorCombinaison {
     
     /**
      * 
+     * @return 
+     */
+    String getHslColor();
+    
+    /**
+     * 
      * @param color 
      */
     String getHexaColorComp();
+    
+    /**
+     * 
+     * @return 
+     */
+    String getHslColorComp();
 }

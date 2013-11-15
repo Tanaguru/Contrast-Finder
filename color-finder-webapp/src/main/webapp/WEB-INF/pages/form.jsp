@@ -147,8 +147,8 @@
                         <div class="row">
                             <div class="alert-message block-message">
                                 <div class="result col-lg-12">
-                                    <h2>Contraste Valide : ${colorResult.submittedCombinaisonColor.contrast}</h2>
-                                    <p>Les couleurs que vous avez choisi sont valides</p>
+                                    <h2><fmt:message key="form.validContrast"/>${colorResult.submittedCombinaisonColor.contrast}</h2>
+                                    <p><fmt:message key="form.validContrastDesc"/></p>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +174,13 @@
                                     <div class="col-lg-2">
                                         <div class="cercle" style="background-color:${colorModel.foreground}"></div>
                                         <div class="color-value-rgb">${foregroundColor}</div>
+                                        <div class="color-value-hsl">${foregroundHSLColor}</div>
                                         <div class="color-value-hexa">${colorModel.foreground}</div>
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="cercle" style="background-color:${colorModel.background}"></div>
                                         <div class="color-value-rgb">${backgroundColor}</div>
+                                        <div class="color-value-hsl">${backgroundHSLColor}</div>
                                         <div class="color-value-hexa">${colorModel.background}</div>
                                     </div>
                                     <span class="col-lg-5" style="color:${colorModel.foreground};background-color:${colorModel.background}">
@@ -187,20 +189,21 @@
                                 </div>
                             </div>
                             <div class ="col-lg-12">
-                                <h3> <fmt:message key="form.contrastNew"/></h3>
+                                <h3> <fmt:message key="form.contrastNew"/> : <fmt:message key="form.resultNumber"><fmt:param value="${resultNumber}"/></fmt:message></h3>
                                 <c:if test="${colorModel.isBackgroundTested}">
                                     <c:forEach var="result" items="${colorResult.suggestedColors}">
                                         <div class="row">
                                             <div class="col-lg-2">
                                                 <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
                                                 <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
+                                                <div class="color-value-hsl">${result.hslColorComp}</div>
                                                 <div class="color-value-hexa">${result.hexaColorComp}</div>
                                             </div>
                                             <div class="col-lg-2">
                                                 <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
                                                 <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
+                                                <div class="color-value-hsl">${result.hslColor}</div>
                                                 <div class="color-value-hexa">${result.hexaColor}</div>
-
                                             </div>
                                             <span class="col-lg-5" style="
                                                   color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
@@ -216,11 +219,13 @@
                                             <div class="col-lg-2">
                                                 <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
                                                 <div class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</div>
+                                                <div class="color-value-hsl">${result.hslColor}</div>
                                                 <div class="color-value-hexa">${result.hexaColor}</div>
                                             </div>
                                             <div class="col-lg-2">
                                                 <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
                                                 <div class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</div>
+                                                <div class="color-value-hsl">${result.hslColorComp}</div>
                                                 <div class="color-value-hexa">${result.hexaColorComp}</div>
                                             </div> 
                                             <span class="col-lg-5" style="

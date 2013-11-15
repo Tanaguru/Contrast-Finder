@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contact us by mail: open-s AT open-s DOT com
- */ 
-
+ */
 package org.opens.colorfinder.result;
 
 import java.awt.Color;
@@ -45,10 +44,10 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
 
     /**
      * Constructor
-     * 
+     *
      * @param color
      * @param comparisonColor
-     * @param threashold 
+     * @param threashold
      */
     public ColorCombinaisonImpl(Color color, Color comparisonColor, Double threashold) {
         this.color = color;
@@ -81,27 +80,27 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     @Override
     public Double getContrast() {
         if (contrastRatio == null) {
-            contrastRatio = 
+            contrastRatio =
                     Double.valueOf(
-                        ContrastChecker.getConstrastRatio(
-                            this.getColor(), 
-                            this.getComparisonColor()));
+                    ContrastChecker.getConstrastRatio(
+                    this.getColor(),
+                    this.getComparisonColor()));
         }
         return contrastRatio;
     }
 
     /**
-     * 
-     * @param threshold 
+     *
+     * @param threshold
      */
     @Override
     public void setThreshold(Double threshold) {
         this.threashold = threshold;
     }
-    
+
     /**
-     * 
-     * @param threshold 
+     *
+     * @param threshold
      */
     @Override
     public Double getThreshold() {
@@ -109,14 +108,14 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public boolean isContrastValid() {
         return getContrast() > threashold;
     }
-    
+
     /**
      *
      * @return
@@ -136,8 +135,8 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public String getHexaColor() {
@@ -145,14 +144,37 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public String getHexaColorComp() {
         return ColorConverter.Rgb2hex(comparisonColor);
     }
-    
+
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public String getHslColor() {
+        return ColorConverter.RGB2hsl(color);
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    @Override
+    public String getHslColorComp() {
+        return ColorConverter.RGB2hsl(comparisonColor);
+    }
+
+    /**
+     * 
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -171,6 +193,10 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
         return true;
     }
 
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int hashCode() {
         int hash = HASH;
@@ -178,5 +204,4 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
         hash = HASH_OFFSET * hash + (this.comparisonColor != null ? this.comparisonColor.hashCode() : 0);
         return hash;
     }
-
 }

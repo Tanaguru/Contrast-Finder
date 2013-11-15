@@ -25,7 +25,6 @@ import org.opens.colorfinder.AbstractColorFinder;
 import org.opens.colorfinder.result.factory.ColorCombinaisonFactoryImpl;
 import org.opens.colorfinder.result.factory.ColorResultFactoryImpl;
 import org.opens.utils.colorconvertor.ColorConverter;
-import org.opens.utils.contrastchecker.ContrastChecker;
 
 /**
  *
@@ -40,6 +39,7 @@ public class ColorFinderHsv extends AbstractColorFinder {
     private static final float NO_CHANGE_COMPONENT = 0.0f;
     private static final float MAX_POSSIBLE_VALUE = 1.0f;
     private static final float MIN_POSSIBLE_VALUE = 0.0f;
+    private static final int MAX_RESULT_ONE_HUE = 20;
 
     /**
      * Constructor
@@ -88,7 +88,7 @@ public class ColorFinderHsv extends AbstractColorFinder {
             // the return is not used here, we just want to add the current color
             // in the result collection in case of its contrast is valid
             isNewColorValid(newColor);
-            if (colorResult.getNumberOfSuggestedColors() - initialResultSize < 20) {
+            if (colorResult.getNumberOfSuggestedColors() - initialResultSize < MAX_RESULT_ONE_HUE) {
                 changeSaturation(newColor, false);
                 changeSaturation(newColor, true);
                 if (isNextColorBounded(currentHue, offset)) {
@@ -182,7 +182,7 @@ public class ColorFinderHsv extends AbstractColorFinder {
                         NO_CHANGE_COMPONENT,
                         offset);
                 currentBrightness = ColorConverter.getBrightness(newColor);
-            } else {
+                    } else {
                 //LOGGER.debug("Why do I return ? (offset condition) ... Color : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep) + "  Brigtness" + ColorConverter.getBrightness(newColor));
                 testNextColor = false;
             }
