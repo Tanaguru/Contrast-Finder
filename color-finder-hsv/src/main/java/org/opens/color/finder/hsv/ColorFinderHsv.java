@@ -20,6 +20,8 @@
 package org.opens.color.finder.hsv;
 
 import java.awt.Color;
+import java.util.Collection;
+import java.util.HashSet;
 import org.apache.log4j.Logger;
 import org.opens.colorfinder.AbstractColorFinder;
 import org.opens.colorfinder.result.factory.ColorCombinaisonFactoryImpl;
@@ -41,6 +43,9 @@ public class ColorFinderHsv extends AbstractColorFinder {
     private static final float MIN_POSSIBLE_VALUE = 0.0f;
     private static final int MAX_RESULT_ONE_HUE = 20;
 
+    private Collection<Color> testedColorsFromHueRound = 
+            new HashSet<Color>();
+    
     /**
      * Constructor
      */
@@ -59,8 +64,13 @@ public class ColorFinderHsv extends AbstractColorFinder {
     @Override
     protected void findColors() {
 
-        changeHue(colorResult.getSubmittedCombinaisonColor().getColor(), false);
-        changeHue(colorResult.getSubmittedCombinaisonColor().getColor(), true);
+        Color colorToModify = colorResult.getSubmittedCombinaisonColor().getColor();
+
+//        if (ColorConverter.getBrightness(colorToModify) <= 5) {
+//            changeBrightness(colorToModify, true);
+//        } else {
+        changeHue(colorToModify, false);
+        changeHue(colorToModify, true);
 
         LOGGER.debug("Size of Color list : " + colorResult.getSuggestedColors().size());
     }
@@ -84,7 +94,8 @@ public class ColorFinderHsv extends AbstractColorFinder {
         float currentHue = ColorConverter.getHue(newColor);
         boolean testNextColor = true;
         while (testNextColor) {
-
+            testedColorsFromHueRound.add(newColor);
+            LOGGER.debug("changeHue New Color  " + newColor.hashCode() + " " + newColor.toString());
             // the return is not used here, we just want to add the current color
             // in the result collection in case of its contrast is valid
             isNewColorValid(newColor);
@@ -97,13 +108,14 @@ public class ColorFinderHsv extends AbstractColorFinder {
                             NO_CHANGE_COMPONENT,
                             NO_CHANGE_COMPONENT);
                     currentHue = ColorConverter.getHue(offsetColor);
-                    if (!newColor.equals(offsetColor)) {
+//                    LOGGER.debug("offsetColor New Color  " + offsetColor.hashCode() + " " + offsetColor.toString());
+                    if (!testedColorsFromHueRound.contains(offsetColor)) {
                         newColor = offsetColor;
                     } else {
                         // the offset never has impact on the color
                         testNextColor = false;
                     }
-                    //LOGGER.debug("changeHue New Color  " + newColor.hashCode() + " " + newColor.toString());
+                    
                 } else {
                     // the next color is out of bound
                     testNextColor = false;
@@ -122,6 +134,7 @@ public class ColorFinderHsv extends AbstractColorFinder {
      * @param increment
      */
     private void changeSaturation(final Color colorToChange, boolean increment) {
+//        LOGGER.debug("start saturation change : " + increment + " " + colorToChange);
         float offset;
         if (increment) {
             offset = STEP_SATURATION;
@@ -143,9 +156,11 @@ public class ColorFinderHsv extends AbstractColorFinder {
                 changeBrightness(newColor, false);
                 changeBrightness(newColor, true);
                 currentSaturation = ColorConverter.getSaturation(newColor);
+//                LOGGER.debug("offset color :  " + offsetColor);
                 if (!newColor.equals(offsetColor)) {
                     newColor = offsetColor;
                 } else {
+//                    LOGGER.debug("return cause equals");
                     testNextColor = false;
                 }
             } else {
@@ -172,7 +187,7 @@ public class ColorFinderHsv extends AbstractColorFinder {
 
         boolean testNextColor = true;
         while (testNextColor) {
-            //LOGGER.debug("(Direction : " + increment + ")    Color in change Brightness Loop : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep));
+//            LOGGER.debug("(Direction : " + increment + ")    Color in change Brightness Loop : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep));
             if (isNewColorValid(newColor)) {
                 testNextColor = false;
             }
@@ -182,8 +197,8 @@ public class ColorFinderHsv extends AbstractColorFinder {
                         NO_CHANGE_COMPONENT,
                         offset);
                 currentBrightness = ColorConverter.getBrightness(newColor);
-                    } else {
-                //LOGGER.debug("Why do I return ? (offset condition) ... Color : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep) + "  Brigtness" + ColorConverter.getBrightness(newColor));
+            } else {
+//                LOGGER.debug("Why do I return in brightness? (offset condition) ... Color : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep) + "  Brigtness" + ColorConverter.getBrightness(newColor));
                 testNextColor = false;
             }
         }

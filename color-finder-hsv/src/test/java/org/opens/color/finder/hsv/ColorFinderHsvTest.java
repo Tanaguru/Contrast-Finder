@@ -170,11 +170,10 @@ public class ColorFinderHsvTest extends TestCase {
         Color endColor = new Color(229, 4, 4);
         assertEquals(endColor, colorCombinaison.get(sizeList - 1).getColor());
     }
-//
-//    /**
-//     * Test of findColors method, of class ColorFinderHsv.
-//     */
 
+    /**
+     * Test of findColors method, of class ColorFinderHsv.
+     */
     public void testFindColorsGreenAlert() {
         System.out.println("FindColorsGreenAlert");
         Color foregroundColor = new Color(70, 136, 71);
@@ -203,7 +202,6 @@ public class ColorFinderHsvTest extends TestCase {
         Float coefficientLevel = 4.5f;
         ColorFinderHsv instance = new ColorFinderHsv();
         List<ColorCombinaison> colorCombinaison = new ArrayList<ColorCombinaison>();
-        instance.getColorFinderKey();
         instance.findColors(foregroundColor, backgroundColor, false, coefficientLevel);
         for (ColorCombinaison combinaisons : instance.getColorResult().getSuggestedColors()) {
             LOGGER.debug("HashCode :" + colorCombinaison.hashCode() + "    COLOR : " + combinaisons.getContrast());
@@ -218,6 +216,25 @@ public class ColorFinderHsvTest extends TestCase {
         assertEquals(endColor, colorCombinaison.get(sizeList - 1).getColor());
     }
 
+    public void testFindColorsNearColor() {
+        System.out.println("FindColorsNearColor");
+        Color foregroundColor = new Color(1, 0, 1);
+        Color backgroundColor = new Color(0, 0, 0);
+        Float coefficientLevel = 4.5f;
+        ColorFinderHsv instance = new ColorFinderHsv();
+        List<ColorCombinaison> colorCombinaison = new ArrayList<ColorCombinaison>();
+        instance.getColorFinderKey();
+        instance.findColors(foregroundColor, backgroundColor, false, coefficientLevel);
+        for (ColorCombinaison combinaisons : instance.getColorResult().getSuggestedColors()) {
+            LOGGER.debug("HashCode :" + colorCombinaison.hashCode() + "    COLOR : " + combinaisons.getContrast());
+            colorCombinaison.add(combinaisons);
+        }
+        int sizeList = colorCombinaison.size();
+        Color firstColor = new Color(209, 0, 209);
+        assertEquals(firstColor, colorCombinaison.get(0).getColor());
+        Color endColor = new Color(235, 0, 0);
+        assertEquals(endColor, colorCombinaison.get(sizeList - 1).getColor());
+    }
 
     public void testGetColorFinderKey() {
         System.out.println("Key");

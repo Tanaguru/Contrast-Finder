@@ -54,7 +54,7 @@ public final class ColorConverter {
      * @return
      */
     public static Color offsetHsbColor(Color bgColor, float offsetHue, float offsetSaturation, float offsetBrightness) {
-        Logger.getLogger(ColorConverter.class).debug("Color to modify" + bgColor.hashCode());
+        //Logger.getLogger(ColorConverter.class).debug("Color to modify" + bgColor.hashCode());
         float[] hsbValues = new float[MAX_COMPONENT];
         Float hue, saturation, brightness;
 
@@ -65,7 +65,7 @@ public final class ColorConverter {
         saturation = hsbValues[SATURATION] + offsetSaturation;
         brightness = hsbValues[BRIGHTNESS] + offsetBrightness;
         Color color = Color.getHSBColor(hue, saturation, brightness);
-        Logger.getLogger(ColorConverter.class).debug("converted Color " + color.hashCode());
+        //Logger.getLogger(ColorConverter.class).debug("converted Color " + color.hashCode());
         return color;
     }
 
