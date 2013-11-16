@@ -22,6 +22,7 @@
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/bootstrap.min.css"/>">
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/bootstrap-theme.min.css"/>">
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/color-finder.css"/>">
+        <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/accessible-table-sorter.css"/>">
     </head>
     <body id="set-up-form">
         <!-- Titre -->
@@ -64,7 +65,7 @@
                 <p><fmt:message key="form.description"/></p>
                 <p>
                     <a href="<fmt:message key="form.wcagLink"/>">
-                    <span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3
+                        <span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3
                     </a>
                 </p>
 
@@ -188,16 +189,16 @@
                                             <td class="col01">
                                                 <div class="cercle" style="background-color:${colorModel.foreground}"></div>
                                                 <ul class="color-codes">
-                                                    <li class="color-value-rgb">${foregroundColor}</li>
                                                     <li class="color-value-hsl">${foregroundHSLColor}</li>
+                                                    <li class="color-value-rgb">${foregroundColor}</li>
                                                     <li class="color-value-hexa">${colorModel.foreground}</li>
                                                 </ul>
                                             </td>
                                             <td class="col02">
                                                 <div class="cercle" style="background-color:${colorModel.background}"></div>
                                                 <ul class="color-codes">
-                                                    <li class="color-value-rgb">${backgroundColor}</li>
                                                     <li class="color-value-hsl">${backgroundHSLColor}</li>
+                                                    <li class="color-value-rgb">${backgroundColor}</li>
                                                     <li class="color-value-hexa">${colorModel.background}</li>
                                                 </ul>
                                             </td>
@@ -221,30 +222,32 @@
                             <div class ="col-lg-12">
                                 <h2> <fmt:message key="form.contrastNew"/> : <fmt:message key="form.resultNumber"><fmt:param value="${resultNumber}"/></fmt:message></h2>
                                     <div class="row">
-                                        <table id="contrast-solution" class="table">
+                                        <table id="contrast-solution" class="table tablesorter">
                                             <caption class="sr-only"><fmt:message key="form.contrastSolutionCaption"/></caption>
-                                        <tr>
-                                            <th scope="col" class="col01"><fmt:message key="form.contrastSolutionForeground"/></th>
-                                            <th scope="col" class="col02"><fmt:message key="form.contrastSolutionBackground"/></th>
-                                            <th scope="col" class="col03"><fmt:message key="form.contrastSolutionRatio"/></th>
-                                            <th scope="col" class="col04"><fmt:message key="form.contrastSolutionSample"/></th>
-                                        </tr>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="col01"><fmt:message key="form.contrastSolutionForeground"/></th>
+                                                <th scope="col" class="col02"><fmt:message key="form.contrastSolutionBackground"/></th>
+                                                <th scope="col" class="col03"><fmt:message key="form.contrastSolutionRatio"/></th>
+                                                <th scope="col" class="col04"><fmt:message key="form.contrastSolutionSample"/></th>
+                                            </tr>
+                                        </thead>
                                         <c:if test="${colorModel.isBackgroundTested}">
                                             <c:forEach var="result" items="${colorResult.suggestedColors}">
                                                 <tr>
                                                     <td class="col01">
                                                         <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
                                                         <ul class="color-codes">
-                                                            <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
                                                             <li class="color-value-hsl">${result.hslColorComp}</li>
+                                                            <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
                                                             <li class="color-value-hexa">${result.hexaColorComp}</li>
                                                         </ul>
                                                     </td>
                                                     <td class="col02">
                                                         <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
                                                         <ul class="color-codes">
-                                                            <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
                                                             <li class="color-value-hsl">${result.hslColor}</li>
+                                                            <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
                                                             <li class="color-value-hexa">${result.hexaColor}</li>
                                                         </ul>
                                                     </td>
@@ -273,16 +276,16 @@
                                                     <td class="col01">
                                                         <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
                                                         <ul class="color-codes">
-                                                            <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
                                                             <li class="color-value-hsl">${result.hslColor}</li>
+                                                            <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
                                                             <li class="color-value-hexa">${result.hexaColor}</li>
                                                         </ul>
                                                     </td>
                                                     <td class="col02">
                                                         <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
                                                         <ul class="color-codes">
-                                                            <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
                                                             <li class="color-value-hsl">${result.hslColorComp}</li>
+                                                            <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
                                                             <li class="color-value-hexa">${result.hexaColorComp}</li>
                                                         </ul>
                                                     </td>
@@ -315,6 +318,11 @@
         <footer>
             © 2013 <a href="http://www.Open-S.com/">Open-S</a> - Version 0.1
         </footer>
+        <!-- From  -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+        <script src="Js/jquery.tablesorter.min.js"></script>
+        <script src="Js/accessible.js"></script>
     </body>
 
 </html>

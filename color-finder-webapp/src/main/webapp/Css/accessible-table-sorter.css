@@ -1,0 +1,65 @@
+/* Accessible Table sorting from http://karlgroves-sandbox.com/table-sort/accessible.html */
+table.tablesorter {
+/*	font-size: 12px;
+	background-color: #4D4D4D;
+	border: 1px solid #000;
+	border-collapse: collapse;*/
+}
+table.tablesorter th {
+/*	text-align: left;
+	padding: 5px;
+	background-color: #6E6E6E;*/
+}
+table.tablesorter td {
+/*	color: #FFF;
+	padding: 5px;*/
+}
+table.tablesorter .even {
+	background-color: #3D3D3D;
+}
+table.tablesorter .odd {
+	background-color: #6E6E6E;
+}
+table.tablesorter .header {
+	background-image: url(../Images/bg.png);
+	background-repeat: no-repeat;
+        background-position: 0 50%;
+        padding-left: 18px;
+/*	border-left: 1px solid #FFF;
+	border-right: 1px solid #000;
+	border-top: 1px solid #FFF;
+	padding-left: 30px;
+	padding-top: 8px;
+	height: auto;*/
+}
+table.tablesorter .headerSortUp {
+	background-image: url(../Images/asc.png);
+	background-repeat: no-repeat;
+}
+table.tablesorter .headerSortDown {
+	background-image: url(../Images/desc.png);
+	background-repeat: no-repeat;
+}
+
+.offscreen {
+	position: absolute;
+	left: -10000px;
+}
+
+#contrast-solution .header:focus, #contrast-solution .header:hover {
+	background-color: #ccc;
+}
+
+#contrast-solution td, #contrast-solution th{
+	/*border: 1px solid #000;*/
+}
+
+#contrast-solution tbody td, #contrast-solution tbody th{
+/*	background-color: #eee;
+	color: #000;*/
+}
+
+#contrast-solution caption{
+/*	font-weight: bold;
+	font-size: 1.2em*/
+}
