@@ -25,8 +25,22 @@
         <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/accessible-table-sorter.css"/>">
     </head>
     <body id="set-up-form">
-        <!-- Titre -->
         <div class="container">
+            
+            <!-- ForOnGitHub Ribbon from http://codepo8.github.io/css-fork-on-github-ribbon/ -->
+            <style>
+                #forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;position:relative;transition:0.5s;-moz-box-sizing:content-box;}
+                #forkongithub a:hover{background:#060;color:#fff;}
+                #forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}
+                #forkongithub a::after{bottom:1px;top:auto;}
+                @media screen and (min-width:1200px){
+                    #forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}
+                    #forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}
+                    #lang-switcher {margin-right: 8em;}
+                }
+            </style>
+            <div><span id="forkongithub" lang="en"><a href="https://github.com/Tanaguru/Contrast-Finder">Fork me on GitHub</a></span></div>
+            
             <div class="page-header">
                 <c:set var="properQueryString" scope="page" value="${fn:replace(pageContext.request.queryString, '&', '&amp;')}"/>
                 <c:choose>
@@ -70,6 +84,7 @@
                 </p>
 
             </div><!-- class="page-header' -->
+            
             <div class="row">
                 <div class="col-lg-12">
                     <h2><fmt:message key="form.fillInFields"/></h2>
@@ -314,6 +329,8 @@
                     </c:otherwise>
                 </c:choose>        
             </c:if>
+
+            
         </div>  <!-- class="container' -->
         <footer>
             © 2013 <a href="http://www.Open-S.com/">Open-S</a> - Version 0.1
