@@ -1,9 +1,11 @@
+<%@taglib uri="http://htmlcompressor.googlecode.com/taglib/compressor" prefix="compress" %>
+<compress:html>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <c:choose>
     <c:when test="${fn:contains(pageContext.response.locale, '_')}">
@@ -16,75 +18,11 @@
     </c:otherwise>
 </c:choose>
 <html lang="${lang}">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Tanaguru Contrast-Finder</title>
-        <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/bootstrap.min.css"/>">
-        <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/bootstrap-theme.min.css"/>">
-        <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/color-finder.css"/>">
-        <link rel="stylesheet"  type="text/css" href="<c:url value="/Css/accessible-table-sorter.css"/>">
-    </head>
+    <c:set var="title" value="Tanaguru Contrast-Finder"/>
+    <%@include file='/WEB-INF/template/head.jspf' %>
     <body id="set-up-form">
         <div class="container">
-            
-            <!-- ForOnGitHub Ribbon from http://codepo8.github.io/css-fork-on-github-ribbon/ -->
-            <style>
-                #forkongithub a{background:#000;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;position:relative;transition:0.5s;-moz-box-sizing:content-box;}
-                #forkongithub a:hover{background:#060;color:#fff;}
-                #forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}
-                #forkongithub a::after{bottom:1px;top:auto;}
-                @media screen and (min-width:1200px){
-                    #forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}
-                    #forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}
-                    #lang-switcher {margin-right: 8em;}
-                }
-            </style>
-            <div><span id="forkongithub" lang="en"><a href="https://github.com/Tanaguru/Contrast-Finder">Fork me on GitHub</a></span></div>
-            
-            <div class="page-header">
-                <c:set var="properQueryString" scope="page" value="${fn:replace(pageContext.request.queryString, '&', '&amp;')}"/>
-                <c:choose>
-                    <c:when test="${not empty pageContext.request.queryString}">
-                        <c:choose>
-                            <c:when test="${fn:contains(pageContext.request.queryString, 'lang=en')}">
-                                <c:set var="enUrl" scope="request" value="?${properQueryString}"/>
-                                <c:set var="frUrl" scope="request" value="?${fn:replace(properQueryString,
-                                                                             'lang=en', 'lang=fr')}" />
-                            </c:when>
-                            <c:when test="${fn:contains(pageContext.request.queryString, 'lang=fr')}">
-                                <c:set var="frUrl" scope="request" value="?${properQueryString}"/>
-                                <c:set var="enUrl" scope="request" value="?${fn:replace(properQueryString,
-                                                                             'lang=fr', 'lang=en')}" />
-                            </c:when>
-                            <c:otherwise>
-                                <c:set var="frUrl" scope="request" value="?${properQueryString}&amp;lang=fr"/>
-                                <c:set var="enUrl" scope="request" value="?${properQueryString}&amp;lang=en"/>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="frUrl" scope="request" value="?lang=fr"/>
-                        <c:set var="enUrl" scope="request" value="?lang=en"/>
-                    </c:otherwise>
-                </c:choose>
-                <div id="lang-switcher">
-                    <a href="${enUrl}" title="Switch to english" lang="en">
-                        <abbr title="English">EN</abbr>
-                    </a>
-                    <a href="${frUrl}" title="Passer en français" lang="fr">
-                        <abbr title="Français">FR</abbr>
-                    </a>
-                </div> 
-                <h1>Tanaguru Contrast-Finder</h1>
-                <p><fmt:message key="form.description"/></p>
-                <p>
-                    <a href="<fmt:message key="form.wcagLink"/>">
-                        <span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3
-                    </a>
-                </p>
-
-            </div><!-- class="page-header' -->
-            
+            <%@include file='/WEB-INF/template/header.jspf' %>
             <div class="row">
                 <div class="col-lg-12">
                     <h2><fmt:message key="form.fillInFields"/></h2>
@@ -238,7 +176,7 @@
                                 <h2> <fmt:message key="form.contrastNew"/> : <fmt:message key="form.resultNumber"><fmt:param value="${resultNumber}"/></fmt:message></h2>
                                     <div class="row">
                                         <table id="contrast-solution" class="table tablesorter">
-                                            <caption class="sr-only"><fmt:message key="form.contrastSolutionCaption"/></caption>
+                                            <caption id="theCaption" class="sr-only"><fmt:message key="form.contrastSolutionCaption"/></caption>
                                         <thead>
                                             <tr>
                                                 <th scope="col" class="col01"><fmt:message key="form.contrastSolutionForeground"/></th>
@@ -332,14 +270,13 @@
 
             
         </div>  <!-- class="container' -->
-        <footer>
-            © 2013 <a href="http://www.Open-S.com/">Open-S</a> - Version 0.1
-        </footer>
+        <%@include file='/WEB-INF/template/footer.jspf' %>
         <!-- From  -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
         <script src="Js/jquery.tablesorter.min.js"></script>
-        <script src="Js/accessible.js"></script>
+        <script src="Js/accessible-min.js"></script>
     </body>
 
 </html>
+</compress:html>

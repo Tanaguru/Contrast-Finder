@@ -1,0 +1,48 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@page pageEncoding="UTF-8"%>
+<div><span id="forkongithub" lang="en"><a href="https://github.com/Tanaguru/Contrast-Finder">Fork me on GitHub</a></span></div>
+            
+            <div class="page-header">
+                <c:set var="properQueryString" scope="page" value="${fn:replace(pageContext.request.queryString, '&', '&amp;')}"/>
+                <c:choose>
+                    <c:when test="${not empty pageContext.request.queryString}">
+                        <c:choose>
+                            <c:when test="${fn:contains(pageContext.request.queryString, 'lang=en')}">
+                                <c:set var="enUrl" scope="request" value="?${properQueryString}"/>
+                                <c:set var="frUrl" scope="request" value="?${fn:replace(properQueryString,
+                                                                             'lang=en', 'lang=fr')}" />
+                            </c:when>
+                            <c:when test="${fn:contains(pageContext.request.queryString, 'lang=fr')}">
+                                <c:set var="frUrl" scope="request" value="?${properQueryString}"/>
+                                <c:set var="enUrl" scope="request" value="?${fn:replace(properQueryString,
+                                                                             'lang=fr', 'lang=en')}" />
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="frUrl" scope="request" value="?${properQueryString}&amp;lang=fr"/>
+                                <c:set var="enUrl" scope="request" value="?${properQueryString}&amp;lang=en"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="frUrl" scope="request" value="?lang=fr"/>
+                        <c:set var="enUrl" scope="request" value="?lang=en"/>
+                    </c:otherwise>
+                </c:choose>
+                <div id="lang-switcher">
+                    <a href="${enUrl}" title="Switch to english" lang="en">
+                        <abbr title="English">EN</abbr>
+                    </a>
+                    <a href="${frUrl}" title="Passer en français" lang="fr">
+                        <abbr title="Français">FR</abbr>
+                    </a>
+                </div> 
+                <h1>${title}</h1>
+                <p><fmt:message key="form.description"/></p>
+                <p>
+                    <a href="<fmt:message key="form.wcagLink"/>">
+                        <span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3
+                    </a>
+                </p>
+
+            </div><!-- class="page-header' -->
