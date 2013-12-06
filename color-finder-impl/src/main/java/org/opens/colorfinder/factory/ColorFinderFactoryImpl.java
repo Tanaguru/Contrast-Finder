@@ -19,24 +19,36 @@
  */ 
 
 package org.opens.colorfinder.factory;
+
+import java.util.HashMap;
+import java.util.Map;
 import org.opens.colorfinder.ColorFinder;
 
 /**
- * 
+ *
  * @author alingua
  */
-public interface ColorFinderFactory {
+public class ColorFinderFactoryImpl implements ColorFinderFactory {
     
-    /**
-     * 
-     * @return a colorFinder instance regarding a given type
-     */
-     ColorFinder getColorFinder(String colorFinderKey);
-     
-    /**
-     * 
-     * @return a colorFinder instance regarding a given type
-     */
-     ColorFinder getColorFinder();
-     
+    private Map<String, ColorFinderFactory> colorFinderMap = 
+            new HashMap<String, ColorFinderFactory>();
+
+    public void setColorFinderMap(Map<String, ColorFinderFactory> colorFinderMap) {
+        this.colorFinderMap = colorFinderMap;
+    }
+    
+    @Override
+    public ColorFinder getColorFinder(String colorFinderKey) {
+        if (colorFinderMap.containsKey(colorFinderKey)) {
+            return colorFinderMap.get(colorFinderKey).getColorFinder();
+        }
+        return null;
+    }
+
+    @Override
+    public ColorFinder getColorFinder() {
+        // not supposed to be called, just to provide an implementation
+        return colorFinderMap.entrySet().iterator().next().getValue().getColorFinder(); 
+    }
+
 }

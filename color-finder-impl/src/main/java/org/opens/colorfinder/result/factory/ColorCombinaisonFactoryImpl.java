@@ -34,5 +34,4 @@ public class ColorCombinaisonFactoryImpl implements ColorCombinaisonFactory {
     public ColorCombinaison getColorCombinaison(Color color1, Color color2, Double threashold) {
         return new ColorCombinaisonImpl(color1, color2, threashold);
     }
-    
 }

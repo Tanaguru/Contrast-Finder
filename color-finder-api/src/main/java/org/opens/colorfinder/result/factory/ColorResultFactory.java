@@ -27,15 +27,7 @@ import org.opens.colorfinder.result.ColorResult;
  * @author alingua
  */
 public interface ColorResultFactory {
-    
-//    /**
-//     * 
-//     * @param foundColor
-//     * @param comparisonColor
-//     * @return 
-//     */
-//    ColorResult getColorResult(Color foundColor, Color comparisonColor);
-    
+
     /**
      * 
      * @param foundColor

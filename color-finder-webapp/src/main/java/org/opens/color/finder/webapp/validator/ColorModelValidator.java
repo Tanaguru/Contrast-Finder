@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contact us by mail: open-s AT open-s DOT com
- */ 
-
+ */
 package org.opens.color.finder.webapp.validator;
 
 import java.awt.Color;

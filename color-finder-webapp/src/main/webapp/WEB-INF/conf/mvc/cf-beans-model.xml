@@ -7,7 +7,35 @@
    http://www.springframework.org/schema/context 
    http://www.springframework.org/schema/context/spring-context-2.5.xsd">
     
-    <bean name="colorFinderFactory"
+    <bean name="colorFinderHsvFactory"
           class="org.opens.colorfinder.factory.ColorFinderHsvFactory"/>
+
+    <bean name="colorFinderHsvPsychoFactory"
+          class="org.opens.colorfinder.factory.ColorFinderHsvPsychoFactory">
+        <property name="hueBounder" value="15.0"/>
+        <property name="maxCoefficient" value="0.01"/>
+        <property name="maxRed" value="60.0"/>
+        <property name="maxGreen" value="60.0"/>
+        <property name="maxBlue" value="60.0"/>
+    </bean>
+
+    <bean name="colorFinderRgbFactory"
+          class="org.opens.colorfinder.factory.ColorFinderRgbFactory">
+        <property name="hueBounder" value="5.0"/>
+        <property name="maxCoefficient" value="0.001"/>
+        <property name="maxMove" value="60"/>
+    </bean>
+    
+    <bean name="colorFinderFactory"
+          class="org.opens.colorfinder.factory.ColorFinderFactoryImpl">
+        <property name="colorFinderMap">
+            <map>
+                <entry key="HSV" value-ref="colorFinderHsvFactory"/>
+                <entry key="Psycho" value-ref="colorFinderHsvPsychoFactory"/>
+                <entry key="Rgb" value-ref="colorFinderRgbFactory"/>
+            </map>
+            
+        </property>
+    </bean>
     
 </beans>

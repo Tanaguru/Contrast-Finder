@@ -49,6 +49,23 @@ public interface ColorCombinaison {
     
     /**
      * 
+     * @return 
+     */
+    
+    /**
+     * 
+     * @param distance 
+     */
+    void setDistanceFromInitialColor(Double distance);
+    
+    /**
+     * 
+     * @return 
+     */
+    Double getDistance();
+    
+    /**
+     * 
      * @param threshold 
      */
     void setThreshold(Double threshold);

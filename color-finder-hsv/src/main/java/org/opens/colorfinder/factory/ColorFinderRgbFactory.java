@@ -21,7 +21,6 @@
 package org.opens.colorfinder.factory;
 
 import org.apache.commons.lang3.StringUtils;
-import org.opens.color.finder.hsv.ColorFinderHsv;
 import org.opens.color.finder.hsv.ColorFinderRgb;
 import org.opens.colorfinder.ColorFinder;
 
@@ -29,16 +28,36 @@ import org.opens.colorfinder.ColorFinder;
  *
  * @author alingua
  */
-public class ColorFinderHsvFactory implements ColorFinderFactory {
+public class ColorFinderRgbFactory implements ColorFinderFactory {
 
+    private int maxMove = 60;
+    private float hueBounder = 5.0f;
+    private float maxCoefficient = 0.001f;
+
+    public void setMaxMove(int maxMove) {
+        this.maxMove = maxMove;
+    }
+
+    public void setMaxCoefficient(String maxCoefficient) {
+        this.maxCoefficient = Float.valueOf(maxCoefficient);
+    }
+
+    public void setHueBounder(float hueBounder) {
+        this.hueBounder = hueBounder;
+    }
+    
     @Override
     public ColorFinder getColorFinder() {
-        return new ColorFinderHsv();
+        ColorFinderRgb colorFinder = new ColorFinderRgb();
+        colorFinder.setHueBounder(hueBounder);
+        colorFinder.setMaxCoefficient(maxCoefficient);
+        colorFinder.setMaxMove(maxMove);
+        return colorFinder;
     }
 
     @Override
     public ColorFinder getColorFinder(String colorFinderKey) {
-        if (StringUtils.equals(colorFinderKey, "HSV")) {
+        if (StringUtils.equals(colorFinderKey, "Rgb")) {
             return new ColorFinderRgb();
         }
         return null;

@@ -3,7 +3,7 @@
 <%@page pageEncoding="UTF-8"%>
 <div><span id="forkongithub" lang="en"><a href="https://github.com/Tanaguru/Contrast-Finder">Fork me on GitHub</a></span></div>
             
-            <div class="page-header">
+            <div id="header" class="page-header">
                 <c:set var="properQueryString" scope="page" value="${fn:replace(pageContext.request.queryString, '&', '&amp;')}"/>
                 <c:choose>
                     <c:when test="${not empty pageContext.request.queryString}">
@@ -45,4 +45,4 @@
                     </a>
                 </p>
 
-            </div><!-- class="page-header' -->
+            </div><!-- id="header' class="page-header"-->

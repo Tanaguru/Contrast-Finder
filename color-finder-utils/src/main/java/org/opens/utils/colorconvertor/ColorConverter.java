@@ -36,6 +36,7 @@ public final class ColorConverter {
     private static final int G_BEGIN_COLOR = 2;
     private static final int B_BEGIN_COLOR = 4;
     private static final int RGB_HEXA_LENGTH = 6;
+    private static final int RGB_SHORT_HEXA_LENGTH = 3;
     private static final int CONVERT_TO_BASE_16 = 16;
     private static final String HEXADECIMAL_DICTIONNARY = "[0-9A-Fa-f]+";
 
@@ -111,16 +112,37 @@ public final class ColorConverter {
      * @return the RGB Color from hex Color
      */
     public static Color hex2Rgb(String colorStr) {
-        String str = colorStr.substring(1);
-        if (str.matches(HEXADECIMAL_DICTIONNARY)
-                && str.length() == RGB_HEXA_LENGTH
-                && colorStr.charAt(0) == '#') {
-            return new Color(
-                    Integer.valueOf(str.substring(R_BEGIN_COLOR, G_BEGIN_COLOR), CONVERT_TO_BASE_16),
-                    Integer.valueOf(str.substring(G_BEGIN_COLOR, B_BEGIN_COLOR), CONVERT_TO_BASE_16),
-                    Integer.valueOf(str.substring(B_BEGIN_COLOR, RGB_HEXA_LENGTH), CONVERT_TO_BASE_16));
+        if (colorStr.charAt(0) == '#') {
+            String str = colorStr.substring(1);
+            if (str.matches(HEXADECIMAL_DICTIONNARY)
+                    && str.length() == RGB_HEXA_LENGTH) {
+                return getNewColor(str);
+            } else if (str.matches(HEXADECIMAL_DICTIONNARY)
+                    && str.length() == RGB_SHORT_HEXA_LENGTH) {
+                return getNewColorShortHexa(str);
+            }
+        } else if (colorStr.matches(HEXADECIMAL_DICTIONNARY)) {
+            if (colorStr.length() == RGB_HEXA_LENGTH) {
+                return getNewColor(colorStr);
+            } else if (colorStr.length() == RGB_SHORT_HEXA_LENGTH) {
+                return getNewColorShortHexa(colorStr);
+            }
         }
         return null;
+    }
+
+    private static Color getNewColorShortHexa(String colorStr) {
+        colorStr = "" + colorStr.charAt(0) + colorStr.charAt(0)
+                + colorStr.charAt(1) + colorStr.charAt(1)
+                + colorStr.charAt(2) + colorStr.charAt(2);
+        return getNewColor(colorStr);
+    }
+
+    private static Color getNewColor(String colorStr) {
+        return new Color(
+                Integer.valueOf(colorStr.substring(R_BEGIN_COLOR, G_BEGIN_COLOR), CONVERT_TO_BASE_16),
+                Integer.valueOf(colorStr.substring(G_BEGIN_COLOR, B_BEGIN_COLOR), CONVERT_TO_BASE_16),
+                Integer.valueOf(colorStr.substring(B_BEGIN_COLOR, RGB_HEXA_LENGTH), CONVERT_TO_BASE_16));
     }
 
     public static String hex2Rgb(Color color) {

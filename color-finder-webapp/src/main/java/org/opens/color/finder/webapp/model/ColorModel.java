@@ -16,8 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contact us by mail: open-s AT open-s DOT com
- */ 
-
+ */
 package org.opens.color.finder.webapp.model;
 
 /**
@@ -30,8 +29,29 @@ public class ColorModel {
     private static final String DEFAULT_BACKGROUND = "#DFF0D8";
     private static final String DEFAULT_RATIO = "4.5";
     private String foreground = DEFAULT_FOREGROUND;
+    private boolean highratio = false;
+    private String algo = "HSV";
+
+    public String getAlgo() {
+        return algo;
+    }
+
+    public void setAlgo(String algo) {
+        this.algo = algo;
+    }
+
+    public boolean isHighratio() {
+        return highratio;
+    }
+
+    public void setHighratio(boolean highratio) {
+        this.highratio = highratio;
+    }
 
     public String getForeground() {
+        if (foreground.charAt(0) != '#') {
+            setForeground("#" + foreground);
+        }
         return foreground.toUpperCase();
     }
 
@@ -41,6 +61,9 @@ public class ColorModel {
     private String background = DEFAULT_BACKGROUND;
 
     public String getBackground() {
+        if (background.charAt(0) != '#') {
+            setBackground("#" + background);
+        }
         return background.toUpperCase();
     }
 

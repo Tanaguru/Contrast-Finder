@@ -16,27 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contact us by mail: open-s AT open-s DOT com
- */ 
-
-package org.opens.colorfinder.factory;
-import org.opens.colorfinder.ColorFinder;
-
-/**
- * 
- * @author alingua
  */
-public interface ColorFinderFactory {
-    
-    /**
-     * 
-     * @return a colorFinder instance regarding a given type
-     */
-     ColorFinder getColorFinder(String colorFinderKey);
-     
-    /**
-     * 
-     * @return a colorFinder instance regarding a given type
-     */
-     ColorFinder getColorFinder();
-     
+
+package org.opens.utils.distancecalculator;
+
+import java.awt.Color;
+public final class DistanceCalculator {
+
+    private DistanceCalculator() {
+    }
+
+    public static double calculate(Color colorToChange, Color colorToKeep) {
+        return (double) Math.round(Math.abs((Math.cbrt(Math.pow(Double.valueOf(colorToChange.getRed()) - Double.valueOf(colorToKeep.getRed()), 3)
+                + Math.pow(Double.valueOf(colorToChange.getGreen()) - Double.valueOf(colorToKeep.getGreen()), 3)
+                + Math.pow(Double.valueOf(colorToChange.getBlue()) - Double.valueOf(colorToKeep.getBlue()), 3)))) * 100) / 100;
+    }
 }

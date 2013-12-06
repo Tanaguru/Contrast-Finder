@@ -25,7 +25,6 @@ import org.opens.colorfinder.result.ColorCombinaison;
 import org.opens.colorfinder.result.ColorResult;
 import org.opens.colorfinder.result.factory.ColorCombinaisonFactory;
 import org.opens.colorfinder.result.factory.ColorResultFactory;
-import org.opens.utils.contrastchecker.ContrastChecker;
 
 /**
  *
@@ -34,12 +33,32 @@ import org.opens.utils.contrastchecker.ContrastChecker;
 public abstract class AbstractColorFinder implements ColorFinder {
 
     private static final Logger LOGGER = Logger.getLogger(AbstractColorFinder.class);
-    ColorResultFactory colorResultFactory;
-    ColorCombinaisonFactory colorCombinaisonFactory;
-    protected Color colorToKeep;
-    protected Float coefficientLevel;
+
+    protected static final float UNITARY_STEP_HUE = (1.0f / 360.0f);
     
-    protected ColorResult colorResult;
+    ColorResultFactory colorResultFactory;
+    public ColorResultFactory getColorResultFactory() {
+        return colorResultFactory;
+    }
+
+    ColorCombinaisonFactory colorCombinaisonFactory;
+    public ColorCombinaisonFactory getColorCombinaisonFactory() {
+        return colorCombinaisonFactory;
+    }
+    /* the color to keep, will not be modified during test */
+    Color colorToKeep;
+    public Color getColorToKeep() {
+        return colorToKeep;
+    }
+    
+    /* the coefficient level to apply*/
+    Float coefficientLevel;
+    public Float getCoefficientLevel() {
+        return coefficientLevel;
+    }
+    
+    /* the colorResult that handles the results of the test*/
+    ColorResult colorResult;
     @Override
     public ColorResult getColorResult() {
         return colorResult;
@@ -57,8 +76,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
     }
 
     @Override
-    public void findColors(Color foregroundColor, Color backgroundColor, boolean isBackgroundTested, Float coefficientLevel) {
-        
+    public synchronized void findColors(Color foregroundColor, Color backgroundColor, boolean isBackgroundTested, Float coefficientLevel) {
         this.coefficientLevel = coefficientLevel;
         
         if (isBackgroundTested) {
@@ -68,7 +86,8 @@ public abstract class AbstractColorFinder implements ColorFinder {
             colorToKeep = backgroundColor;
             initColorResult(foregroundColor, backgroundColor, coefficientLevel);
         }
-
+        LOGGER.debug(colorToKeep.hashCode());
+        LOGGER.debug(colorResult.hashCode());
         if (!colorResult.isCombinaisonValid()) {
             findColors();
         }
@@ -85,12 +104,14 @@ public abstract class AbstractColorFinder implements ColorFinder {
                 colorCombinaisonFactory.getColorCombinaison(newColor, colorToKeep, Double.valueOf(coefficientLevel));
         if (colorCombinaison.isContrastValid()
                 && colorCombinaison.getContrast() < (coefficientLevel + 2.5)) {
-            LOGGER.debug("Adding a color to list : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep));
+            //LOGGER.debug("Adding a color to list : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, colorToKeep));
             colorResult.addSuggestedColor(colorCombinaison);
             return true;
         }
         return false;
     }
+    
+    
     
     /**
      * 

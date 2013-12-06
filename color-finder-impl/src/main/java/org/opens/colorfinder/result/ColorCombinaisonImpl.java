@@ -35,6 +35,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     private Color comparisonColor;
     private Double contrastRatio;
     private Double threashold;
+    private Double distance;
 
     /**
      * Default constructor
@@ -89,6 +90,15 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
         return (double) Math.round(contrastRatio * 100000) / 100000;
     }
 
+    
+    public void setDistanceFromInitialColor(Double distance) {
+        this.distance = distance;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+    
     /**
      *
      * @param threshold
@@ -153,8 +163,8 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public String getHslColor() {
@@ -162,8 +172,8 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public String getHslColorComp() {
@@ -171,9 +181,9 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
-     * 
+     *
      * @param obj
-     * @return 
+     * @return
      */
     @Override
     public boolean equals(Object obj) {
@@ -194,8 +204,8 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public int hashCode() {

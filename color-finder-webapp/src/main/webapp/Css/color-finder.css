@@ -1,6 +1,6 @@
 /* Composant natifs HTML */ 
 body {
-    background: linear-gradient(#F4F4F4, #F8F8F8);
+    background-color: #F6F6F6;
 }
 
 /* Surcharge bootstrap*/ 
@@ -15,6 +15,13 @@ body {
     float:right;
 }
 
+.logo {
+    float: right;
+    width: 10%;
+    padding: 5px;
+    position: absolute;
+}
+
 .cercle{
     float:right;
     width:100px;
@@ -23,15 +30,97 @@ body {
     margin-right: 5px;
 }
 
+.color-sample{
+    width:7em;
+    height:2.5em;
+    border-radius: 0.3em;
+    margin-right: 5px;
+}
+
+.control-fieldset legend {
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.cf-group-fields {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    padding: 1px 1px 1px 14px;
+}
+
+.radio.first-radio {
+    padding-top: 0;
+}
+
+.highRatioCheckBox{
+    padding-top:10px;
+}
+
 .color-codes {
     font-size:0.95em;
     list-style: none;
     padding: 0;
 }
+.invalid-color {
+    color : red;
+    display : none;
+}
+.sample-bordered {
+    border : solid 1px #CCC;
+}
+.form-control.error {
+    border-color: red;
+}
+@media (min-width: 1200px) {
+    .invalid-color {
+        margin-left: -15px;
+        margin-top: 7px;
+    }
+}
+@media (max-width: 1199px) {
+    .control-fieldset legend {
+        text-align: left;
+        margin-bottom: 0;
+    }
+    .color-sample {
+        margin-left: 15px;
+    }
+}
+/*#scroll-test.affix {
+    z-index: 1;
+    position: fixed;
+    top: 0px;
+    background: linear-gradient(#f4f4f4,#f8f8f8);
+}*/
+#old-contrast.affix {
+    z-index: 1;
+    background-color: #f6f6f6;
+    top : 0;
+}
+@media (min-width: 768px) {
+  #old-contrast.affix {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  #old-contrast.affix {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #old-contrast.affix {
+    width: 1170px;
+  }
+}
 
 .col01 {width:22%;}
 .col02 {width:22%;}
 .col03 {width:6%;}
+.col05 {width:8%;}
 .text-sample p {margin:0}
 
 /* 

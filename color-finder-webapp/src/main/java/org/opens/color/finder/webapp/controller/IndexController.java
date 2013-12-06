@@ -16,12 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Contact us by mail: open-s AT open-s DOT com
- */ 
-
+ */
 package org.opens.color.finder.webapp.controller;
 
 import java.awt.Color;
 import javax.validation.Valid;
+import org.opens.color.finder.hsv.ColorFinderHsv;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.ColorFinder;
@@ -102,24 +102,34 @@ public class IndexController {
             Color backgroundColor = ColorConverter.hex2Rgb(colorModel.getBackground());
             boolean isBackgroundTested = colorModel.getIsBackgroundTested().equals("true");
             Float ratio = Float.valueOf(colorModel.getRatio());
+            boolean highLevel = colorModel.isHighratio();
+            String algo = colorModel.getAlgo();
+            
+            if(highLevel && ratio == 3.0f) {
+                ratio = 4.5f;
+            } else if (highLevel && ratio == 4.5f) {
+                ratio = 7.0f;
+            }
 
-            ColorFinder colorFinder = colorFinderFactory.getColorFinder();
+           ColorFinder colorFinder = colorFinderFactory.getColorFinder(algo);
             colorFinder.findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
-            
             model.addAttribute("colorResult", colorFinder.getColorResult());
-            
+            Double oldDistance = colorFinder.getColorResult().getSubmittedCombinaisonColor().getDistance();
             String rgbBackground = ColorConverter.hex2Rgb(backgroundColor);
             String rgbForeground = ColorConverter.hex2Rgb(foregroundColor);
             String hsvBackground = ColorConverter.RGB2hsl(backgroundColor);
             String hsvForeground = ColorConverter.RGB2hsl(foregroundColor);
             Double oldContrast = ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor);
             int resultNumber = colorFinder.getColorResult().getNumberOfSuggestedColors();
+            
+            
             model.addAttribute("backgroundColor", rgbBackground);
             model.addAttribute("foregroundColor", rgbForeground);
             model.addAttribute("backgroundHSLColor", hsvBackground);
             model.addAttribute("foregroundHSLColor", hsvForeground);
             model.addAttribute("resultNumber", resultNumber);
             model.addAttribute("oldContrast", oldContrast);
+            model.addAttribute("oldDistance", oldDistance);
 
             return formView;
         }
