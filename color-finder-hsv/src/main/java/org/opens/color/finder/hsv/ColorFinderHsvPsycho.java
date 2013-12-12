@@ -39,12 +39,16 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
     private static final float NO_CHANGE_COMPONENT = 0.0f;
     private static final float MAX_POSSIBLE_VALUE = 1.0f;
     private static final float MIN_POSSIBLE_VALUE = 0.0f;
-    private float hueBounder = 10.0f;
+    public static final float DEFAULT_MAX_COEFFICIENT = 0.001f;
+    public static final float DEFAULT_HUE_BOUNDER = 10.0f;
+    public static final float DEFAULT_COLOR_COMPONENT_BOUNDER = 40.0f;
+    
+    private float hueBounder = DEFAULT_HUE_BOUNDER;
     private float maxMoveHue = UNITARY_STEP_HUE * hueBounder;
-    private float maxCoefficient = 0.001f;
-    private float maxGreen = 40.0f;
-    private float maxBlue = 40.0f;
-    private float maxRed = 40.0f;
+    private float maxCoefficient = DEFAULT_MAX_COEFFICIENT;
+    private float maxGreen = DEFAULT_COLOR_COMPONENT_BOUNDER;
+    private float maxBlue = DEFAULT_COLOR_COMPONENT_BOUNDER;
+    private float maxRed = DEFAULT_COLOR_COMPONENT_BOUNDER;
 
     public void setMaxRed(float maxRed) {
         this.maxRed = maxRed;
@@ -227,6 +231,13 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
                 && currentValue + offset < MAX_POSSIBLE_VALUE);
     }
 
+    /**
+     * 
+     * @param currentValue
+     * @param offset
+     * @param initialHue
+     * @return whether the current hue value is within bounds
+     */
     private boolean isPossibleHue(Float currentValue, float offset, float initialHue) {
         float current = currentValue + offset;
         float minBound = initialHue - maxMoveHue;
@@ -247,11 +258,17 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
         ColorCombinaison colorCombinaison =
                 getColorCombinaisonFactory().getColorCombinaison(newColor, getColorToKeep(), Double.valueOf(getCoefficientLevel()));
         Color initialColor = getColorResult().getSubmittedCombinaisonColor().getColor();
+        /**/
         if (colorCombinaison.isContrastValid()) {
+            /* Is contrast within bounds ie. the actual coefficient plus the max allowed coefficient difference */
             if (colorCombinaison.getContrast() < (getCoefficientLevel() + maxCoefficient)) {
+                /**/
                 if (Math.abs((ColorConverter.getHue(newColor) - ColorConverter.getHue(initialColor))) < (hueBounder * UNITARY_STEP_HUE)) {
+                    /**/
                     if (Math.abs(newColor.getRed() - initialColor.getRed()) <= maxRed) {
+                        /**/
                         if (Math.abs(newColor.getGreen() - initialColor.getGreen()) <= maxGreen) {
+                            /**/
                             if (Math.abs(newColor.getBlue() - initialColor.getBlue()) <= maxBlue) {
                                 LOGGER.debug("Add new color " + newColor);
                                 getColorResult().addSuggestedColor(colorCombinaison);

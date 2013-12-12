@@ -23,12 +23,16 @@ package org.opens.utils.distancecalculator;
 import java.awt.Color;
 public final class DistanceCalculator {
 
+    private static final int CUBIC = 3;
+    private static final int ROUND_VALUE = 100;
+    
     private DistanceCalculator() {
     }
 
     public static double calculate(Color colorToChange, Color colorToKeep) {
-        return (double) Math.round(Math.abs((Math.cbrt(Math.pow(Double.valueOf(colorToChange.getRed()) - Double.valueOf(colorToKeep.getRed()), 3)
-                + Math.pow(Double.valueOf(colorToChange.getGreen()) - Double.valueOf(colorToKeep.getGreen()), 3)
-                + Math.pow(Double.valueOf(colorToChange.getBlue()) - Double.valueOf(colorToKeep.getBlue()), 3)))) * 100) / 100;
+        Double doul = new Double(10);
+        return (double) Math.round(Math.abs((Math.cbrt(Math.pow(Double.valueOf(colorToChange.getRed()) - Double.valueOf(colorToKeep.getRed()), CUBIC)
+                + Math.pow(Double.valueOf(colorToChange.getGreen()) - Double.valueOf(colorToKeep.getGreen()), CUBIC)
+                + Math.pow(Double.valueOf(colorToChange.getBlue()) - Double.valueOf(colorToKeep.getBlue()), CUBIC)))) * ROUND_VALUE) / ROUND_VALUE;
     }
 }
