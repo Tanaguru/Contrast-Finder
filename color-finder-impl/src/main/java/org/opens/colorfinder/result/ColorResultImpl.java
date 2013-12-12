@@ -20,12 +20,8 @@
 package org.opens.colorfinder.result;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 import org.opens.colorfinder.result.factory.ColorCombinaisonFactory;
 import org.opens.utils.distancecalculator.DistanceCalculator;
@@ -36,15 +32,15 @@ import org.opens.utils.distancecalculator.DistanceCalculator;
  */
 public class ColorResultImpl implements ColorResult {
 
-    private static int MAX_SUGGESTED_COLOR = 20;
+    private static final int MAX_SUGGESTED_COLOR = 20;
     /* the colorCombinaisonFactory instance*/
     private ColorCombinaisonFactory colorCombinaisonFactory;
     /* the submitted color combinaison*/
     private ColorCombinaison submittedColors;
     /* the suggested colors */
-    Set<ColorCombinaison> suggestedColors =
+    private Set<ColorCombinaison> suggestedColors =
             new LinkedHashSet<ColorCombinaison>();
-    
+
     /*
      * Constructor
      */
@@ -65,12 +61,12 @@ public class ColorResultImpl implements ColorResult {
                 colorToKeep,
                 Double.valueOf(threashold));
     }
-    
+
     @Override
     public ColorCombinaison getSubmittedCombinaisonColor() {
         return submittedColors;
     }
-    
+
     @Override
     public boolean isCombinaisonValid() {
         return submittedColors.isContrastValid();
@@ -78,18 +74,6 @@ public class ColorResultImpl implements ColorResult {
 
     @Override
     public Collection<ColorCombinaison> getSuggestedColors() {
-//        List<ColorCombinaison> suggestedColorsList = new ArrayList<ColorCombinaison>();
-//        suggestedColorsList.addAll(suggestedColors);
-//        Collections.sort(suggestedColorsList, new Comparator<ColorCombinaison>() {
-//            @Override
-//            public int compare(ColorCombinaison o1, ColorCombinaison o2) {
-//                if (o1.getContrast() < o2.getContrast()) {
-//                    return -1;
-//                } else {
-//                    return 1;
-//                }
-//            }
-//        });
         return suggestedColors;
     }
 

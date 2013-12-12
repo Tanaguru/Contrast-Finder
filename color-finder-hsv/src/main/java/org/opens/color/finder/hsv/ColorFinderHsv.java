@@ -113,7 +113,6 @@ public class ColorFinderHsv extends AbstractColorFinder {
                         // the offset never has impact on the color
                         testNextColor = false;
                     }
-
                 } else {
                     // the next color is out of bound
                     testNextColor = false;

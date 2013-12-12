@@ -11,8 +11,7 @@
     pour accéder à la page de bienvenue -->
     <bean name="indexController"
           class="org.opens.color.finder.webapp.controller.IndexController">
-        <property name="formView" value="pages/form" /> 
-        <property name="successView" value="pages/result" />
+        <property name="mainPageView" value="pages/form" /> 
         <property name="commandName" value="colorModel" />
     </bean>
     

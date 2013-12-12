@@ -20,7 +20,6 @@
 package org.opens.utils.colorconvertor;
 
 import java.awt.Color;
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -38,6 +37,7 @@ public final class ColorConverter {
     private static final int RGB_HEXA_LENGTH = 6;
     private static final int RGB_SHORT_HEXA_LENGTH = 3;
     private static final int CONVERT_TO_BASE_16 = 16;
+    private static final int MAX_ANGLE = 360;
     private static final String HEXADECIMAL_DICTIONNARY = "[0-9A-Fa-f]+";
 
     /**
@@ -48,48 +48,60 @@ public final class ColorConverter {
 
     /**
      *
-     * @param bgColor
+     * @param color
      * @param offsetHue
      * @param offsetSaturation
      * @param offsetBrightness
      * @return
      */
-    public static Color offsetHsbColor(Color bgColor, float offsetHue, float offsetSaturation, float offsetBrightness) {
-        //Logger.getLogger(ColorConverter.class).debug("Color to modify" + bgColor.hashCode());
+    public static Color offsetHsbColor(Color color, float offsetHue, float offsetSaturation, float offsetBrightness) {
         float[] hsbValues = new float[MAX_COMPONENT];
         Float hue, saturation, brightness;
 
-        Color.RGBtoHSB(bgColor.getRed(), bgColor.getGreen(), bgColor.getBlue(), hsbValues);
+        Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsbValues);
 
         // OFFSETING RSB VALUES
         hue = hsbValues[HUE] + offsetHue;
         saturation = hsbValues[SATURATION] + offsetSaturation;
         brightness = hsbValues[BRIGHTNESS] + offsetBrightness;
-        Color color = Color.getHSBColor(hue, saturation, brightness);
-        //Logger.getLogger(ColorConverter.class).debug("converted Color " + color.hashCode());
-        return color;
+        return Color.getHSBColor(hue, saturation, brightness);
     }
 
-    public static Float getBrightness(Color bgColor) {
+    /**
+     * 
+     * @param color
+     * @return the brightness of the given color
+     */
+    public static Float getBrightness(Color color) {
         float[] hsbValues = new float[MAX_COMPONENT];
         Float brightness;
-        Color.RGBtoHSB(bgColor.getRed(), bgColor.getGreen(), bgColor.getBlue(), hsbValues);
+        Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsbValues);
         brightness = hsbValues[BRIGHTNESS];
         return brightness;
     }
 
-    public static Float getSaturation(Color bgColor) {
+    /**
+     * 
+     * @param color
+     * @return the saturation of the given color
+     */
+    public static Float getSaturation(Color color) {
         float[] hsbValues = new float[MAX_COMPONENT];
         Float saturation;
-        Color.RGBtoHSB(bgColor.getRed(), bgColor.getGreen(), bgColor.getBlue(), hsbValues);
+        Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsbValues);
         saturation = hsbValues[SATURATION];
         return saturation;
     }
 
-    public static Float getHue(Color bgColor) {
+    /**
+     * 
+     * @param color
+     * @return the hue of the given color
+     */
+    public static Float getHue(Color color) {
         float[] hsbValues = new float[MAX_COMPONENT];
         Float hue;
-        Color.RGBtoHSB(bgColor.getRed(), bgColor.getGreen(), bgColor.getBlue(), hsbValues);
+        Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsbValues);
         hue = hsbValues[HUE];
         return hue;
     }
@@ -131,13 +143,24 @@ public final class ColorConverter {
         return null;
     }
 
+    /**
+     * 
+     * @param colorStr
+     * @return 
+     */
     private static Color getNewColorShortHexa(String colorStr) {
-        colorStr = "" + colorStr.charAt(0) + colorStr.charAt(0)
-                + colorStr.charAt(1) + colorStr.charAt(1)
-                + colorStr.charAt(2) + colorStr.charAt(2);
-        return getNewColor(colorStr);
+        StringBuilder newColor = new StringBuilder();
+        newColor.append(colorStr.charAt(0)).append(colorStr.charAt(0))
+                .append(colorStr.charAt(1)).append(colorStr.charAt(1))
+                .append(colorStr.charAt(2)).append(colorStr.charAt(2));
+        return getNewColor(newColor.toString());
     }
 
+    /**
+     * 
+     * @param colorStr
+     * @return 
+     */
     private static Color getNewColor(String colorStr) {
         return new Color(
                 Integer.valueOf(colorStr.substring(R_BEGIN_COLOR, G_BEGIN_COLOR), CONVERT_TO_BASE_16),
@@ -145,6 +168,11 @@ public final class ColorConverter {
                 Integer.valueOf(colorStr.substring(B_BEGIN_COLOR, RGB_HEXA_LENGTH), CONVERT_TO_BASE_16));
     }
 
+    /**
+     * 
+     * @param color
+     * @return 
+     */
     public static String hex2Rgb(Color color) {
         Integer red = color.getRed();
         Integer green = color.getGreen();
@@ -152,16 +180,26 @@ public final class ColorConverter {
         return ("rgb(" + red.toString() + ", " + green.toString() + ", " + blue.toString() + ")");
     }
 
-    public static String Rgb2hex(Color color) {
+    /**
+     * 
+     * @param color
+     * @return 
+     */
+    public static String rgb2Hex(Color color) {
         return (String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue())).toUpperCase();
     }
 
-    public static String RGB2hsl(Color color) {
-        float[] hsvTab = new float[3];
+    /**
+     * 
+     * @param color
+     * @return 
+     */
+    public static String rgb2Hsl(Color color) {
+        float[] hsvTab = new float[MAX_COMPONENT];
         Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsvTab);
-        float h = hsvTab[0] * 360;
-        float l = (2 - (hsvTab[1] * 100) / 100) * (hsvTab[2] * 100) / 2;
-        float s = (hsvTab[1] * 100) * (hsvTab[2] * 100) / (l < 50 ? l * 2 : 200 - l * 2);
+        float h = hsvTab[HUE] * MAX_ANGLE;
+        float l = (2 - (hsvTab[SATURATION] * 100) / 100) * (hsvTab[BRIGHTNESS] * 100) / 2;
+        float s = (hsvTab[SATURATION] * 100) * (hsvTab[BRIGHTNESS] * 100) / (l < 50 ? l * 2 : 200 - l * 2);
         return ("hsl(" + Float.valueOf(h).intValue()
                 + ", " + Float.valueOf(s).intValue() + "%"
                 + ", " + Float.valueOf(l).intValue() + "%" + ")");

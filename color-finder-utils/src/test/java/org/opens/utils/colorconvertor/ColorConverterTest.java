@@ -143,7 +143,7 @@ public class ColorConverterTest extends TestCase {
         System.out.println("Rgb2hexBlack");
         Color color = Color.BLACK;
         String expResult = "#000000";
-        String result = ColorConverter.Rgb2hex(color);
+        String result = ColorConverter.rgb2Hex(color);
         assertEquals(expResult, result);
     }
     
@@ -151,7 +151,7 @@ public class ColorConverterTest extends TestCase {
         System.out.println("Rgb2hexWhite");
         Color color = Color.WHITE;
         String expResult = "#FFFFFF";
-        String result = ColorConverter.Rgb2hex(color);
+        String result = ColorConverter.rgb2Hex(color);
         assertEquals(expResult, result);
     }
     
@@ -159,7 +159,7 @@ public class ColorConverterTest extends TestCase {
         System.out.println("Rgb2hexPink");
         Color color = Color.PINK;
         String expResult = "#FFAFAF";
-        String result = ColorConverter.Rgb2hex(color);
+        String result = ColorConverter.rgb2Hex(color);
         assertEquals(expResult, result);
     }
     

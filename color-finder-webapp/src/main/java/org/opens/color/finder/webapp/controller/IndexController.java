@@ -21,11 +21,11 @@ package org.opens.color.finder.webapp.controller;
 
 import java.awt.Color;
 import javax.validation.Valid;
-import org.opens.color.finder.hsv.ColorFinderHsv;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.ColorFinder;
 import org.opens.colorfinder.factory.ColorFinderFactory;
+import org.opens.colorfinder.result.ColorResult;
 import org.opens.utils.colorconvertor.ColorConverter;
 import org.opens.utils.contrastchecker.ContrastChecker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,13 +50,9 @@ public class IndexController {
      */
     private String commandName;
     /**
-     * Vue à afficher lorsque le formulaire est correctement rempli
-     */
-    private String successView;
-    /**
      * Vue contenant le formulaire
      */
-    private String formView;
+    private String mainPageView;
     /**
      * Vue contenant le formulaire
      */
@@ -82,7 +78,7 @@ public class IndexController {
         ColorModel colorModel = new ColorModel();
 
         model.addAttribute(commandName, colorModel);
-        return formView;
+        return mainPageView;
     }
 
     /**
@@ -95,47 +91,69 @@ public class IndexController {
     @RequestMapping(value = "form.html", method = RequestMethod.POST)
     public String getInfoAccueil(final Model model, @Valid ColorModel colorModel, BindingResult result) {
         if (result.hasErrors()) {
-            return formView;
+            return mainPageView;
         } else {
-
-            Color foregroundColor = ColorConverter.hex2Rgb(colorModel.getForeground());
-            Color backgroundColor = ColorConverter.hex2Rgb(colorModel.getBackground());
-            boolean isBackgroundTested = colorModel.getIsBackgroundTested().equals("true");
-            Float ratio = Float.valueOf(colorModel.getRatio());
-            boolean highLevel = colorModel.isHighratio();
-            String algo = colorModel.getAlgo();
             
-            if(highLevel && ratio == 3.0f) {
-                ratio = 4.5f;
-            } else if (highLevel && ratio == 4.5f) {
-                ratio = 7.0f;
-            }
+            /* get user's color selection*/
+            Color foregroundColor = 
+                    ColorConverter.hex2Rgb(colorModel.getForeground());
+            Color backgroundColor = 
+                    ColorConverter.hex2Rgb(colorModel.getBackground());
+        
+            /* call the color finder with user's selection*/
+            ColorResult colorResult = getColorFinderAndExecute(
+                        colorModel, 
+                        foregroundColor, 
+                        backgroundColor)
+                            .getColorResult();
 
-           ColorFinder colorFinder = colorFinderFactory.getColorFinder(algo);
-            colorFinder.findColors(foregroundColor, backgroundColor, isBackgroundTested, ratio);
-            model.addAttribute("colorResult", colorFinder.getColorResult());
-            Double oldDistance = colorFinder.getColorResult().getSubmittedCombinaisonColor().getDistance();
-            String rgbBackground = ColorConverter.hex2Rgb(backgroundColor);
-            String rgbForeground = ColorConverter.hex2Rgb(foregroundColor);
-            String hsvBackground = ColorConverter.RGB2hsl(backgroundColor);
-            String hsvForeground = ColorConverter.RGB2hsl(foregroundColor);
-            Double oldContrast = ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor);
-            int resultNumber = colorFinder.getColorResult().getNumberOfSuggestedColors();
-            
-            
-            model.addAttribute("backgroundColor", rgbBackground);
-            model.addAttribute("foregroundColor", rgbForeground);
-            model.addAttribute("backgroundHSLColor", hsvBackground);
-            model.addAttribute("foregroundHSLColor", hsvForeground);
-            model.addAttribute("resultNumber", resultNumber);
-            model.addAttribute("oldContrast", oldContrast);
-            model.addAttribute("oldDistance", oldDistance);
+            /* Preparing the data and populating the model before returning the view*/
+            model.addAttribute("colorResult", colorResult);
+            model.addAttribute("backgroundColor", 
+                    ColorConverter.hex2Rgb(backgroundColor));
+            model.addAttribute("foregroundColor", 
+                    ColorConverter.hex2Rgb(foregroundColor));
+            model.addAttribute("backgroundHSLColor", 
+                    ColorConverter.rgb2Hsl(backgroundColor));
+            model.addAttribute("foregroundHSLColor", 
+                    ColorConverter.rgb2Hsl(foregroundColor));
+            model.addAttribute("resultNumber", 
+                    colorResult.getNumberOfSuggestedColors());
+            model.addAttribute("oldContrast", 
+                    ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor));
+            model.addAttribute("oldDistance", 
+                    colorResult.getSubmittedCombinaisonColor().getDistance());
 
-            return formView;
+            return mainPageView;
         }
 
     }
 
+    /**
+     * Call the colorFinder implementation regarding the user selection 
+     * and return it (knowing it handles the results)
+     * @param colorModel
+     * @param foregroundColor
+     * @param backgroundColor
+     * @return the chosen colorFinder implementation with its results
+     */
+    private ColorFinder getColorFinderAndExecute(
+                ColorModel colorModel, 
+                Color foregroundColor, 
+                Color backgroundColor) {
+        
+        ColorFinder colorFinder = 
+                colorFinderFactory.getColorFinder(colorModel.getAlgo());
+        
+        colorFinder.findColors(
+                foregroundColor, 
+                backgroundColor, 
+                colorModel.getIsBackgroundTested(), 
+                Float.valueOf(colorModel.getRatio()));
+        
+        return colorFinder;
+    }
+    
     /**
      * Setter sur le nom du modèle
      */
@@ -144,16 +162,9 @@ public class IndexController {
     }
 
     /**
-     * Setter du nom de la successView
-     */
-    public void setSuccessView(String successView) {
-        this.successView = successView;
-    }
-
-    /**
      * Setter du nom de la formView
      */
-    public void setFormView(String formView) {
-        this.formView = formView;
+    public void setMainPageView(String formView) {
+        this.mainPageView = formView;
     }
 }

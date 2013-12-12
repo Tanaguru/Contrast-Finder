@@ -30,11 +30,11 @@ import org.opens.colorfinder.ColorFinder;
  */
 public class ColorFinderHsvPsychoFactory implements ColorFinderFactory {
 
-    private float hueBounder = 10.0f;
-    private float maxCoefficient = 0.001f;
-    private float maxGreen = 40.0f;
-    private float maxBlue = 40.0f;
-    private float maxRed = 40.0f;
+    private float hueBounder = ColorFinderHsvPsycho.DEFAULT_HUE_BOUNDER;
+    private float maxCoefficient = ColorFinderHsvPsycho.DEFAULT_MAX_COEFFICIENT;
+    private float maxGreen = ColorFinderHsvPsycho.DEFAULT_COLOR_COMPONENT_BOUNDER;
+    private float maxBlue = ColorFinderHsvPsycho.DEFAULT_COLOR_COMPONENT_BOUNDER;
+    private float maxRed = ColorFinderHsvPsycho.DEFAULT_COLOR_COMPONENT_BOUNDER;
     
     public void setMaxRed(String maxRed) {
         this.maxRed = Float.valueOf(maxRed);
