@@ -132,10 +132,11 @@ public final class ColorConverter {
     }
 
     private static Color getNewColorShortHexa(String colorStr) {
-        colorStr = "" + colorStr.charAt(0) + colorStr.charAt(0)
-                + colorStr.charAt(1) + colorStr.charAt(1)
-                + colorStr.charAt(2) + colorStr.charAt(2);
-        return getNewColor(colorStr);
+        StringBuffer newColor = new StringBuffer();
+        newColor.append(colorStr.charAt(0)).append(colorStr.charAt(0))
+                .append(colorStr.charAt(1)).append(colorStr.charAt(1))
+                .append(colorStr.charAt(2)).append(colorStr.charAt(2));
+        return getNewColor(newColor.toString());
     }
 
     private static Color getNewColor(String colorStr) {
@@ -152,11 +153,11 @@ public final class ColorConverter {
         return ("rgb(" + red.toString() + ", " + green.toString() + ", " + blue.toString() + ")");
     }
 
-    public static String Rgb2hex(Color color) {
+    public static String rgb2Hex(Color color) {
         return (String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue())).toUpperCase();
     }
 
-    public static String RGB2hsl(Color color) {
+    public static String rgb2Hsl(Color color) {
         float[] hsvTab = new float[3];
         Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsvTab);
         float h = hsvTab[0] * 360;

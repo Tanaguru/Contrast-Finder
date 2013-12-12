@@ -54,7 +54,6 @@ public class ColorFinderRgb extends AbstractColorFinder {
     public void setHueBounder(float hueBounder) {
         this.hueBounder = hueBounder;
     }
-    private int COMPTEUR = 0;
 
     /**
      * Constructor
@@ -78,7 +77,6 @@ public class ColorFinderRgb extends AbstractColorFinder {
 
         changeRed(colorToModify, false);
         changeRed(colorToModify, true);
-        System.out.println("COMPTEUR = " + COMPTEUR);
         LOGGER.debug("Size of Color list : " + getColorResult().getSuggestedColors().size());
     }
 
@@ -164,7 +162,6 @@ public class ColorFinderRgb extends AbstractColorFinder {
         int currentBlue = newColor.getBlue();
         boolean testNextColor = true;
         while (testNextColor) {
-            COMPTEUR++;
             addNewColorValid(newColor);
             if (isNextColorBounded(currentBlue, offset, initialColor.getBlue())) {
                 newColor = ColorConverter.offsetRgbColor(newColor,
@@ -205,13 +202,13 @@ public class ColorFinderRgb extends AbstractColorFinder {
                     getColorResult().addSuggestedColor(colorCombinaison);
                     LOGGER.debug("Add color with contrast : " + colorCombinaison.getContrast());
                 } else {
-                    //LOGGER.debug("hue out of bound " + newColor);
+                    LOGGER.debug("hue out of bound " + newColor);
                 }
             } else {
-                //LOGGER.debug("contrast too high " + newColor + " , " + colorCombinaison.getContrast());
+                LOGGER.debug("contrast too high " + newColor + " , " + colorCombinaison.getContrast());
             }
         } else {
-            //LOGGER.debug("contrast invalide " + newColor + " , " + colorCombinaison.getContrast());
+            LOGGER.debug("contrast invalide " + newColor + " , " + colorCombinaison.getContrast());
         }
     }
 

@@ -36,13 +36,13 @@ import org.opens.utils.distancecalculator.DistanceCalculator;
  */
 public class ColorResultImpl implements ColorResult {
 
-    private static int MAX_SUGGESTED_COLOR = 20;
+    private static final int MAX_SUGGESTED_COLOR = 20;
     /* the colorCombinaisonFactory instance*/
     private ColorCombinaisonFactory colorCombinaisonFactory;
     /* the submitted color combinaison*/
     private ColorCombinaison submittedColors;
     /* the suggested colors */
-    Set<ColorCombinaison> suggestedColors =
+    private Set<ColorCombinaison> suggestedColors =
             new LinkedHashSet<ColorCombinaison>();
     
     /*

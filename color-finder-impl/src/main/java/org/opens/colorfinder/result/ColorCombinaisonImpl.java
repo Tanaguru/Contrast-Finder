@@ -150,7 +150,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      */
     @Override
     public String getHexaColor() {
-        return ColorConverter.Rgb2hex(color);
+        return ColorConverter.rgb2Hex(color);
     }
 
     /**
@@ -159,7 +159,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      */
     @Override
     public String getHexaColorComp() {
-        return ColorConverter.Rgb2hex(comparisonColor);
+        return ColorConverter.rgb2Hex(comparisonColor);
     }
 
     /**
@@ -168,7 +168,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      */
     @Override
     public String getHslColor() {
-        return ColorConverter.RGB2hsl(color);
+        return ColorConverter.rgb2Hsl(color);
     }
 
     /**
@@ -177,7 +177,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
      */
     @Override
     public String getHslColorComp() {
-        return ColorConverter.RGB2hsl(comparisonColor);
+        return ColorConverter.rgb2Hsl(comparisonColor);
     }
 
     /**

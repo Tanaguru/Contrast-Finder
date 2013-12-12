@@ -30,24 +30,44 @@ public class ColorModel {
     private static final String DEFAULT_RATIO = "4.5";
     private String foreground = DEFAULT_FOREGROUND;
     private boolean highratio = false;
+    
     private String algo = "HSV";
-
+    /**
+     * 
+     * @return 
+     */
     public String getAlgo() {
         return algo;
     }
 
+    /**
+     * 
+     * @param algo 
+     */
     public void setAlgo(String algo) {
         this.algo = algo;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public boolean isHighratio() {
         return highratio;
     }
 
+    /**
+     * 
+     * @param highratio 
+     */
     public void setHighratio(boolean highratio) {
         this.highratio = highratio;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getForeground() {
         if (foreground.charAt(0) != '#') {
             setForeground("#" + foreground);
@@ -55,11 +75,19 @@ public class ColorModel {
         return foreground.toUpperCase();
     }
 
+    /**
+     * 
+     * @param foreground 
+     */
     public void setForeground(String foreground) {
         this.foreground = foreground;
     }
     private String background = DEFAULT_BACKGROUND;
 
+    /**
+     * 
+     * @return 
+     */
     public String getBackground() {
         if (background.charAt(0) != '#') {
             setBackground("#" + background);
@@ -70,13 +98,13 @@ public class ColorModel {
     public void setBackground(String background) {
         this.background = background;
     }
-    private String isBackgroundTested = "false";
+    private boolean isBackgroundTested = false;
 
-    public String getIsBackgroundTested() {
+    public boolean getIsBackgroundTested() {
         return isBackgroundTested;
     }
 
-    public void setIsBackgroundTested(String isBackgroundTested) {
+    public void setIsBackgroundTested(boolean isBackgroundTested) {
         this.isBackgroundTested = isBackgroundTested;
     }
     private String ratio = DEFAULT_RATIO;

@@ -34,13 +34,11 @@ import org.opens.utils.colorconvertor.ColorConverter;
 public class ColorFinderHsvPsycho extends AbstractColorFinder {
 
     private static final Logger LOGGER = Logger.getLogger(ColorFinderHsvPsycho.class);
-    
     private static final float STEP_BRIGHTNESS = 0.01f;
     private static final float STEP_SATURATION = 0.01f;
     private static final float NO_CHANGE_COMPONENT = 0.0f;
     private static final float MAX_POSSIBLE_VALUE = 1.0f;
     private static final float MIN_POSSIBLE_VALUE = 0.0f;
-    
     private float hueBounder = 10.0f;
     private float maxMoveHue = UNITARY_STEP_HUE * hueBounder;
     private float maxCoefficient = 0.001f;
@@ -69,15 +67,13 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
     public void setMaxCoefficient(float maxCoefficient) {
         this.maxCoefficient = maxCoefficient;
     }
-    
-    private int COMPTEUR = 0;
-    
+
     /**
      * Constructor
      */
     public ColorFinderHsvPsycho() {
         super(new ColorResultFactoryImpl(), new ColorCombinaisonFactoryImpl());
-//        LOGGER.debug("instanciation of ColorFinderHsv class");
+        LOGGER.debug("instanciation of ColorFinderHsv class");
     }
 
     /**
@@ -94,7 +90,6 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
 
         changeHue(colorToModify, false);
         changeHue(colorToModify, true);
-        System.out.println("COMPTEUR = " + COMPTEUR);
         LOGGER.debug("Size of Color list : " + getColorResult().getSuggestedColors().size());
     }
 
@@ -111,7 +106,7 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
         } else {
             offset = -UNITARY_STEP_HUE;
         }
-        
+
         Color newColor = colorToChange;
         float initialHue = ColorConverter.getHue(newColor);
         float currentHue = ColorConverter.getHue(newColor);
@@ -198,7 +193,6 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
         int offsetRound = 1;
         boolean testNextColor = true;
         while (testNextColor) {
-            COMPTEUR++;
             addNewColorValid(newColor);
             if (isNextColorBounded(currentBrightness, (offset * offsetRound))) {
                 Color offsetColor = ColorConverter.offsetHsbColor(newColor,
@@ -206,15 +200,15 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
                         NO_CHANGE_COMPONENT,
                         offset * offsetRound);
                 currentBrightness = ColorConverter.getBrightness(newColor);
-//                LOGGER.debug("Brightness : " + currentBrightness);
+                LOGGER.debug("Brightness : " + currentBrightness);
 
                 if (offsetColor.equals(newColor)) {
                     offsetRound++;
-//                    LOGGER.debug("increment offsetRound : " + offsetRound);
+                    LOGGER.debug("increment offsetRound : " + offsetRound);
                 } else {
                     offsetRound = 1;
                     newColor = offsetColor;
-//                    LOGGER.debug("re-initialize offsetRound : " + offsetRound);
+                    LOGGER.debug("re-initialize offsetRound : " + offsetRound);
                 }
             } else {
                 testNextColor = false;
@@ -261,7 +255,7 @@ public class ColorFinderHsvPsycho extends AbstractColorFinder {
                             if (Math.abs(newColor.getBlue() - initialColor.getBlue()) <= maxBlue) {
                                 LOGGER.debug("Add new color " + newColor);
                                 getColorResult().addSuggestedColor(colorCombinaison);
-                                
+
                             } else {
                                 LOGGER.debug("blue out of bounf " + newColor);
                             }
