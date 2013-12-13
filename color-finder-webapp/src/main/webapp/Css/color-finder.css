@@ -15,6 +15,10 @@ body {
     float:right;
 }
 
+#noResult {
+    text-align: center;
+}
+
 .logo {
     float: right;
     width: 10%;

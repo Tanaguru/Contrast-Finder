@@ -26,7 +26,10 @@
                 <div id="set-up-form" class="row">
                     <div class="col-lg-12">
                         <h2><fmt:message key="form.fillInFields"/></h2>
-                        <form:form class="form-horizontal" name="formulaire" commandName="colorModel" method="POST" role="form">
+                        <c:set var="actionUrl">
+                            <c:url value="result.html"></c:url>
+                        </c:set>
+                        <form:form class="form-horizontal" name="formulaire" commandName="colorModel" method="GET" role="form" action="${actionUrl}">
                             <c:set var="foregroundOnError">
                                 <form:errors path="foreground"/>
                             </c:set>
@@ -122,7 +125,7 @@
                             </div>
                             <div class="form-group">
                                 <fmt:message key="form.validate" var="validateButton"/>
-                                <input id="submit-button"type="submit" class="btn btn-default col-lg-offset-3 col-lg-3" name="commit" value="${validateButton}" onclick="changeBackground()"/>
+                                <input id="submit-button" type="submit" class="btn btn-default col-lg-offset-3 col-lg-3" name="${validateButton}" onclick="changeBackground()"/>
                             </div>
                         </form:form>
                     </div><!-- class="col-lg-12' -->
@@ -298,8 +301,16 @@
                                             </c:forEach>
                                         </c:if>
                                     </table>
-                                </div><!-- /col-lg-12 -->
-                            </div><!-- /row -->
+                                    <c:if test="${colorResult.numberOfSuggestedColors == 0}">
+                                        <c:set var="retryUrl">
+                                            <c:url value="result.html?foreground=${colorModel.foreground}&amp;background=${colorModel.background}&amp;algo=HSV&amp;ratio=${colorModel.ratio}&amp;isBackgroundTested=${colorModel.isBackgroundTested}"></c:url>
+                                        </c:set>
+                                        <div id="noResult">
+                                            <a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.tryHsv"/></a>
+                                        </div>
+                                    </c:if>
+                                    </div><!-- /col-lg-12 -->
+                                </div><!-- /row -->
                         </c:otherwise>
                     </c:choose>        
                 </c:if>

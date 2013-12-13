@@ -20,7 +20,10 @@
 package org.opens.color.finder.webapp.controller;
 
 import java.awt.Color;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import org.apache.commons.lang3.text.StrBuilder;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.ColorFinder;
@@ -37,6 +40,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -73,7 +77,7 @@ public class IndexController {
      * @param model modele de la page
      * @return le nom de la page à afficher
      */
-    @RequestMapping(value = "form.html")
+    @RequestMapping(value = {"/", "form.html"})
     public String initAccueil(final Model model) {
         ColorModel colorModel = new ColorModel();
 
@@ -88,72 +92,73 @@ public class IndexController {
      * @param result
      * @return
      */
-    @RequestMapping(value = "form.html", method = RequestMethod.POST)
-    public String getInfoAccueil(final Model model, @Valid ColorModel colorModel, BindingResult result) {
+    @RequestMapping(value = "result.html", method = RequestMethod.GET)
+    public String getPageResultFromGet(final Model model, @Valid ColorModel colorModel, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
             return mainPageView;
         } else {
-            
+
             /* get user's color selection*/
-            Color foregroundColor = 
+            Color foregroundColor =
                     ColorConverter.hex2Rgb(colorModel.getForeground());
-            Color backgroundColor = 
+            Color backgroundColor =
                     ColorConverter.hex2Rgb(colorModel.getBackground());
-        
+
             /* call the color finder with user's selection*/
             ColorResult colorResult = getColorFinderAndExecute(
-                        colorModel, 
-                        foregroundColor, 
-                        backgroundColor)
-                            .getColorResult();
+                    colorModel,
+                    foregroundColor,
+                    backgroundColor)
+                    .getColorResult();
 
             /* Preparing the data and populating the model before returning the view*/
             model.addAttribute("colorResult", colorResult);
-            model.addAttribute("backgroundColor", 
+            model.addAttribute("backgroundColor",
                     ColorConverter.hex2Rgb(backgroundColor));
-            model.addAttribute("foregroundColor", 
+            model.addAttribute("foregroundColor",
                     ColorConverter.hex2Rgb(foregroundColor));
-            model.addAttribute("backgroundHSLColor", 
+            model.addAttribute("backgroundHSLColor",
                     ColorConverter.rgb2Hsl(backgroundColor));
-            model.addAttribute("foregroundHSLColor", 
+            model.addAttribute("foregroundHSLColor",
                     ColorConverter.rgb2Hsl(foregroundColor));
-            model.addAttribute("resultNumber", 
+            model.addAttribute("resultNumber",
                     colorResult.getNumberOfSuggestedColors());
-            model.addAttribute("oldContrast", 
+            model.addAttribute("oldContrast",
                     ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor));
-            model.addAttribute("oldDistance", 
+            model.addAttribute("oldDistance",
                     colorResult.getSubmittedCombinaisonColor().getDistance());
-
+//            model.addAttribute("url", url);
             return mainPageView;
         }
 
     }
 
     /**
-     * Call the colorFinder implementation regarding the user selection 
-     * and return it (knowing it handles the results)
+     * Call the colorFinder implementation regarding the user selection and
+     * return it (knowing it handles the results)
+     *
      * @param colorModel
      * @param foregroundColor
      * @param backgroundColor
      * @return the chosen colorFinder implementation with its results
      */
     private ColorFinder getColorFinderAndExecute(
-                ColorModel colorModel, 
-                Color foregroundColor, 
-                Color backgroundColor) {
-        
-        ColorFinder colorFinder = 
+            ColorModel colorModel,
+            Color foregroundColor,
+            Color backgroundColor) {
+
+        ColorFinder colorFinder =
                 colorFinderFactory.getColorFinder(colorModel.getAlgo());
-        
+
         colorFinder.findColors(
-                foregroundColor, 
-                backgroundColor, 
-                colorModel.getIsBackgroundTested(), 
+                foregroundColor,
+                backgroundColor,
+                colorModel.getIsBackgroundTested(),
                 Float.valueOf(colorModel.getRatio()));
-        
+
         return colorFinder;
     }
-    
+
     /**
      * Setter sur le nom du modèle
      */
