@@ -37,9 +37,11 @@ public abstract class AbstractColorFinder implements ColorFinder {
     protected static final float UNITARY_STEP_HUE = (1.0f / 360.0f);
     private ColorResultFactory colorResultFactory;
 
-    public ColorResultFactory getColorResultFactory() {
-        return colorResultFactory;
-    }
+    public synchronized ColorResultFactory getColorResultFactory() {
+            return colorResultFactory;
+        }
+    
+    
     private ColorCombinaisonFactory colorCombinaisonFactory;
 
     public ColorCombinaisonFactory getColorCombinaisonFactory() {
@@ -104,18 +106,18 @@ public abstract class AbstractColorFinder implements ColorFinder {
     protected boolean isNewColorValid(Color newColor) {
         ColorCombinaison colorCombinaison =
                 colorCombinaisonFactory.getColorCombinaison(
-                        newColor,
-                        colorToKeep,
-                        Double.valueOf(coefficientLevel));
-        
+                newColor,
+                colorToKeep,
+                Double.valueOf(coefficientLevel));
+
         if (colorCombinaison.isContrastValid()
                 && colorCombinaison.getContrast() < (coefficientLevel + 2.5)) {
-            
+
             LOGGER.debug("Adding a color to list : " + newColor.getRed() + " "
                     + newColor.getGreen() + " "
                     + newColor.getBlue() + " Contrast : "
                     + ContrastChecker.getConstrastRatio(newColor, colorToKeep));
-            
+
             colorResult.addSuggestedColor(colorCombinaison);
             return true;
         }
