@@ -103,7 +103,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
      * @param newColor
      * @return
      */
-    protected boolean isNewColorValid(Color newColor) {
+    protected synchronized boolean isNewColorValid(Color newColor) {
         ColorCombinaison colorCombinaison =
                 colorCombinaisonFactory.getColorCombinaison(
                 newColor,
