@@ -77,7 +77,7 @@ public class IndexController {
      * @param model modele de la page
      * @return le nom de la page à afficher
      */
-    @RequestMapping(value = {"/", "form.html"})
+    @RequestMapping(value = "form.html")
     public String initAccueil(final Model model) {
         ColorModel colorModel = new ColorModel();
 
@@ -97,7 +97,7 @@ public class IndexController {
         if (result.hasErrors()) {
             return mainPageView;
         } else {
-
+            
             /* get user's color selection*/
             Color foregroundColor =
                     ColorConverter.hex2Rgb(colorModel.getForeground());
