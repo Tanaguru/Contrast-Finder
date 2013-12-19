@@ -59,8 +59,8 @@ public class ColorModelValidator implements Validator {
     }
 
     private void validateRatio(String ratio, Errors errors) {
-        if (!(isValidRatio(ratio) >= 1.0f
-                && isValidRatio(ratio) <= 21.0f)) {
+        if (!(isValidRatio(ratio) >= MIN_VALID_RATIO
+                && isValidRatio(ratio) <= MAX_VALID_RATIO)) {
             errors.rejectValue("ratio", "NOT_A_VALID_RATIO", "Le ratio n'est pas valide");
         }
     }
