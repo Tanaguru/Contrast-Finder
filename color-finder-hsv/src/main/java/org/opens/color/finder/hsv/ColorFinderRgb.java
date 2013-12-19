@@ -39,10 +39,13 @@ public class ColorFinderRgb extends AbstractColorFinder {
     private static final int NO_CHANGE_COMPONENT = 0;
     private static final int MAX_POSSIBLE_VALUE = 255;
     private static final int MIN_POSSIBLE_VALUE = 0;
-    private int maxMove = 60;
-    private float hueBounder = 5.0f;
+    private static final int DEFAUT_MAX_MOVE = 60;
+    private static final float DEFAUT_HUE_BOUNDER = 5.0f;
+    private static final float DEFAUT_MAX_COEFFICIENT = 0.001f;
+    private int maxMove = DEFAUT_MAX_MOVE;
+    private float hueBounder = DEFAUT_HUE_BOUNDER;
     private float maxMoveHue = UNITARY_STEP_HUE * hueBounder;
-    private float maxCoefficient = 0.001f;
+    private float maxCoefficient = DEFAUT_MAX_COEFFICIENT;
     private Map<Integer, Boundary> threasholdVariator;
 
     public void setThreasholdVariator(Map<Integer, Boundary> threasholdVariator) {

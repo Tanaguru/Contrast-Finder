@@ -31,6 +31,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
 
     private static final int HASH = 7;
     private static final int HASH_OFFSET = 63;
+    private static final int ROUND_VALUE = 100000;
     private Color color;
     private Color comparisonColor;
     private Double contrastRatio;
@@ -95,7 +96,7 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
                     this.getColor(),
                     this.getComparisonColor()));
         }
-        return (double) Math.round(contrastRatio * 100000) / 100000;
+        return (double) Math.round(contrastRatio * ROUND_VALUE) / ROUND_VALUE;
     }
 
     

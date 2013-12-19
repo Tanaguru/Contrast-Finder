@@ -34,7 +34,10 @@ import org.opens.utils.contrastchecker.ContrastChecker;
 public abstract class AbstractColorFinder implements ColorFinder {
 
     private static final Logger LOGGER = Logger.getLogger(AbstractColorFinder.class);
-    protected static final float UNITARY_STEP_HUE = (1.0f / 360.0f);
+    private static final float MAX_HUE = 360.0f;
+    private static final float MIN_HUE = 1.0f;
+    private static final float MAX_COEFFICIENT_LEVEL = 2.5f;
+    protected static final float UNITARY_STEP_HUE = (MIN_HUE / MAX_HUE);
     private ColorResultFactory colorResultFactory;
 
     public ColorResultFactory getColorResultFactory() {
@@ -111,7 +114,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
                 Double.valueOf(coefficientLevel));
 
         if (colorCombinaison.isContrastValid()
-                && colorCombinaison.getContrast() < (coefficientLevel + 2.5)) {
+                && colorCombinaison.getContrast() < (coefficientLevel + MAX_COEFFICIENT_LEVEL)) {
 
             LOGGER.debug("Adding a color to list : " + newColor.getRed() + " "
                     + newColor.getGreen() + " "

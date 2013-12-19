@@ -32,9 +32,12 @@ import org.opens.colorfinder.ColorFinder;
  */
 public class ColorFinderRgbFactory implements ColorFinderFactory {
 
-    private int maxMove = 60;
-    private float hueBounder = 5.0f;
-    private float maxCoefficient = 0.001f;
+    private static final int DEFAUT_MAX_MOVE = 60;
+    private static final float DEFAUT_HUE_BOUNDER = 5.0f;
+    private static final float DEFAUT_MAX_COEFFICIENT = 0.001f;
+    private int maxMove = DEFAUT_MAX_MOVE;
+    private float hueBounder = DEFAUT_HUE_BOUNDER;
+    private float maxCoefficient = DEFAUT_MAX_COEFFICIENT;
     private Map<Integer, Boundary> threasholdVariator;
     public void setThreasholdVariator(Map<Integer, Boundary> threasholdVariator) {
         this.threasholdVariator = threasholdVariator;

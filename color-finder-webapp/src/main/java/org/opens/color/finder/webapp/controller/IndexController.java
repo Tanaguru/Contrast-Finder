@@ -21,9 +21,7 @@ package org.opens.color.finder.webapp.controller;
 
 import java.awt.Color;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import org.apache.commons.lang3.text.StrBuilder;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.ColorFinder;
@@ -40,7 +38,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -127,7 +124,6 @@ public class IndexController {
                     ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor));
             model.addAttribute("oldDistance",
                     colorResult.getSubmittedCombinaisonColor().getDistance());
-//            model.addAttribute("url", url);
             return mainPageView;
         }
 

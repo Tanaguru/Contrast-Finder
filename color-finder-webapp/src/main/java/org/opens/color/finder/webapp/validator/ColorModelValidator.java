@@ -32,6 +32,9 @@ import org.springframework.validation.Validator;
  */
 public class ColorModelValidator implements Validator {
 
+    private static final float MIN_VALID_RATIO = 1.0f;
+    private static final float MAX_VALID_RATIO = 21.0f;
+
     /**
      * {@inheritDoc}
      */
@@ -69,7 +72,7 @@ public class ColorModelValidator implements Validator {
             return 0.0f;
         }
         Float coeff = Float.valueOf(ratio);
-        if (coeff >= 1.0f && coeff <= 21.0f) {
+        if (coeff >= MIN_VALID_RATIO && coeff <= MAX_VALID_RATIO) {
             return coeff;
         } else {
             return Float.valueOf(0.0f);
