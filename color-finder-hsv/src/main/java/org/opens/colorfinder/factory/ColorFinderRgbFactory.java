@@ -20,6 +20,7 @@
 
 package org.opens.colorfinder.factory;
 
+import org.opens.color.finder.hsv.Boundary;
 import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.opens.color.finder.hsv.ColorFinderRgb;

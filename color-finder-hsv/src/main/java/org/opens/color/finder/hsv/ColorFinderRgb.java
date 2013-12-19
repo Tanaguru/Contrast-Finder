@@ -19,7 +19,6 @@
  */
 package org.opens.color.finder.hsv;
 
-import org.opens.colorfinder.factory.Boundary;
 import java.awt.Color;
 import java.util.Map;
 import org.apache.log4j.Logger;

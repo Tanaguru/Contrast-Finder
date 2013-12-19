@@ -17,7 +17,7 @@
  *
  * Contact us by mail: open-s AT open-s DOT com
  */
-package org.opens.colorfinder.factory;
+package org.opens.color.finder.hsv;
 
 /**
  *
@@ -37,31 +37,30 @@ public class Boundary {
     private Float maxValue;
 
     /**
-     * 
-     * @param minValue 
+     *
+     * @param minValue
      */
     public void setMinValue(Float minValue) {
         this.minValue = minValue;
     }
 
     /**
-     * 
-     * @param maxValue 
+     *
+     * @param maxValue
      */
     public void setMaxValue(Float maxValue) {
         this.maxValue = maxValue;
     }
-    
+
     /**
-     * 
+     *
      * @param gap
-     * @return 
+     * @return
      */
     public boolean isBounded(Float gap) {
         if (gap >= minValue && gap < maxValue) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }

@@ -46,19 +46,19 @@
     </bean>
     
     <bean name="boundaryFrom0To1"
-          class="org.opens.colorfinder.factory.Boundary">
+          class="org.opens.color.finder.hsv.Boundary">
         <property name="minValue" value="0"/>
         <property name="maxValue" value="1"/>
     </bean>
     
     <bean name="boundaryFrom1To2"
-          class="org.opens.colorfinder.factory.Boundary">
+          class="org.opens.color.finder.hsv.Boundary">
         <property name="minValue" value="1"/>
         <property name="maxValue" value="2"/>
     </bean>
     
     <bean name="boundaryFrom2To3"
-          class="org.opens.colorfinder.factory.Boundary">
+          class="org.opens.color.finder.hsv.Boundary">
         <property name="minValue" value="2"/>
         <property name="maxValue" value="3"/>
     </bean>
