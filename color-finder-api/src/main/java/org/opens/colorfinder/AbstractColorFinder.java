@@ -37,7 +37,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
     protected static final float UNITARY_STEP_HUE = (1.0f / 360.0f);
     private ColorResultFactory colorResultFactory;
 
-    public synchronized ColorResultFactory getColorResultFactory() {
+    public ColorResultFactory getColorResultFactory() {
             return colorResultFactory;
         }
     
@@ -63,7 +63,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
     private ColorResult colorResult;
 
     @Override
-    public ColorResult getColorResult() {
+    public synchronized ColorResult getColorResult() {
         return colorResult;
     }
 
