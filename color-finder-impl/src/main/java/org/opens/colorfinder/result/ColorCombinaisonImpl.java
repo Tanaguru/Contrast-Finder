@@ -75,6 +75,14 @@ public class ColorCombinaisonImpl implements ColorCombinaison {
     }
 
     /**
+     * 
+     * @return 
+     */
+    public Float getGap() {
+        return  threashold.floatValue() - contrastRatio.floatValue();
+    }
+    
+    /**
      *
      * @return
      */

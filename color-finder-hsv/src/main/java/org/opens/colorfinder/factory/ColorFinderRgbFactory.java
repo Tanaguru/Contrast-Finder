@@ -20,6 +20,7 @@
 
 package org.opens.colorfinder.factory;
 
+import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.opens.color.finder.hsv.ColorFinderRgb;
 import org.opens.colorfinder.ColorFinder;
@@ -33,7 +34,11 @@ public class ColorFinderRgbFactory implements ColorFinderFactory {
     private int maxMove = 60;
     private float hueBounder = 5.0f;
     private float maxCoefficient = 0.001f;
-
+    private Map<Integer, Boundary> threasholdVariator;
+    public void setThreasholdVariator(Map<Integer, Boundary> threasholdVariator) {
+        this.threasholdVariator = threasholdVariator;
+    }
+    
     public void setMaxMove(int maxMove) {
         this.maxMove = maxMove;
     }
@@ -52,6 +57,9 @@ public class ColorFinderRgbFactory implements ColorFinderFactory {
         colorFinder.setHueBounder(hueBounder);
         colorFinder.setMaxCoefficient(maxCoefficient);
         colorFinder.setMaxMove(maxMove);
+        if (threasholdVariator != null) {
+            colorFinder.setThreasholdVariator(threasholdVariator);
+        }
         return colorFinder;
     }
 

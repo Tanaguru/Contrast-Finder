@@ -29,6 +29,13 @@ import java.awt.Color;
  */
 public interface ColorCombinaison {
     
+    
+    /**
+     * 
+     * @return 
+     */
+    Float getGap();
+    
     /**
      *
      * @return

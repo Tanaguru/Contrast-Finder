@@ -26,7 +26,8 @@
  
 <!--      On liste les pages d'accueil 
     
--->    <welcome-file-list>
+    -->    
+    <welcome-file-list>
         <welcome-file>form.html</welcome-file>
     </welcome-file-list>
  

@@ -19,7 +19,9 @@
  */
 package org.opens.color.finder.hsv;
 
+import org.opens.colorfinder.factory.Boundary;
 import java.awt.Color;
+import java.util.Map;
 import org.apache.log4j.Logger;
 import org.opens.colorfinder.AbstractColorFinder;
 import org.opens.colorfinder.result.ColorCombinaison;
@@ -42,6 +44,11 @@ public class ColorFinderRgb extends AbstractColorFinder {
     private float hueBounder = 5.0f;
     private float maxMoveHue = UNITARY_STEP_HUE * hueBounder;
     private float maxCoefficient = 0.001f;
+    private Map<Integer, Boundary> threasholdVariator;
+
+    public void setThreasholdVariator(Map<Integer, Boundary> threasholdVariator) {
+        this.threasholdVariator = threasholdVariator;
+    }
 
     public void setMaxMove(int maxMove) {
         this.maxMove = maxMove;
@@ -74,10 +81,21 @@ public class ColorFinderRgb extends AbstractColorFinder {
     protected void findColors() {
         LOGGER.debug("findColors of ColorFinderRgb");
         Color colorToModify = getColorResult().getSubmittedCombinaisonColor().getColor();
-
+        if (threasholdVariator != null) {
+            float gap = getColorResult().getSubmittedCombinaisonColor().getGap();
+            updateBoundersFromGap(gap);
+        }
         changeRed(colorToModify, false);
         changeRed(colorToModify, true);
         LOGGER.debug("Size of Color list : " + getColorResult().getSuggestedColors().size());
+    }
+
+    private void updateBoundersFromGap(Float gap) {
+        for (Map.Entry<Integer, Boundary> entry : threasholdVariator.entrySet()) {
+            if (entry.getValue().isBounded(gap)) {
+                maxMove = entry.getKey();
+            }
+        }
     }
 
     /**
@@ -220,5 +238,4 @@ public class ColorFinderRgb extends AbstractColorFinder {
     public String getColorFinderKey() {
         return "Rgb";
     }
-    
 }
