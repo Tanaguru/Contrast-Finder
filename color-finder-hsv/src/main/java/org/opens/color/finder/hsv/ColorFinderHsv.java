@@ -44,6 +44,7 @@ public class ColorFinderHsv extends AbstractColorFinder {
     private static final float MIN_POSSIBLE_VALUE = 0.0f;
     private static final int MAX_RESULT_ONE_HUE = 20;
     private Collection<Color> testedColorsFromHueRound;
+    private int testedColors;
 
     /**
      * Constructor
@@ -67,9 +68,11 @@ public class ColorFinderHsv extends AbstractColorFinder {
 
         Color colorToModify = getColorResult().getSubmittedCombinaisonColor().getColor();
 
+        testedColors = 0;
         changeHue(colorToModify, false);
         changeHue(colorToModify, true);
 
+        getColorResult().setNumberOfTestedColors(testedColors);
         LOGGER.debug("Size of Color list : " + getColorResult().getSuggestedColors().size());
     }
 
@@ -183,6 +186,7 @@ public class ColorFinderHsv extends AbstractColorFinder {
 
         boolean testNextColor = true;
         while (testNextColor) {
+            testedColors++;
             LOGGER.debug("(Direction : " + increment + ")    Color in change Brightness Loop : " + newColor.getRed() + " " + newColor.getGreen() + " " + newColor.getBlue() + " Contrast : " + ContrastChecker.getConstrastRatio(newColor, getColorToKeep()));
             if (isNewColorValid(newColor)) {
                 testNextColor = false;

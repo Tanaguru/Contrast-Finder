@@ -40,6 +40,7 @@ public class ColorResultImpl implements ColorResult {
     /* the suggested colors */
     private Set<ColorCombinaison> suggestedColors =
             new LinkedHashSet<ColorCombinaison>();
+    private int numberOfTestedColors;
 
     /*
      * Constructor
@@ -94,5 +95,15 @@ public class ColorResultImpl implements ColorResult {
      */
     public boolean isSuggestedColorsFull() {
         return getNumberOfSuggestedColors() >= MAX_SUGGESTED_COLOR;
+    }
+
+    @Override
+    public int getNumberOfTestedColors() {
+        return numberOfTestedColors;
+    }
+
+    @Override
+    public void setNumberOfTestedColors(int numberOfTestedColors) {
+        this.numberOfTestedColors = numberOfTestedColors;
     }
 }

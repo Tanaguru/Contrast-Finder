@@ -15,6 +15,25 @@ body {
     float:right;
 }
 
+.noResult {
+    text-align: center;
+    font-size: 20px;
+}
+
+.h2-on-empty-result {
+    margin-top: 70px;
+}
+
+#tested-color {
+    font-size: 20px;
+}
+
+#notSatisfied {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 20px;
+}
+
 .logo {
     float: right;
     width: 10%;
@@ -28,6 +47,11 @@ body {
     height:55px;
     border-radius: 0.3em;
     margin-right: 5px;
+    border: solid 1px #CCC;
+}
+
+.text-sample {
+    border: solid 1px #CCC;
 }
 
 .color-sample{
@@ -64,14 +88,14 @@ body {
     padding: 0;
 }
 .invalid-color {
-    color : red;
+    color : #b94a48;
     display : none;
 }
 .sample-bordered {
     border : solid 1px #CCC;
 }
 .form-control.error {
-    border-color: red;
+    border-color: #b94a48;
 }
 @media (min-width: 1200px) {
     .invalid-color {
@@ -100,21 +124,21 @@ body {
     top : 0;
 }
 @media (min-width: 768px) {
-  #old-contrast.affix {
-    width: 750px;
-  }
+    #old-contrast.affix {
+        width: 750px;
+    }
 }
 
 @media (min-width: 992px) {
-  #old-contrast.affix {
-    width: 970px;
-  }
+    #old-contrast.affix {
+        width: 970px;
+    }
 }
 
 @media (min-width: 1200px) {
-  #old-contrast.affix {
-    width: 1170px;
-  }
+    #old-contrast.affix {
+        width: 1170px;
+    }
 }
 
 .col01 {width:22%;}

@@ -3,7 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.opens</groupId>
     <artifactId>color-finder-factory-impl</artifactId>
+<<<<<<< HEAD
+    <version>0.2</version>
+=======
     <version>0.3</version>
+>>>>>>> release-0.3
     <packaging>jar</packaging>
     <name>color-finder-factory-impl</name>
     <dependencies>
@@ -16,12 +20,20 @@
         <dependency>
             <groupId>org.opens</groupId>
             <artifactId>color-finder-api</artifactId>
+<<<<<<< HEAD
+            <version>0.2</version>
+=======
             <version>0.3</version>
+>>>>>>> release-0.3
         </dependency>
         <dependency>
             <groupId>org.opens</groupId>
             <artifactId>color-finder-onebyone</artifactId>
+<<<<<<< HEAD
+            <version>0.2</version>
+=======
             <version>0.3</version>
+>>>>>>> release-0.3
         </dependency>
     </dependencies>
 </project>

@@ -47,6 +47,8 @@ public final class ContrastChecker {
     private static final double LUMINANCE_SUP_CONST2 = 1.055;
     /* */
     private static final double LUMINANCE_EXP = 2.4;
+    /* */
+    private static final int ROUND_VALUE = 100000;
 
     /**
      *
@@ -97,9 +99,9 @@ public final class ContrastChecker {
         double fgLuminosity = getLuminosity(fgColor);
         double bgLuminosity = getLuminosity(bgColor);
         if (fgLuminosity > bgLuminosity) {
-            return (double) Math.round(computeContrast(fgLuminosity, bgLuminosity) * 100000) / 100000;
+            return (double) Math.round(computeContrast(fgLuminosity, bgLuminosity) * ROUND_VALUE) / ROUND_VALUE;
         } else {
-            return (double) Math.round(computeContrast(bgLuminosity, fgLuminosity) * 100000) / 100000;
+            return (double) Math.round(computeContrast(bgLuminosity, fgLuminosity) * ROUND_VALUE) / ROUND_VALUE;
         }
     }
 

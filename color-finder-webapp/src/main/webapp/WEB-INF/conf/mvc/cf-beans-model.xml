@@ -24,6 +24,13 @@
         <property name="hueBounder" value="5.0"/>
         <property name="maxCoefficient" value="0.001"/>
         <property name="maxMove" value="60"/>
+        <property name="threasholdVariator">
+            <map>
+                <entry key="60" value-ref="boundaryFrom0To1"/>
+                <entry key="80" value-ref="boundaryFrom1To2"/>
+                <entry key="110" value-ref="boundaryFrom2To3"/>
+            </map>
+        </property>
     </bean>
     
     <bean name="colorFinderFactory"
@@ -36,6 +43,24 @@
             </map>
             
         </property>
+    </bean>
+    
+    <bean name="boundaryFrom0To1"
+          class="org.opens.color.finder.hsv.Boundary">
+        <property name="minValue" value="0"/>
+        <property name="maxValue" value="1"/>
+    </bean>
+    
+    <bean name="boundaryFrom1To2"
+          class="org.opens.color.finder.hsv.Boundary">
+        <property name="minValue" value="1"/>
+        <property name="maxValue" value="2"/>
+    </bean>
+    
+    <bean name="boundaryFrom2To3"
+          class="org.opens.color.finder.hsv.Boundary">
+        <property name="minValue" value="2"/>
+        <property name="maxValue" value="3"/>
     </bean>
     
 </beans>

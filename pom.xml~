@@ -4,7 +4,11 @@
     <groupId>org.opens</groupId>
     <artifactId>color-finder</artifactId>
     <packaging>pom</packaging>
+<<<<<<< HEAD
+    <version>0.2</version>
+=======
     <version>0.3</version>
+>>>>>>> release-0.3
     <name>color-finder</name>
     <modules>
         <module>color-finder-api</module>

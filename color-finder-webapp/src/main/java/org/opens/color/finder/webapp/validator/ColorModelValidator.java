@@ -32,6 +32,9 @@ import org.springframework.validation.Validator;
  */
 public class ColorModelValidator implements Validator {
 
+    private static final float MIN_VALID_RATIO = 1.0f;
+    private static final float MAX_VALID_RATIO = 21.0f;
+
     /**
      * {@inheritDoc}
      */
@@ -53,11 +56,12 @@ public class ColorModelValidator implements Validator {
         validateColor("background", background, errors);
         validateColor("foreground", foreground, errors);
         validateRatio(ratio, errors);
+        validateAlgo(color.getAlgo(), errors);
     }
 
     private void validateRatio(String ratio, Errors errors) {
-        if (!(isValidRatio(ratio) >= 1.0f
-                && isValidRatio(ratio) <= 21.0f)) {
+        if (!(isValidRatio(ratio) >= MIN_VALID_RATIO
+                && isValidRatio(ratio) <= MAX_VALID_RATIO)) {
             errors.rejectValue("ratio", "NOT_A_VALID_RATIO", "Le ratio n'est pas valide");
         }
     }
@@ -69,7 +73,7 @@ public class ColorModelValidator implements Validator {
             return 0.0f;
         }
         Float coeff = Float.valueOf(ratio);
-        if (coeff >= 1.0f && coeff <= 21.0f) {
+        if (coeff >= MIN_VALID_RATIO && coeff <= MAX_VALID_RATIO) {
             return coeff;
         } else {
             return Float.valueOf(0.0f);
@@ -80,6 +84,12 @@ public class ColorModelValidator implements Validator {
         Color color = ColorConverter.hex2Rgb(colorValue);
         if (color == null) {
             errors.rejectValue(colorKey, "NOT_A_VALID_COLOR", "La couleur doit être entre #000000 à #FFFFFF");
+        }
+    }
+
+    private void validateAlgo(String algo, Errors errors) {
+        if (!(algo.equals("HSV") || algo.equals("Rgb"))) {
+            errors.rejectValue("algo", "NOT_A_VALID_ALGO", "La valeur de l'algorithm est invalide");
         }
     }
 }

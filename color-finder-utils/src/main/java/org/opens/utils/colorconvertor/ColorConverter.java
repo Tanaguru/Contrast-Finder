@@ -189,6 +189,11 @@ public final class ColorConverter {
         return (String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue())).toUpperCase();
     }
 
+    
+    private static final int CONSTANT_SL_COMPONENTS_HUNDRED = 100;
+    private static final int CONSTANT_S_COMPONENTS_TWO_HUNDRED = 200;
+    private static final int CONSTANT_SL_COMPONENTS_TWO = 2;
+    private static final int CONSTANT_S_COMPONENTS_FIFTY = 50;
     /**
      * 
      * @param color
@@ -198,8 +203,10 @@ public final class ColorConverter {
         float[] hsvTab = new float[MAX_COMPONENT];
         Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), hsvTab);
         float h = hsvTab[HUE] * MAX_ANGLE;
-        float l = (2 - (hsvTab[SATURATION] * 100) / 100) * (hsvTab[BRIGHTNESS] * 100) / 2;
-        float s = (hsvTab[SATURATION] * 100) * (hsvTab[BRIGHTNESS] * 100) / (l < 50 ? l * 2 : 200 - l * 2);
+        float l = (CONSTANT_SL_COMPONENTS_TWO - (hsvTab[SATURATION] * CONSTANT_SL_COMPONENTS_HUNDRED) / CONSTANT_SL_COMPONENTS_HUNDRED)
+                * (hsvTab[BRIGHTNESS] * CONSTANT_SL_COMPONENTS_HUNDRED) / CONSTANT_SL_COMPONENTS_TWO;
+        float s = (hsvTab[SATURATION] * CONSTANT_SL_COMPONENTS_HUNDRED) * (hsvTab[BRIGHTNESS] * CONSTANT_SL_COMPONENTS_HUNDRED)
+                / (l < CONSTANT_S_COMPONENTS_FIFTY ? l * CONSTANT_SL_COMPONENTS_TWO : CONSTANT_S_COMPONENTS_TWO_HUNDRED - l * CONSTANT_SL_COMPONENTS_TWO);
         return ("hsl(" + Float.valueOf(h).intValue()
                 + ", " + Float.valueOf(s).intValue() + "%"
                 + ", " + Float.valueOf(l).intValue() + "%" + ")");

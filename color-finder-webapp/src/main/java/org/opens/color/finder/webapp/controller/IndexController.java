@@ -20,6 +20,7 @@
 package org.opens.color.finder.webapp.controller;
 
 import java.awt.Color;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
@@ -88,72 +89,87 @@ public class IndexController {
      * @param result
      * @return
      */
-    @RequestMapping(value = "form.html", method = RequestMethod.POST)
-    public String getInfoAccueil(final Model model, @Valid ColorModel colorModel, BindingResult result) {
+    @RequestMapping(value = "result.html", method = RequestMethod.GET)
+    public String getPageResultFromGet(final Model model, @Valid ColorModel colorModel, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
             return mainPageView;
         } else {
-            
+
             /* get user's color selection*/
-            Color foregroundColor = 
+            Color foregroundColor =
                     ColorConverter.hex2Rgb(colorModel.getForeground());
-            Color backgroundColor = 
+            Color backgroundColor =
                     ColorConverter.hex2Rgb(colorModel.getBackground());
-        
+
             /* call the color finder with user's selection*/
             ColorResult colorResult = getColorFinderAndExecute(
-                        colorModel, 
-                        foregroundColor, 
-                        backgroundColor)
-                            .getColorResult();
-
+                    colorModel,
+                    foregroundColor,
+                    backgroundColor)
+                    .getColorResult();
             /* Preparing the data and populating the model before returning the view*/
             model.addAttribute("colorResult", colorResult);
-            model.addAttribute("backgroundColor", 
+            model.addAttribute("backgroundColor",
                     ColorConverter.hex2Rgb(backgroundColor));
-            model.addAttribute("foregroundColor", 
+            model.addAttribute("foregroundColor",
                     ColorConverter.hex2Rgb(foregroundColor));
-            model.addAttribute("backgroundHSLColor", 
+            model.addAttribute("backgroundHSLColor",
                     ColorConverter.rgb2Hsl(backgroundColor));
-            model.addAttribute("foregroundHSLColor", 
+            model.addAttribute("foregroundHSLColor",
                     ColorConverter.rgb2Hsl(foregroundColor));
-            model.addAttribute("resultNumber", 
+            model.addAttribute("resultNumber",
                     colorResult.getNumberOfSuggestedColors());
-            model.addAttribute("oldContrast", 
+            model.addAttribute("oldContrast",
                     ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor));
-            model.addAttribute("oldDistance", 
+            model.addAttribute("oldDistance",
                     colorResult.getSubmittedCombinaisonColor().getDistance());
-
+            model.addAttribute("algo", colorModel.getAlgo());
+            model.addAttribute("otherAlgo", getOppositeAlgo(colorModel.getAlgo()));
             return mainPageView;
         }
 
     }
 
     /**
-     * Call the colorFinder implementation regarding the user selection 
-     * and return it (knowing it handles the results)
+     *
+     * @param algo
+     * @return the other algorithm
+     */
+    private String getOppositeAlgo(String algo) {
+        if (algo.equals("HSV")) {
+            return "Rgb";
+        } else if (algo.equals("Rgb")) {
+            return "HSV";
+        }
+        return algo;
+    }
+    
+    /**
+     * Call the colorFinder implementation regarding the user selection and
+     * return it (knowing it handles the results)
+     *
      * @param colorModel
      * @param foregroundColor
      * @param backgroundColor
      * @return the chosen colorFinder implementation with its results
      */
     private ColorFinder getColorFinderAndExecute(
-                ColorModel colorModel, 
-                Color foregroundColor, 
-                Color backgroundColor) {
-        
-        ColorFinder colorFinder = 
+            ColorModel colorModel,
+            Color foregroundColor,
+            Color backgroundColor) {
+
+        ColorFinder colorFinder =
                 colorFinderFactory.getColorFinder(colorModel.getAlgo());
-        
+
         colorFinder.findColors(
-                foregroundColor, 
-                backgroundColor, 
-                colorModel.getIsBackgroundTested(), 
+                foregroundColor,
+                backgroundColor,
+                colorModel.getIsBackgroundTested(),
                 Float.valueOf(colorModel.getRatio()));
-        
+
         return colorFinder;
     }
-    
+
     /**
      * Setter sur le nom du modèle
      */

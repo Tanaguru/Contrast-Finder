@@ -4,11 +4,19 @@
     <parent>
         <groupId>org.opens</groupId>
         <artifactId>color-finder</artifactId>
+<<<<<<< HEAD
+        <version>0.2</version>
+    </parent>
+    <groupId>org.opens</groupId>
+    <artifactId>color-finder-utils</artifactId>
+    <version>0.2</version>
+=======
         <version>0.3</version>
     </parent>
     <groupId>org.opens</groupId>
     <artifactId>color-finder-utils</artifactId>
     <version>0.3</version>
+>>>>>>> release-0.3
     <packaging>jar</packaging>
     <name>color-finder-utils</name>
     <dependencies>
