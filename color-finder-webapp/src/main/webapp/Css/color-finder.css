@@ -20,6 +20,10 @@ body {
     font-size: 20px;
 }
 
+.h2-on-empty-result {
+    margin-top: 70px;
+}
+
 #tested-color {
     font-size: 20px;
 }

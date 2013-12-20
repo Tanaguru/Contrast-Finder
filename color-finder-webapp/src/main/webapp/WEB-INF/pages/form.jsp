@@ -221,9 +221,18 @@
                                     </table>
                                 </div><!-- /col-lg-12 -->
                                 <div class ="col-lg-12">
-                                    <h2> <fmt:message key="form.contrastNew"/> : <fmt:message key="form.resultNumber"><fmt:param value="${resultNumber}"/></fmt:message>
-                                        <span id="tested-color">(<fmt:formatNumber value="${colorResult.numberOfTestedColors}"/> <fmt:message key="form.testedColors"/>)</span></h2>
-                                        <c:if test="${colorResult.numberOfSuggestedColors > 0}">
+                                    <c:choose>
+                                        <c:when test="${colorResult.numberOfSuggestedColors == 0}">
+                                            <div class="h2-on-empty-result">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                        <h2> <fmt:message key="form.contrastNew"/> : <fmt:message key="form.resultNumber"><fmt:param value="${resultNumber}"/></fmt:message>
+                                            <span id="tested-color">(<fmt:formatNumber value="${colorResult.numberOfTestedColors}"/> <fmt:message key="form.testedColors"/>)</span></h2>
+                                    </div>
+                                    <c:if test="${colorResult.numberOfSuggestedColors > 0}">
                                         <table id="contrast-solution" class="table tablesorter">
                                             <caption id="theCaption" class="sr-only"><fmt:message key="form.contrastSolutionCaption"/></caption>
                                             <thead>
