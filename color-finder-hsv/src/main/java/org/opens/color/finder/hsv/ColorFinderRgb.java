@@ -40,6 +40,7 @@ public class ColorFinderRgb extends AbstractColorFinder {
     private static final int MAX_POSSIBLE_VALUE = 255;
     private static final int MIN_POSSIBLE_VALUE = 0;
     private static final int DEFAUT_MAX_MOVE = 60;
+    private static final int INITL_CPT = 0;
     private static final float DEFAUT_HUE_BOUNDER = 5.0f;
     private static final float DEFAUT_MAX_COEFFICIENT = 0.001f;
     private int maxMove = DEFAUT_MAX_MOVE;
@@ -47,6 +48,7 @@ public class ColorFinderRgb extends AbstractColorFinder {
     private float maxMoveHue = UNITARY_STEP_HUE * hueBounder;
     private float maxCoefficient = DEFAUT_MAX_COEFFICIENT;
     private Map<Integer, Boundary> threasholdVariator;
+    private int testedColors;
 
     public void setThreasholdVariator(Map<Integer, Boundary> threasholdVariator) {
         this.threasholdVariator = threasholdVariator;
@@ -87,8 +89,10 @@ public class ColorFinderRgb extends AbstractColorFinder {
             float gap = getColorResult().getSubmittedCombinaisonColor().getGap();
             updateBoundersFromGap(gap);
         }
+        testedColors = 0;
         changeRed(colorToModify, false);
         changeRed(colorToModify, true);
+        getColorResult().setNumberOfTestedColors(testedColors);
         LOGGER.debug("Size of Color list : " + getColorResult().getSuggestedColors().size());
     }
 
@@ -182,6 +186,7 @@ public class ColorFinderRgb extends AbstractColorFinder {
         int currentBlue = newColor.getBlue();
         boolean testNextColor = true;
         while (testNextColor) {
+            testedColors++;
             addNewColorValid(newColor);
             if (isNextColorBounded(currentBlue, offset, initialColor.getBlue())) {
                 newColor = ColorConverter.offsetRgbColor(newColor,

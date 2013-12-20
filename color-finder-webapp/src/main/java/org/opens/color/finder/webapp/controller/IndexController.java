@@ -107,7 +107,6 @@ public class IndexController {
                     foregroundColor,
                     backgroundColor)
                     .getColorResult();
-
             /* Preparing the data and populating the model before returning the view*/
             model.addAttribute("colorResult", colorResult);
             model.addAttribute("backgroundColor",
@@ -144,7 +143,7 @@ public class IndexController {
         }
         return algo;
     }
-
+    
     /**
      * Call the colorFinder implementation regarding the user selection and
      * return it (knowing it handles the results)

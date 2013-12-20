@@ -56,11 +56,6 @@ public interface ColorCombinaison {
     
     /**
      * 
-     * @return 
-     */
-    
-    /**
-     * 
      * @param distance 
      */
     void setDistanceFromInitialColor(Double distance);

@@ -56,6 +56,7 @@ public class ColorModelValidator implements Validator {
         validateColor("background", background, errors);
         validateColor("foreground", foreground, errors);
         validateRatio(ratio, errors);
+        validateAlgo(color.getAlgo(), errors);
     }
 
     private void validateRatio(String ratio, Errors errors) {
@@ -83,6 +84,12 @@ public class ColorModelValidator implements Validator {
         Color color = ColorConverter.hex2Rgb(colorValue);
         if (color == null) {
             errors.rejectValue(colorKey, "NOT_A_VALID_COLOR", "La couleur doit être entre #000000 à #FFFFFF");
+        }
+    }
+
+    private void validateAlgo(String algo, Errors errors) {
+        if (!(algo.equals("HSV") || algo.equals("Rgb"))) {
+            errors.rejectValue("algo", "NOT_A_VALID_ALGO", "La valeur de l'algorithm est invalide");
         }
     }
 }

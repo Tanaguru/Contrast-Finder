@@ -72,5 +72,16 @@ public interface ColorResult {
      * @return 
      */
     Float getThreashold();
+    
+    /**
+     * 
+     * @return the number of tested colors
+     */
+    int getNumberOfTestedColors();
+
+    /**
+     * set the number of tested colors
+     */
+    void setNumberOfTestedColors(int testedColors);
 
 }
