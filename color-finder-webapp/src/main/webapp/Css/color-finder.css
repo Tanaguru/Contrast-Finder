@@ -3,6 +3,10 @@ body {
     background-color: #F6F6F6;
 }
 
+a {
+    color : #3173BD;
+}
+
 /* Surcharge bootstrap*/ 
 .help-block {
     font-size : 12px;
