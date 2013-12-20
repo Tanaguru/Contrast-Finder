@@ -10,7 +10,6 @@
     <groupId>org.opens</groupId>
     <artifactId>color-finder-api</artifactId>
     <version>0.3</version>
-
     <packaging>jar</packaging>
     <name>color-finder-api</name>
 

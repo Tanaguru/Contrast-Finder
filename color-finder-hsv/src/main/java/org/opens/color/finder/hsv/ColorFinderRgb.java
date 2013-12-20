@@ -40,7 +40,6 @@ public class ColorFinderRgb extends AbstractColorFinder {
     private static final int MAX_POSSIBLE_VALUE = 255;
     private static final int MIN_POSSIBLE_VALUE = 0;
     private static final int DEFAUT_MAX_MOVE = 60;
-    private static final int INITL_CPT = 0;
     private static final float DEFAUT_HUE_BOUNDER = 5.0f;
     private static final float DEFAUT_MAX_COEFFICIENT = 0.001f;
     private int maxMove = DEFAUT_MAX_MOVE;
