@@ -301,16 +301,16 @@
                                             </c:forEach>
                                         </c:if>
                                     </table>
-                                    <c:if test="${colorResult.numberOfSuggestedColors == 0}">
-                                        <c:set var="retryUrl">
-                                            <c:url value="result.html?foreground=${colorModel.foreground}&amp;background=${colorModel.background}&amp;algo=HSV&amp;ratio=${colorModel.ratio}&amp;isBackgroundTested=${colorModel.isBackgroundTested}"></c:url>
-                                        </c:set>
-                                        <div id="noResult">
-                                            <a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.tryHsv"/></a>
-                                        </div>
-                                    </c:if>
-                                    </div><!-- /col-lg-12 -->
-                                </div><!-- /row -->
+                                    <%--<c:if test="${colorResult.numberOfSuggestedColors == 0}">--%>
+                                    <c:set var="retryUrl">
+                                        <c:url value="result.html?foreground=${colorModel.foreground}&amp;background=${colorModel.background}&amp;algo=${otherAlgo}&amp;ratio=${colorModel.ratio}&amp;isBackgroundTested=${colorModel.isBackgroundTested}"></c:url>
+                                    </c:set>
+                                    <div id="noResult">
+                                        <a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.tryHsv"/></a>
+                                    </div>
+                                    <%--</c:if>--%>
+                                </div><!-- /col-lg-12 -->
+                            </div><!-- /row -->
                         </c:otherwise>
                     </c:choose>        
                 </c:if>

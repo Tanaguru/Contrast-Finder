@@ -94,7 +94,7 @@ public class IndexController {
         if (result.hasErrors()) {
             return mainPageView;
         } else {
-            
+
             /* get user's color selection*/
             Color foregroundColor =
                     ColorConverter.hex2Rgb(colorModel.getForeground());
@@ -124,9 +124,25 @@ public class IndexController {
                     ContrastChecker.getConstrastRatio5DigitRound(foregroundColor, backgroundColor));
             model.addAttribute("oldDistance",
                     colorResult.getSubmittedCombinaisonColor().getDistance());
+            model.addAttribute("algo", colorModel.getAlgo());
+            model.addAttribute("otherAlgo", getOppositeAlgo(colorModel.getAlgo()));
             return mainPageView;
         }
 
+    }
+
+    /**
+     *
+     * @param algo
+     * @return the other algorithm
+     */
+    private String getOppositeAlgo(String algo) {
+        if (algo.equals("HSV")) {
+            return "Rgb";
+        } else if (algo.equals("Rgb")) {
+            return "HSV";
+        }
+        return algo;
     }
 
     /**

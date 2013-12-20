@@ -66,7 +66,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
     private ColorResult colorResult;
 
     @Override
-    public synchronized ColorResult getColorResult() {
+    public ColorResult getColorResult() {
         return colorResult;
     }
 
@@ -82,7 +82,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
     }
 
     @Override
-    public synchronized void findColors(Color foregroundColor,
+    public void findColors(Color foregroundColor,
             Color backgroundColor,
             boolean isBackgroundTested,
             Float coefficientLevel) {
@@ -106,7 +106,7 @@ public abstract class AbstractColorFinder implements ColorFinder {
      * @param newColor
      * @return
      */
-    protected synchronized boolean isNewColorValid(Color newColor) {
+    protected boolean isNewColorValid(Color newColor) {
         ColorCombinaison colorCombinaison =
                 colorCombinaisonFactory.getColorCombinaison(
                 newColor,
