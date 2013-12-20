@@ -41,7 +41,7 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="form-group ${foregroundOnError}">
-                                <label for="foreground" class="col-lg-3 control-label"><fmt:message key="form.foregroundColor"/></label>
+                                <label for="foreground-input" class="col-lg-3 control-label"><fmt:message key="form.foregroundColor"/></label>
                                 <div class="col-lg-4">
                                     <form:input id="foreground-input" path="foreground" type="text" class="form-control"/>
                                     <span class="help-block"><fmt:message key="form.help"/></span>
@@ -61,7 +61,7 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="form-group ${backgroundOnError}">
-                                <label for="background" class="col-lg-3 control-label"><fmt:message key="form.backgroundColor"/></label>
+                                <label for="background-input" class="col-lg-3 control-label"><fmt:message key="form.backgroundColor"/></label>
                                 <div class="col-lg-4">
                                     <form:input id="background-input" path="background" type="text" class="form-control"/>
                                     <span class="help-block"><fmt:message key="form.help"/></span>
