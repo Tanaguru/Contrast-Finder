@@ -348,8 +348,8 @@
                                         </c:set>
                                         <div class="noResult">
                                             <fmt:message key="form.anyResult"/><a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.changeComponent"/>
-                                                <c:if test="${colorModel.isBackgroundTested}"><fmt:message key="form.oppositeComponentBackground"/></a></c:if>
-                                            <c:if test="${!colorModel.isBackgroundTested}"><fmt:message key="form.oppositeComponentForeground"/></a></c:if>
+                                                <c:if test="${colorModel.isBackgroundTested}"><strong><fmt:message key="form.oppositeComponentBackground"/></strong></a>.</c:if>
+                                            <c:if test="${!colorModel.isBackgroundTested}"><strong><fmt:message key="form.oppositeComponentForeground"/></strong></a>.</c:if>
                                             </div>
                                     </c:if>
                                 </div><!-- /col-lg-12 -->
