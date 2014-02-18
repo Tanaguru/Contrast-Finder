@@ -43,6 +43,7 @@
                     <a href="<fmt:message key="form.wcagLink"/>">
                         <span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3
                     </a>
+                    <fmt:message key="form.sc-info"/>
                 </p>
 
             </div><!-- id="header' class="page-header"-->
