@@ -175,8 +175,13 @@ footer {
     font-size: 13px;
 }
 
+.tanaguru-kbaccess-title {
+    font-size: 18px;
+}
+
 #footer-msg {
     text-align: left;
+    font-size: 15px;
 }
 #footer-copyright {
     margin-top: 50px;

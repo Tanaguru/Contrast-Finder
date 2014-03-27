@@ -1,10 +1,10 @@
-<%@taglib uri="http://htmlcompressor.googlecode.com/taglib/compressor" prefix="compress" %>
+<%@ taglib uri="http://htmlcompressor.googlecode.com/taglib/compressor" prefix="compress" %>
 <compress:html>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
     <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@page pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <c:choose>
@@ -229,130 +229,130 @@
                                             <div>
                                         </c:otherwise>
                                     </c:choose>
-                                        <h2> <fmt:message key="form.contrastNew"/> : <fmt:message key="form.resultNumber"><fmt:param value="${resultNumber}"/></fmt:message>
-                                            <span id="tested-color">(<fmt:formatNumber value="${colorResult.numberOfTestedColors}"/> <fmt:message key="form.testedColors"/>)</span></h2>
-                                    </div>
-                                    <c:if test="${colorResult.numberOfSuggestedColors > 0}">
-                                        <table id="contrast-solution" class="table tablesorter">
-                                            <caption id="theCaption" class="sr-only"><fmt:message key="form.contrastSolutionCaption"/></caption>
-                                            <thead>
+                                    <h2> <fmt:message key="form.contrastNew"/> : <fmt:message key="form.resultNumber"><fmt:param value="${resultNumber}"/></fmt:message>
+                                        <span id="tested-color">(<fmt:formatNumber value="${colorResult.numberOfTestedColors}"/> <fmt:message key="form.testedColors"/>)</span></h2>
+                                </div>
+                                <c:if test="${colorResult.numberOfSuggestedColors > 0}">
+                                    <table id="contrast-solution" class="table tablesorter">
+                                        <caption id="theCaption" class="sr-only"><fmt:message key="form.contrastSolutionCaption"/></caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="col01"><fmt:message key="form.contrastSolutionForeground"/></th>
+                                                <th scope="col" class="col02"><fmt:message key="form.contrastSolutionBackground"/></th>
+                                                <th scope="col" class="col04"><fmt:message key="form.contrastSolutionSample"/></th>
+                                                <th scope="col" class="col03"><fmt:message key="form.contrastSolutionRatio"/></th>
+                                                <th scope="col" class="col05"><abbr title="<fmt:message key="form.contrastSolutionDistanceEx"/>">
+                                                        <fmt:message key="form.contrastSolutionDistance"/></abbr></th>
+                                            </tr>
+                                        </thead>
+                                        <c:if test="${colorModel.isBackgroundTested}">
+                                            <c:forEach var="result" items="${colorResult.suggestedColors}">
                                                 <tr>
-                                                    <th scope="col" class="col01"><fmt:message key="form.contrastSolutionForeground"/></th>
-                                                    <th scope="col" class="col02"><fmt:message key="form.contrastSolutionBackground"/></th>
-                                                    <th scope="col" class="col04"><fmt:message key="form.contrastSolutionSample"/></th>
-                                                    <th scope="col" class="col03"><fmt:message key="form.contrastSolutionRatio"/></th>
-                                                    <th scope="col" class="col05"><abbr title="<fmt:message key="form.contrastSolutionDistanceEx"/>">
-                                                            <fmt:message key="form.contrastSolutionDistance"/></abbr></th>
-                                                </tr>
-                                            </thead>
-                                            <c:if test="${colorModel.isBackgroundTested}">
-                                                <c:forEach var="result" items="${colorResult.suggestedColors}">
-                                                    <tr>
-                                                        <td class="col01">
-                                                            <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
-                                                            <ul class="color-codes">
-                                                                <li class="color-value-hsl">${result.hslColorComp}</li>
-                                                                <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
-                                                                <li class="color-value-hexa">${result.hexaColorComp}</li>
-                                                            </ul>
-                                                        </td>
-                                                        <td class="col02">
-                                                            <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
-                                                            <ul class="color-codes">
-                                                                <li class="color-value-hsl">${result.hslColor}</li>
-                                                                <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
-                                                                <li class="color-value-hexa">${result.hexaColor}</li>
-                                                            </ul>
-                                                        </td>
-                                                        <td  class="text-sample" style="
-                                                             color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
-                                                             background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})">
+                                                    <td class="col01">
+                                                        <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
+                                                        <ul class="color-codes">
+                                                            <li class="color-value-hsl">${result.hslColorComp}</li>
+                                                            <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
+                                                            <li class="color-value-hexa">${result.hexaColorComp}</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="col02">
+                                                        <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
+                                                        <ul class="color-codes">
+                                                            <li class="color-value-hsl">${result.hslColor}</li>
+                                                            <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
+                                                            <li class="color-value-hexa">${result.hexaColor}</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td  class="text-sample" style="
+                                                         color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue});
+                                                         background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})">
 
-                                                            <p style="font-size:20px;">
-                                                                <fmt:message key="form.sampleTitle"/><span style="font-weight:bold;"><fmt:message key="form.sampleTitleBold"/></span>
-                                                            </p>
-                                                            <p>
-                                                                <fmt:message key="form.sampleText"/><span style="font-weight:bold;"><fmt:message key="form.sampleTextBold"/></span>
-                                                                <fmt:message key="form.sampleText2"/>
-                                                            </p> 
-                                                        </td>
-                                                        <td class="col03">
-                                                            ${result.contrast}
-                                                        </td>
-                                                        <td class="col05">
-                                                            ${result.distance}
-                                                        </td>                                                    
-                                                    </tr>
-                                                </c:forEach>    
-                                            </c:if>
-                                            <c:if test="${!colorModel.isBackgroundTested}">
-                                                <c:forEach var="result" items="${colorResult.suggestedColors}"> 
-                                                    <tr>
-                                                        <td class="col01">
-                                                            <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
-                                                            <ul class="color-codes">
-                                                                <li class="color-value-hsl">${result.hslColor}</li>
-                                                                <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
-                                                                <li class="color-value-hexa">${result.hexaColor}</li>
-                                                            </ul>
-                                                        </td>
-                                                        <td class="col02">
-                                                            <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
-                                                            <ul class="color-codes">
-                                                                <li class="color-value-hsl">${result.hslColorComp}</li>
-                                                                <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
-                                                                <li class="color-value-hexa">${result.hexaColorComp}</li>
-                                                            </ul>
-                                                        </td>
-                                                        <td  class="text-sample" style="
-                                                             color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue});
-                                                             background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})">
-                                                            <p style="font-size:20px;">
-                                                                <fmt:message key="form.sampleTitle"/><span style="font-weight:bold;"><fmt:message key="form.sampleTitleBold"/></span>
-                                                            </p>
-                                                            <p>
-                                                                <fmt:message key="form.sampleText"/><span style="font-weight:bold;"><fmt:message key="form.sampleTextBold"/></span>
-                                                                <fmt:message key="form.sampleText2"/>
-                                                            </p> 
-                                                        </td>
-                                                        <td class="col03">
-                                                            ${result.contrast}
-                                                        </td>
-                                                        <td class="col05">
-                                                            ${result.distance}
-                                                        </td>      
-                                                    </tr>
-                                                </c:forEach>
-                                            </c:if>
-                                        </table>
-                                    </c:if>
-                                    <div id="notSatisfied">
-                                        <fmt:message key="form.notSatisfied" />
+                                                        <p style="font-size:20px;">
+                                                            <fmt:message key="form.sampleTitle"/><span style="font-weight:bold;"><fmt:message key="form.sampleTitleBold"/></span>
+                                                        </p>
+                                                        <p>
+                                                            <fmt:message key="form.sampleText"/><span style="font-weight:bold;"><fmt:message key="form.sampleTextBold"/></span>
+                                                            <fmt:message key="form.sampleText2"/>
+                                                        </p> 
+                                                    </td>
+                                                    <td class="col03">
+                                                        ${result.contrast}
+                                                    </td>
+                                                    <td class="col05">
+                                                        ${result.distance}
+                                                    </td>                                                    
+                                                </tr>
+                                            </c:forEach>    
+                                        </c:if>
+                                        <c:if test="${!colorModel.isBackgroundTested}">
+                                            <c:forEach var="result" items="${colorResult.suggestedColors}"> 
+                                                <tr>
+                                                    <td class="col01">
+                                                        <div class="cercle" style="background-color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})"></div>
+                                                        <ul class="color-codes">
+                                                            <li class="color-value-hsl">${result.hslColor}</li>
+                                                            <li class="color-value-rgb">rgb(${result.color.red}, ${result.color.green}, ${result.color.blue})</li>
+                                                            <li class="color-value-hexa">${result.hexaColor}</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td class="col02">
+                                                        <div class="cercle" style="background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})"></div>
+                                                        <ul class="color-codes">
+                                                            <li class="color-value-hsl">${result.hslColorComp}</li>
+                                                            <li class="color-value-rgb">rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})</li>
+                                                            <li class="color-value-hexa">${result.hexaColorComp}</li>
+                                                        </ul>
+                                                    </td>
+                                                    <td  class="text-sample" style="
+                                                         color:rgb(${result.color.red}, ${result.color.green}, ${result.color.blue});
+                                                         background-color:rgb(${result.comparisonColor.red}, ${result.comparisonColor.green}, ${result.comparisonColor.blue})">
+                                                        <p style="font-size:20px;">
+                                                            <fmt:message key="form.sampleTitle"/><span style="font-weight:bold;"><fmt:message key="form.sampleTitleBold"/></span>
+                                                        </p>
+                                                        <p>
+                                                            <fmt:message key="form.sampleText"/><span style="font-weight:bold;"><fmt:message key="form.sampleTextBold"/></span>
+                                                            <fmt:message key="form.sampleText2"/>
+                                                        </p> 
+                                                    </td>
+                                                    <td class="col03">
+                                                        ${result.contrast}
+                                                    </td>
+                                                    <td class="col05">
+                                                        ${result.distance}
+                                                    </td>      
+                                                </tr>
+                                            </c:forEach>
+                                        </c:if>
+                                    </table>
+                                </c:if>
+                                <div id="notSatisfied">
+                                    <fmt:message key="form.notSatisfied" />
+                                </div>
+                                <c:if test="${colorResult.numberOfSuggestedColors > 0}">
+                                    <c:set var="retryUrl">
+                                        <c:url value="result.html?foreground=${colorModel.foreground}&amp;background=${colorModel.background}&amp;algo=${otherAlgo}&amp;ratio=${colorModel.ratio}&amp;isBackgroundTested=${colorModel.isBackgroundTested}"></c:url>
+                                    </c:set>
+                                    <div class="noResult">
+                                        <c:if test="${algo == 'HSV'}">
+                                            <a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.tryRgb"/></a>
+                                        </c:if>
+                                        <c:if test="${algo == 'Rgb'}">
+                                            <a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.tryHsv"/></a>
+                                        </c:if>
                                     </div>
-                                    <c:if test="${colorResult.numberOfSuggestedColors > 0}">
-                                        <c:set var="retryUrl">
-                                            <c:url value="result.html?foreground=${colorModel.foreground}&amp;background=${colorModel.background}&amp;algo=${otherAlgo}&amp;ratio=${colorModel.ratio}&amp;isBackgroundTested=${colorModel.isBackgroundTested}"></c:url>
-                                        </c:set>
-                                        <div class="noResult">
-                                            <c:if test="${algo == 'HSV'}">
-                                                <a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.tryRgb"/></a>
-                                            </c:if>
-                                            <c:if test="${algo == 'Rgb'}">
-                                                <a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.tryHsv"/></a>
-                                            </c:if>
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${colorResult.numberOfSuggestedColors == 0}">
-                                        <c:set var="retryUrl">
-                                            <c:url value="result.html?foreground=${colorModel.foreground}&amp;background=${colorModel.background}&amp;algo=${algo}&amp;ratio=${colorModel.ratio}&amp;isBackgroundTested=${!colorModel.isBackgroundTested}"></c:url>
-                                        </c:set>
-                                        <div class="noResult">
-                                            <fmt:message key="form.anyResult"/><a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.changeComponent"/>
-                                                <c:if test="${colorModel.isBackgroundTested}"><strong><fmt:message key="form.oppositeComponentBackground"/></strong></a>.</c:if>
-                                            <c:if test="${!colorModel.isBackgroundTested}"><strong><fmt:message key="form.oppositeComponentForeground"/></strong></a>.</c:if>
-                                            </div>
-                                    </c:if>
-                                </div><!-- /col-lg-12 -->
+                                </c:if>
+                                <c:if test="${colorResult.numberOfSuggestedColors == 0}">
+                                    <c:set var="retryUrl">
+                                        <c:url value="result.html?foreground=${colorModel.foreground}&amp;background=${colorModel.background}&amp;algo=${algo}&amp;ratio=${colorModel.ratio}&amp;isBackgroundTested=${!colorModel.isBackgroundTested}"></c:url>
+                                    </c:set>
+                                    <div class="noResult">
+                                        <fmt:message key="form.anyResult"/><a href="${fn:replace(retryUrl, '#', '%23')}"><fmt:message key="form.changeComponent"/>
+                                            <c:if test="${colorModel.isBackgroundTested}"><strong><fmt:message key="form.oppositeComponentBackground"/></strong></a>.</c:if>
+                                <c:if test="${!colorModel.isBackgroundTested}"><strong><fmt:message key="form.oppositeComponentForeground"/></strong></a>.</c:if>
+                            </div>
+                            </c:if>
+                            </div><!-- /col-lg-12 -->
                             </div><!-- /row -->
                         </c:otherwise>
                     </c:choose>        
@@ -364,14 +364,14 @@
             <!-- From  -->
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
             <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
-            <c:if test="${colorResult.numberOfSuggestedColors > 0}">
-                <script src="Js/jquery.tablesorter.min.js"></script>
-                <script src="Js/accessible-min.js"></script>
-            </c:if>
-            <script src="Js/bootstrap.min.js"></script>
-            <script src="Js/affix.js"></script>
-            <script src="Js/sample.color.js"></script>
-        </body>
+        <c:if test="${colorResult.numberOfSuggestedColors > 0}">
+            <script src="Js/jquery.tablesorter.min.js"></script>
+            <script src="Js/accessible-min.js"></script>
+        </c:if>
+        <script src="Js/bootstrap.min.js"></script>
+        <script src="Js/affix.js"></script>
+        <script src="Js/sample.color.js"></script>
+    </body>
 
-    </html>
+</html>
 </compress:html>
