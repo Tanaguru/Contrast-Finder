@@ -1,4 +1,11 @@
-Contrast-Finder
-===============
+# Contrast-Finder
 
-Find good background / foreground color contrast for accessibility
+Tool to provide color combination for a good (accessible, WCAG-compliant) contrast.
+
+## Demo
+
+http://contrast-finder.tanaguru.com/
+
+## License
+
+AGPL
