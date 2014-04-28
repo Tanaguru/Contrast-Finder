@@ -48,22 +48,22 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>color-finder-utils</artifactId>
+                <artifactId>contrast-finder-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>color-finder-api</artifactId>
+                <artifactId>contrast-finder-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>color-finder-impl</artifactId>
+                <artifactId>contrast-finder-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>color-finder-hsv</artifactId>
+                <artifactId>contrast-finder-hsv</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
