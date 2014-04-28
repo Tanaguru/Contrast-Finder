@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>org.opens</groupId>
-            <artifactId>color-finder-utils</artifactId>
+            <artifactId>contrast-finder-utils</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
