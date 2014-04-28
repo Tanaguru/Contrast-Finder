@@ -6,8 +6,8 @@
     <div id="footer-msg">
         <p><fmt:message key="footer.paragraphe"/></p>
         <ul>
-            <li><span class="tanaguru-kbaccess-title">Tanaguru: </span><fmt:message key="footer.tanaguru"/></li>
-            <li><span class="tanaguru-kbaccess-title">KBAccess: </span><fmt:message key="footer.kbaccess"/></li>
+            <li><strong>Tanaguru: </strong><fmt:message key="footer.tanaguru"/></li>
+            <li>KBAccess: <fmt:message key="footer.kbaccess"/></li>
         </ul>
     </div>
     <p id="footer-copyright">© <fmt:formatDate value="${now}" pattern="yyyy" /> <a href="http://www.Open-S.com/">Open-S</a> - Version 0.3 - <a href="http://blog.tanaguru.com/">Blog Tanaguru</a> - Contact <a href="http://twitter.com/mfaure">@mfaure</a> - <a href="http://twitter.com/tanaguruapp">@tanaguruapp</a></p>
