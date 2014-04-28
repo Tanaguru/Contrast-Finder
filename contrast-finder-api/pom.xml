@@ -4,21 +4,12 @@
     <parent>
         <groupId>org.opens</groupId>
         <artifactId>color-finder</artifactId>
-<<<<<<< HEAD:color-finder-api/pom.xml
-        <version>0.3.1</version>
-    </parent>
-
-    <groupId>org.opens</groupId>
-    <artifactId>color-finder-api</artifactId>
-    <version>0.3.1</version>
-=======
         <version>0.3.2</version>
     </parent>
 
     <groupId>org.opens</groupId>
     <artifactId>contrast-finder-api</artifactId>
     <version>0.3.2</version>
->>>>>>> release-0.3.2:contrast-finder-api/pom.xml
     <packaging>jar</packaging>
     <name>contrast-finder-api</name>
 
