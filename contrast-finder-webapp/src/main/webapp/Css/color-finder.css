@@ -176,6 +176,20 @@ a {
     #lang-switcher {margin-right: 8em;}
 }
 
+#image-reference {
+    margin-left: 43.833333%;
+}
+@media screen and (min-width:1200px) {
+    #image-reference {
+        margin-left: 36.333333%;
+    }   
+}
+@media (max-width: 992px) {
+    #image-reference {
+        margin-left: 56.633333%;
+    }
+}
+
 /* footer template */
 footer {
     padding-top: 0;

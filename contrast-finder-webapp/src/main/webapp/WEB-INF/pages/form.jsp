@@ -162,7 +162,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-offset-8">
+                                <div class="col-lg-12" id="image-reference">
                                     <a title="Creative Commons Attribution 3.0 License" href="http://creativecommons.org/licenses/by/3.0/">
                                         <img src="<c:url value="/Images/creative_common_logo.png"/>" alt="License"> </a>
                                     <a title="Flickr: Galerie de Thomas Hawk" href="http://www.flickr.com/photos/thomashawk">Thomas Hawk</a>
