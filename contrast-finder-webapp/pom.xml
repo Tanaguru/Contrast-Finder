@@ -97,11 +97,7 @@
         <dependency>
             <groupId>org.opens</groupId>
             <artifactId>color-finder-hsv</artifactId>
-<<<<<<< HEAD:color-finder-webapp/pom.xml
-            <version>0.3.1</version>
-=======
             <version>0.3.2</version>
->>>>>>> release-0.3.2:contrast-finder-webapp/pom.xml
             <type>jar</type>
         </dependency>
         <dependency>
