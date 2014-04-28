@@ -7,10 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>org.opens</groupId>
-    <artifactId>color-finder-hsv</artifactId>
+    <artifactId>contrast-finder-hsv</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>color-finder-hsv</name>
+    <name>contrast-finder-hsv</name>
     <build>
         <plugins>
             <plugin>

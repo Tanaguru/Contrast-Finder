@@ -7,10 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>org.opens</groupId>
-    <artifactId>color-finder-utils</artifactId>
+    <artifactId>contrast-finder-utils</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>color-finder-utils</name>
+    <name>contrast-finder-utils</name>
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
