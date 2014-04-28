@@ -45,6 +45,17 @@ a {
     position: absolute;
 }
 
+#contrast-finder-logo {
+    background-image: url("../Images/contrast_finder_logo.png");
+    background-size: 100%;
+    float: left;
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    margin-right: 15px;
+    margin-top: -35px;
+}
+
 .cercle{
     float:right;
     width:100px;

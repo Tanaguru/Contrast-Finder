@@ -4,6 +4,8 @@
 <div><span id="forkongithub" lang="en"><a href="https://github.com/Tanaguru/Contrast-Finder">Fork me on GitHub</a></span></div>
             
             <div id="header" class="page-header">
+                <div id="contrast-finder-logo">
+                </div>
                 <c:set var="properQueryString" scope="page" value="${fn:replace(pageContext.request.queryString, '&', '&amp;')}"/>
                 <c:choose>
                     <c:when test="${not empty pageContext.request.queryString}">
