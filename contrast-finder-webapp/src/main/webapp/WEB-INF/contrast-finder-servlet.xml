@@ -10,10 +10,13 @@
  
     <!-- Les balises suivantes permettent de préciser que la configuration passe par les annotations  -->
     <context:annotation-config/> 
-    <context:component-scan base-package= "com.scub.foundation.tutorial.spring.mvc.controller" />
+    <context:component-scan base-package= "org.opens" />
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
- 
- 
+
+    <bean id="exposedPropertiesConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="file:///etc/contrast-finder/contrast-finder.conf"/>
+    </bean>
+    
     <import resource="conf/mvc/cf-beans-resolver.xml"/>
     <import resource="conf/mvc/cf-beans-controller.xml"/>
     <import resource="conf/mvc/cf-beans-i18n.xml"/>

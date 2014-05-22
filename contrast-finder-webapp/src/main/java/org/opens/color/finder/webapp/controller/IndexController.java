@@ -19,9 +19,11 @@
  */
 package org.opens.color.finder.webapp.controller;
 
+
 import java.awt.Color;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.apache.log4j.Logger;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.color.finder.webapp.validator.ColorModelValidator;
 import org.opens.colorfinder.ColorFinder;
@@ -30,6 +32,7 @@ import org.opens.colorfinder.result.ColorResult;
 import org.opens.utils.colorconvertor.ColorConverter;
 import org.opens.utils.contrastchecker.ContrastChecker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,8 +58,15 @@ public class IndexController {
      */
     private String mainPageView;
     /**
-     * Vue contenant le formulaire
+     * piwik analyticskey
      */
+    @Value("${piwik_analytics_key}")
+    private String piwikAnalyticsKey;
+    /**
+     * google analyticskey
+     */
+    @Value("${google_analytics_key}")
+    private String googleAnalyticsKey;
     @Autowired
     private ColorFinderFactory colorFinderFactory;
 
@@ -77,7 +87,8 @@ public class IndexController {
     @RequestMapping(value = "form.html")
     public String initAccueil(final Model model) {
         ColorModel colorModel = new ColorModel();
-
+        model.addAttribute("piwikKey", piwikAnalyticsKey);
+        model.addAttribute("googleKey", googleAnalyticsKey);
         model.addAttribute(commandName, colorModel);
         return mainPageView;
     }
@@ -124,7 +135,10 @@ public class IndexController {
             model.addAttribute("oldDistance",
                     colorResult.getSubmittedCombinaisonColor().getDistance());
             model.addAttribute("algo", colorModel.getAlgo());
-            model.addAttribute("otherAlgo", getOppositeAlgo(colorModel.getAlgo()));
+            model.addAttribute("otherAlgo", getOppositeAlgo(colorModel.getAlgo())); 
+            /* Analytics Keys*/
+            model.addAttribute("piwikKey", piwikAnalyticsKey);
+            model.addAttribute("googleKey", googleAnalyticsKey);
             return mainPageView;
         }
 
@@ -143,7 +157,7 @@ public class IndexController {
         }
         return algo;
     }
-    
+
     /**
      * Call the colorFinder implementation regarding the user selection and
      * return it (knowing it handles the results)

@@ -12,7 +12,8 @@
         <module>contrast-finder-hsv</module>
         <module>contrast-finder-impl</module>
         <module>contrast-finder-webapp</module>
-    </modules>
+    <module>contrast-finder-resources</module>
+  </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
