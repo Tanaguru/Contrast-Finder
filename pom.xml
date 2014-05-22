@@ -4,11 +4,7 @@
     <groupId>org.opens</groupId>
     <artifactId>contrast-finder</artifactId>
     <packaging>pom</packaging>
-<<<<<<< HEAD
-    <version>0.3.2</version>
-=======
     <version>0.3.3</version>
->>>>>>> release-0.3.3
     <name>contrast-finder</name>
     <modules>
         <module>contrast-finder-api</module>
