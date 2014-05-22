@@ -12,7 +12,9 @@ a {
     font-size : 12px;
 }
 .alert-warning {
-    color: #936B26; // OK for contrast
+    color: #8F6428; // OK for contrast
+    //
+    //#936B26
 }
 /* Form view*/
 
@@ -56,6 +58,10 @@ a {
     background-repeat: no-repeat;
     margin-right: 15px;
     margin-top: -35px;
+}
+
+#initial-contrast {
+    margin-bottom: 3px;
 }
 
 .cercle{

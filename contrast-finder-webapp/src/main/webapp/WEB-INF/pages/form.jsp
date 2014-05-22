@@ -23,6 +23,7 @@
         <body id="contrast-finder-page">
             <div class="container">
                 <%@include file='/WEB-INF/template/header.jspf' %>
+                <%@include file='/WEB-INF/template/cf-message.jspf' %>
                 <div id="set-up-form" class="row">
                     <div class="col-lg-12">
                         <h2><fmt:message key="form.fillInFields"/></h2>
