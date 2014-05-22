@@ -1,0 +1,11 @@
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page pageEncoding="UTF-8" %>
+<div class="row" id="cf-message">
+    <div class="col-lg-12">
+        <p class="alert alert-warning">
+            <fmt:message key="message.addon">
+                <fmt:param value="https://addons.mozilla.org/en-US/firefox/addon/tanaguru-contrast-finder/"/>
+            </fmt:message>
+        </p>
+    </div>
+</div>

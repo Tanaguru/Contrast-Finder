@@ -2,13 +2,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.opens</groupId>
-        <artifactId>contrast-finder</artifactId>
-        <version>0.3.2</version>
+      <groupId>org.opens</groupId>
+      <artifactId>contrast-finder</artifactId>
+      <version>0.3.3</version>
     </parent>
     <groupId>org.opens</groupId>
     <artifactId>contrast-finder-webapp</artifactId>
-    <version>0.3.2</version>
+    <version>0.3.3</version>
     <packaging>war</packaging>
 
     <name>contrast-finder-webapp</name>
@@ -96,8 +96,13 @@
         </dependency>
         <dependency>
             <groupId>org.opens</groupId>
+<<<<<<< HEAD
             <artifactId>contrast-finder-hsv</artifactId>
             <version>0.3.2</version>
+=======
+            <artifactId>color-finder-hsv</artifactId>
+            <version>0.3.3</version>
+>>>>>>> release-0.3.3
             <type>jar</type>
         </dependency>
         <dependency>
