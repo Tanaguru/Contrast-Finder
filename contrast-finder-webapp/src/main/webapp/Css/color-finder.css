@@ -1,4 +1,4 @@
-/* Composant natifs HTML */ 
+/* HTML componants override */ 
 body {
     background-color: #F6F6F6;
 }
@@ -7,12 +7,14 @@ a {
     color : #3173BD;
 }
 
-/* Surcharge bootstrap*/ 
+/* Bootstrap override */ 
 .help-block {
     font-size : 12px;
 }
-
-/* Vue formulaire*/
+.alert-warning {
+    color: #936B26; // OK for contrast
+}
+/* Form view*/
 
 #lang-switcher {
     text-align: right;
