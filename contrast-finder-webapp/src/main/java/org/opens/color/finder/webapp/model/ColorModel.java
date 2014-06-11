@@ -19,6 +19,8 @@
  */
 package org.opens.color.finder.webapp.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  *
  * @author alingua
@@ -30,45 +32,48 @@ public class ColorModel {
     private static final String DEFAULT_RATIO = "4.5";
     private String foreground = DEFAULT_FOREGROUND;
     private boolean highratio = false;
-    
     private String algo = "HSV";
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public String getAlgo() {
         return algo;
     }
 
     /**
-     * 
-     * @param algo 
+     *
+     * @param algo
      */
     public void setAlgo(String algo) {
         this.algo = algo;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public boolean isHighratio() {
         return highratio;
     }
 
     /**
-     * 
-     * @param highratio 
+     *
+     * @param highratio
      */
     public void setHighratio(boolean highratio) {
         this.highratio = highratio;
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public String getForeground() {
+        if (StringUtils.isBlank(foreground)) {
+            return null;
+        }
         if (foreground.charAt(0) != '#') {
             setForeground("#" + foreground);
         }
@@ -76,8 +81,8 @@ public class ColorModel {
     }
 
     /**
-     * 
-     * @param foreground 
+     *
+     * @param foreground
      */
     public void setForeground(String foreground) {
         this.foreground = foreground;
@@ -85,10 +90,13 @@ public class ColorModel {
     private String background = DEFAULT_BACKGROUND;
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public String getBackground() {
+        if (StringUtils.isBlank(background)) {
+            return null;
+        }
         if (background.charAt(0) != '#') {
             setBackground("#" + background);
         }

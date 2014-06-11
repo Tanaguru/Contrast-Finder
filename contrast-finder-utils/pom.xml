@@ -4,11 +4,11 @@
     <parent>
         <groupId>org.opens</groupId>
         <artifactId>contrast-finder</artifactId>
-        <version>0.3.3</version>
+        <version>0.3.4</version>
     </parent>
     <groupId>org.opens</groupId>
     <artifactId>contrast-finder-utils</artifactId>
-    <version>0.3.3</version>
+    <version>0.3.4</version>
     <packaging>jar</packaging>
     <name>contrast-finder-utils</name>
     <dependencies>
