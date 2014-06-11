@@ -20,6 +20,7 @@
 package org.opens.color.finder.webapp.validator;
 
 import java.awt.Color;
+import org.apache.commons.lang3.StringUtils;
 import org.opens.color.finder.webapp.model.ColorModel;
 import org.opens.utils.colorconvertor.ColorConverter;
 import org.springframework.validation.Errors;
@@ -64,7 +65,7 @@ public class ColorModelValidator implements Validator {
                 && isValidRatio(ratio) <= MAX_VALID_RATIO)) {
             errors.rejectValue("ratio", "NOT_A_VALID_RATIO", "Le ratio n'est pas valide");
         }
-    }
+     }
 
     private Float isValidRatio(String ratio) {
         try {
@@ -81,6 +82,10 @@ public class ColorModelValidator implements Validator {
     }
 
     private void validateColor(String colorKey, String colorValue, Errors errors) {
+        if (StringUtils.isBlank(colorValue)) {
+            errors.rejectValue(colorKey, "NOT_A_VALID_COLOR", "La couleur doit être entre #000000 à #FFFFFF");
+            return;
+        }
         Color color = ColorConverter.hex2Rgb(colorValue);
         if (color == null) {
             errors.rejectValue(colorKey, "NOT_A_VALID_COLOR", "La couleur doit être entre #000000 à #FFFFFF");
