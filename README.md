@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Tanaguru/Contrast-Finder.svg?branch=develop)](https://travis-ci.org/Tanaguru/Contrast-Finder)
+[![Build Status](https://travis-ci.org/Tanaguru/Contrast-Finder.svg?branch=master)](https://travis-ci.org/Tanaguru/Contrast-Finder)
 
 # Contrast-Finder
 
