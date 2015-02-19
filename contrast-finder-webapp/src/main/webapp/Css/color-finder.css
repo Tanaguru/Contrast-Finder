@@ -12,9 +12,10 @@ a {
     font-size : 12px;
 }
 .alert-warning {
-    color: #8F6428; // OK for contrast
-    //
-    //#936B26
+    color: #6c4a1e; 
+}
+.alert-warning .alert-link {
+    color: #6b4b0a;
 }
 /* Form view*/
 
