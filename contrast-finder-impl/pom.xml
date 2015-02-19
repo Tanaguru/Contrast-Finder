@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>org.opens</groupId>
-            <artifactId>color-finder-api</artifactId>
+            <artifactId>contrast-finder-api</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -52,7 +52,7 @@
         </dependency>
         <dependency>
             <groupId>org.opens</groupId>
-            <artifactId>color-finder-impl</artifactId>
+            <artifactId>contrast-finder-impl</artifactId>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
