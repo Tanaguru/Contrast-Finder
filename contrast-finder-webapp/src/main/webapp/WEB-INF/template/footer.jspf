@@ -5,10 +5,7 @@
 <footer class="container">
     <div id="footer-msg">
         <p><fmt:message key="footer.paragraphe"/></p>
-        <ul>
-            <li><strong>Tanaguru: </strong><fmt:message key="footer.tanaguru"/></li>
-            <li>KBAccess: <fmt:message key="footer.kbaccess"/></li>
-        </ul>
+        <p><strong>Tanaguru: </strong><fmt:message key="footer.tanaguru"/></p>
     </div>
     <p id="footer-copyright">© <fmt:formatDate value="${now}" pattern="yyyy" /> <a href="http://www.tanaguru.com/">Tanaguru</a> - Version 0.3.4 - <a href="http://blog.tanaguru.com/">Blog Tanaguru</a> - Contact - <a href="http://twitter.com/tanaguruapp">@tanaguruapp</a></p>
 </footer>
