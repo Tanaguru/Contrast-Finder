@@ -21,12 +21,15 @@
         <c:set var="title" value="Tanaguru Contrast-Finder"/>
         <%@include file='/WEB-INF/template/head.jspf' %>
         <body id="contrast-finder-page">
-            <div class="container">
-                <%@include file='/WEB-INF/template/header.jspf' %>
-                <%@include file='/WEB-INF/template/cf-message.jspf' %>
+            <%@include file='/WEB-INF/template/header.jspf' %>
+            <%@include file='/WEB-INF/template/cf-message.jspf' %>
+
+            <main class="container" role="main">
+                <span id="forkongithub" lang="en"><a href="https://github.com/Tanaguru/Contrast-Finder">Fork me on GitHub</a></span>
+                
                 <div id="set-up-form" class="row">
                     <div class="col-lg-12">
-                        <h2><fmt:message key="form.fillInFields"/></h2>
+                        <h2 class="main-title"><fmt:message key="form.description"/></h2>
                         <c:set var="actionUrl">
                             <c:url value="result.html"></c:url>
                         </c:set>
@@ -42,13 +45,13 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="form-group ${foregroundOnError}">
-                                <label for="foreground-input" class="col-lg-3 control-label"><fmt:message key="form.foregroundColor"/></label>
-                                <div class="col-lg-4">
+                                <label for="foreground-input" class="control-label"><fmt:message key="form.foregroundColor"/></label>
+                                <div>
                                     <form:input id="foreground-input" path="foreground" type="text" class="form-control"/>
+                                    <div id="foreground-sample" class="color-sample sample-bordered">
+                                        <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
+                                    </div>
                                     <span class="help-block"><fmt:message key="form.help"/></span>
-                                </div>
-                                <div id="foreground-sample" class="col-lg-2 color-sample sample-bordered">
-                                    <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                 </div>
                             </div>
                             <c:set var="backgroundOnError">
@@ -62,22 +65,13 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="form-group ${backgroundOnError}">
-                                <label for="background-input" class="col-lg-3 control-label"><fmt:message key="form.backgroundColor"/></label>
-                                <div class="col-lg-4">
+                                <label for="background-input" class="control-label"><fmt:message key="form.backgroundColor"/></label>
+                                <div>
                                     <form:input id="background-input" path="background" type="text" class="form-control"/>
+                                    <div id="background-sample" class="color-sample sample-bordered">
+                                        <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
+                                    </div>
                                     <span class="help-block"><fmt:message key="form.help"/></span>
-                                </div>
-                                <div id="background-sample" class="col-lg-2 color-sample sample-bordered">
-                                    <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for='isBackgroundTested' class="col-lg-3 control-label"><fmt:message key="form.component"/></label>
-                                <div class="col-lg-4">
-                                    <form:select class="form-control" path="isBackgroundTested">
-                                        <form:option value="false"><fmt:message key="form.componentForeground"/></form:option>
-                                        <form:option value="true"><fmt:message key="form.componentBackground"/></form:option>
-                                    </form:select>
                                 </div>
                             </div>
                             <c:set var="ratioOnError">
@@ -91,16 +85,34 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="form-group ${ratioOnError}">
-                                <label for="ratio" class="col-lg-3 control-label"><fmt:message key="form.ratio"/></label>
-                                <div class="col-lg-4">
-                                    <form:select class="form-control" path="ratio">
-                                        <form:option value="3"></form:option>
-                                        <form:option value="4.5"></form:option>
-                                        <form:option value="7"></form:option>
-                                    </form:select>
-                                    <form:errors path="ratio" cssClass="help-block"/>
+                                <label for="ratio" class="control-label"><fmt:message key="form.ratio"/></label>
+                                <form:select class="form-control" path="ratio">
+                                    <form:option value="3"></form:option>
+                                    <form:option value="4.5"></form:option>
+                                    <form:option value="7"></form:option>
+                                </form:select>
+                                <form:errors path="ratio" cssClass="help-block"/>
+                                <div>
+                                    <p class="help-block">
+                                        <a href="<fmt:message key="form.wcagLink"/>"><span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3</a> <fmt:message key="form.sc-info"/></fmt:message>
+                                    </p>
                                 </div>
-                            </div><!-- /col-lg-4 -->
+                            </div>
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend><fmt:message key="form.component"/></legend>
+                                    <div class="fieldset-fields">
+                                        <label>
+                                            <form:radiobutton name="" path="isBackgroundTested" value="false" checked="checked"/>
+                                            <fmt:message key="form.componentForeground"/>
+                                        </label>
+                                        <label>
+                                            <form:radiobutton name="" path="isBackgroundTested" value="true"/>
+                                            <fmt:message key="form.componentBackground"/>
+                                        </label>   
+                                    </div>
+                                </fieldset>
+                            </div>
                             <c:set var="algoOnError">
                                 <form:errors path="algo"/>
                             </c:set>
@@ -113,24 +125,16 @@
                             </c:choose>
                             <div class="form-group ${algoOnError}">
                                 <fieldset>
-                                    <div class="col-lg-3 control-fieldset">
-                                        <legend><fmt:message key="form.objectifs"/></legend>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="cf-group-fields">
-                                            <div class="radio first-radio">
-                                                <label for="algo1">
-                                                    <form:radiobutton name="algo1" path="algo" value="HSV" checked="checked"/>
-                                                    <fmt:message key="form.algoHSV"/>
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label for="algo2">
-                                                    <form:radiobutton name="algo2" path="algo" value="Rgb"/>
-                                                    <fmt:message key="form.algoRGB"/>
-                                                </label>
-                                            </div>
-                                        </div>
+                                    <legend><fmt:message key="form.objectifs"/></legend>
+                                    <div class="fieldset-fields">
+                                        <label for="algo1">
+                                            <form:radiobutton name="algo1" path="algo" value="HSV" checked="checked"/>
+                                            <fmt:message key="form.algoHSV"/>
+                                        </label>
+                                        <label for="algo2">
+                                            <form:radiobutton name="algo2" path="algo" value="Rgb"/>
+                                            <fmt:message key="form.algoRGB"/>
+                                        </label>                                        
                                         <c:if test="${algoOnError == 'has-error'}">
                                             <span class="help-block"><fmt:message key="form.invalidAlgo"/></span>
                                         </c:if>
@@ -139,7 +143,7 @@
                             </div>
                             <div class="form-group">
                                 <fmt:message key="form.validate" var="validateButton"/>
-                                <input id="submit-button" type="submit" class="btn btn-default col-lg-offset-3 col-lg-3" value="${validateButton}"/>
+                                <input id="submit-button" type="submit" class="btn btn-default" value="${validateButton}"/>
                             </div>
                         </form:form>
                     </div><!-- class="col-lg-12' -->
@@ -358,9 +362,9 @@
                             </c:otherwise>
                         </c:choose>        
                     </c:if>
+                </main>
 
-
-                </div>  <!-- class="container' -->
+                <!-- Footer -->
                 <%@include file='/WEB-INF/template/footer.jspf' %>
                 <!-- From  -->
                 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -372,6 +376,7 @@
                 <script src="Js/bootstrap.min.js"></script>
                 <script src="Js/affix.js"></script>
                 <script src="Js/sample.color.js"></script>
+                <script src="Js/menu.js"></script>
         </body>
 
     </html>
