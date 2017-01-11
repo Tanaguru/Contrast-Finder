@@ -2,44 +2,44 @@
 
 @font-face {
     font-family: Montserrat;
-    src: url(../fonts/montserrat-regular-webfont.eot);
-    src: url(../fonts/montserrat-regular-webfont.eot?#iefix) format("embedded-opentype"),
-         url(../fonts/montserrat-regular-webfont.woff) format("woff"),
-         url(../fonts/montserrat-regular-webfont.ttf) format("truetype"),
-         url(../fonts/montserrat-regular-webfont.svg#montserratregular) format("svg");
+    src: url(../Fonts/montserrat-regular-webfont.eot);
+    src: url(../Fonts/montserrat-regular-webfont.eot?#iefix) format("embedded-opentype"),
+         url(../Fonts/montserrat-regular-webfont.woff) format("woff"),
+         url(../Fonts/montserrat-regular-webfont.ttf) format("truetype"),
+         url(../Fonts/montserrat-regular-webfont.svg#montserratregular) format("svg");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Montserrat;
-    src: url(../fonts/montserrat-bold-webfont.eot);
-    src: url(../fonts/montserrat-bold-webfont.eot?#iefix) format("embedded-opentype"),
-         url(../fonts/montserrat-bold-webfont.woff) format("woff"),
-         url(../fonts/montserrat-bold-webfont.ttf) format("truetype"),
-         url(../fonts/montserrat-bold-webfont.svg#montserratregular) format("svg");
+    src: url(../Fonts/montserrat-bold-webfont.eot);
+    src: url(../Fonts/montserrat-bold-webfont.eot?#iefix) format("embedded-opentype"),
+         url(../Fonts/montserrat-bold-webfont.woff) format("woff"),
+         url(../Fonts/montserrat-bold-webfont.ttf) format("truetype"),
+         url(../Fonts/montserrat-bold-webfont.svg#montserratregular) format("svg");
     font-weight: 700;
     font-style: normal
 }
 
 @font-face {
     font-family: OpenSans;
-    src: url(../fonts/opensans-light-webfont.eot);
-    src: url(../fonts/opensans-light-webfont.eot?#iefix) format("embedded-opentype"),
-         url(../fonts/opensans-light-webfont.woff) format("woff"),
-         url(../fonts/opensans-light-webfont.ttf) format("truetype"),
-         url(../fonts/opensans-light-webfont.svg#montserratregular) format("svg");
+    src: url(../Fonts/opensans-light-webfont.eot);
+    src: url(../Fonts/opensans-light-webfont.eot?#iefix) format("embedded-opentype"),
+         url(../Fonts/opensans-light-webfont.woff) format("woff"),
+         url(../Fonts/opensans-light-webfont.ttf) format("truetype"),
+         url(../Fonts/opensans-light-webfont.svg#montserratregular) format("svg");
     font-weight: 300;
     font-style: normal
 }
 
 @font-face {
     font-family: OpenSans;
-    src: url(../fonts/opensans-semibold-webfont.eot);
-    src: url(../fonts/opensans-semibold-webfont.eot?#iefix) format("embedded-opentype"),
-         url(../fonts/opensans-semibold-webfont.woff) format("woff"),
-         url(../fonts/opensans-semibold-webfont.ttf) format("truetype"),
-         url(../fonts/opensans-semibold-webfont.svg#montserratregular) format("svg");
+    src: url(../Fonts/opensans-semibold-webfont.eot);
+    src: url(../Fonts/opensans-semibold-webfont.eot?#iefix) format("embedded-opentype"),
+         url(../Fonts/opensans-semibold-webfont.woff) format("woff"),
+         url(../Fonts/opensans-semibold-webfont.ttf) format("truetype"),
+         url(../Fonts/opensans-semibold-webfont.svg#montserratregular) format("svg");
     font-weight: 700;
     font-style: normal
 }
@@ -310,13 +310,13 @@ img {
     margin-top: 4px
 }
 
-@media and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .toggle {
         display:none
     }
 }
 
-@media and (max-width: 520px) {
+@media screen and (max-width: 520px) {
     .toggle {
         margin: 0 0.5rem 0.5rem;
     }
@@ -571,7 +571,7 @@ legend {
 
 /* tableau de résultats */
 
-@media and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     .text-sample,
     .col04 {
         display: none;
