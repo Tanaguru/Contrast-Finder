@@ -7,4 +7,5 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/Css/bootstrap-theme.min.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/Css/color-finder-min.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/Css/accessible-table-sorter-min.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/Css/font-awesome.css"/>">
 </head>
