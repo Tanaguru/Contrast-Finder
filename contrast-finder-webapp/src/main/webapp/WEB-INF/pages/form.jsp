@@ -32,7 +32,7 @@
                         <c:set var="actionUrl">
                             <c:url value="result.html"></c:url>
                         </c:set>
-                        <form:form class="form-horizontal" name="formulaire" commandName="colorModel" method="GET" role="form" action="${actionUrl}">
+                        <form:form name="formulaire" commandName="colorModel" method="GET" role="form" action="${actionUrl}">
                             <c:set var="foregroundOnError">
                                 <form:errors path="foreground"/>
                             </c:set>
