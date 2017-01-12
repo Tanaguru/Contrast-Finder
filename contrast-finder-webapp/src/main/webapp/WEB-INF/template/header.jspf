@@ -13,7 +13,7 @@
                 </h1>                   
             </div>
             <div class="col-md-5"> 
-                <button type="button" class="toggle" aria-expanded="false" aria-controls="menu">
+                <button type="button" id="toggle" class="toggle" aria-expanded="false" aria-controls="menu">
                   <span class="toggle__bar"></span>
                   <span class="toggle__bar"></span>
                   <span class="toggle__bar"></span>
