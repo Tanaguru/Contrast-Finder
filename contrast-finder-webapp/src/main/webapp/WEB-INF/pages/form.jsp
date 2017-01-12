@@ -20,10 +20,9 @@
     <html lang="${lang}">
         <c:set var="title" value="Tanaguru Contrast-Finder"/>
         <%@include file='/WEB-INF/template/head.jspf' %>
+
         <body id="contrast-finder-page">
             <%@include file='/WEB-INF/template/header.jspf' %>
-            <%@include file='/WEB-INF/template/cf-message.jspf' %>
-
             <main class="container" role="main">
                 <span id="forkongithub" lang="en"><a href="https://github.com/Tanaguru/Contrast-Finder">Fork me on GitHub</a></span>
                 
@@ -94,7 +93,10 @@
                                 <form:errors path="ratio" cssClass="help-block"/>
                                 <div>
                                     <p class="help-block">
-                                        <a href="<fmt:message key="form.wcagLink"/>"><span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3</a> <fmt:message key="form.sc-info"/></fmt:message>
+                                        <a href="<fmt:message key="form.wcagLink"/>">
+                                            <span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3
+                                        </a> 
+                                        <fmt:message key="form.sc-info"/>
                                     </p>
                                 </div>
                             </div>
