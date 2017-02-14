@@ -68,7 +68,6 @@ ul {
     padding: 0;
 }
 
-p,
 a {
     color: #4c4c4c;
 }
@@ -88,10 +87,16 @@ img {
     border: 0;
 }
 
+fieldset {
+    margin-bottom: 0.5rem;
+}
+ 
+
 /* Bootstrap override */ 
 
 .help-block {
     font-size : 12px;
+    color: #5A5151;
 }
 .alert-warning {
     color: #6c4a1e; 
@@ -129,7 +134,7 @@ img {
     float:right;
     width:100px;
     height:55px;
-    border-radius: 0.3em;
+    border-radius: 0.3rem;
     margin-right: 5px;
     border: solid 1px #CCC;
 }
@@ -139,9 +144,9 @@ img {
 }
 
 .color-sample{
-    width:7em;
-    height:2.5em;
-    border-radius: 0.3em;
+    width:7rem;
+    height:2rem;
+    border-radius: 0.3rem;
     margin-right: 5px;
 }
 
@@ -167,7 +172,7 @@ img {
 }
 
 .color-codes {
-    font-size:0.95em;
+    font-size:0.95rem;
     list-style: none;
     padding: 0;
 }
@@ -394,7 +399,7 @@ img {
 }
 
 input[type=text] {
-    height: 2.5rem;
+    height: 2rem;
 }
 
 input[type=radio] {
@@ -403,7 +408,7 @@ input[type=radio] {
 }
 
 legend {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
     font-size: 1rem;
     border-bottom: 0;
@@ -468,7 +473,6 @@ legend {
 
 .site-bottom .site-bottom__social .site-bottom__social-item {
     display: inline-block;
-    font-size: 2.5rem;
     padding-right: .8rem;
 }
 
@@ -478,6 +482,7 @@ legend {
 
 .site-bottom .site-bottom__social .site-bottom__social-item .site-bottom__social-link--facebook {
     color: #d90b0b;
+    font-size: 2.4rem;
 }
 
 .site-bottom .site-bottom__social .site-bottom__social-item .site-bottom__social-link .site-bottom__circled-link {
