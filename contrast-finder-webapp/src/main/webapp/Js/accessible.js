@@ -17,7 +17,7 @@
 
 					$("#contrast-solution caption").text(gTableCaptionText); // modify
 					$(this).removeAttr("aria-sort"); // remove any existing aria-sort attribute on this header
-					var text = $('html').attr('lang') === 'fr' ? 'Triable, Pas trié' : 'Sortable, Not Sorted';
+					var text = $('html').attr('lang') === 'fr' ? 'Non trié' : 'Sortable, Not Sorted';
 					$(this).append( $('<span>').addClass('offscreen').text(text)); // add some offscreen text to the header
 				});
 
@@ -30,7 +30,7 @@
 					$("#contrast-solution caption").text(gTableCaptionText + ': Sorted By ' + headerText + ' Descending ');
 
 					$(this).attr("aria-sort", "descending");//give it aria-sort attribute with value of descending
-					var text = $('html').attr('lang') === 'fr' ? 'Triable, trié dans l\'ordre décroissant' : 'Sortable, Sorted Descending';
+					var text = $('html').attr('lang') === 'fr' ? 'Triez dans l\'ordre décroissant' : 'Sortable, Sorted Descending';
 					$(this).append( $('<span>').addClass('offscreen').text(text));// add some offscreen text to the header
 				});
 				$('th.'+table.config.cssDesc, this).each( function(e) {
@@ -41,7 +41,7 @@
 					$("#contrast-solution caption").text(gTableCaptionText + ': Sorted By ' + headerText + ' Ascending ');
 
 					$(this).attr("aria-sort", "ascending");//give it aria-sort attribute with value of ascending
-					var text = $('html').attr('lang') === 'fr' ? 'Triable, trié dans l\'ordre croissant' : 'Sortable, Sorted Ascending';
+					var text = $('html').attr('lang') === 'fr' ? 'Triez dans l\'ordre croissant' : 'Sortable, Sorted Ascending';
 					$(this).append( $('<span>').addClass('offscreen').text( ));// add some offscreen text to the header
 				});
 			});
