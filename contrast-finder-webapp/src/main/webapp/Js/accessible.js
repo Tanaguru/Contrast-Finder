@@ -77,7 +77,7 @@
 	// THs inside the TBODY get rowheaders
 	// primarily because we know this is a simple, symmetrical table. YMMV
 	// also add tabindex to each header (this is an assumption that they are all sortable
-	$("#contrast-solution thead th").attr("role", "columnheader").attr("scope", "col");
+	$("#contrast-solution thead th").attr("role", "columnheader").attr("scope", "col").wrapInner('<div role="button"></div>');
 	$("#contrast-solution tbody th").attr("role", "rowheader").attr("scope", "row");
 
 	// add tabindex so tabindex only appears on the sortable headers
