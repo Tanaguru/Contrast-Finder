@@ -34,7 +34,7 @@
             <div class="hidden-xs hidden-sm col-md-2">
                 <img src="Images/logo_tg.png" alt="">
             </div>
-            <section class="site-bottom__mobile-col col-xs-6 col-md-2">
+            <!-- <section class="site-bottom__mobile-col col-xs-6 col-md-2">
                 <h2 class="site-bottom__title"><a href="<fmt:message key="siteUrl"/><fmt:message key="footer.title1Url"/>"><fmt:message key="footer.title1Text"/></a></h2>
                 <nav role="navigation">
                     <ul class="menu-bottom">
@@ -42,7 +42,7 @@
                         <li class="menu-item"><a href="<fmt:message key="siteUrl"/><fmt:message key="footer.link2Url"/>"><fmt:message key="footer.link2Text"/></a></li>
                     </ul>
                 </nav>
-            </section>
+            </section> -->
             <section class="site-bottom__mobile-col col-xs-6 col-md-2">
                 <h2 class="site-bottom__title"><a href="<fmt:message key="siteUrl"/><fmt:message key="footer.title2Url"/>"><fmt:message key="footer.title2Text"/></a></h2>
                 <nav role="navigation">
@@ -53,7 +53,7 @@
                     </ul>
                 </nav>
             </section>
-            <section class="site-bottom__mobile-col col-xs-6 col-md-2">
+           <!-- <section class="site-bottom__mobile-col col-xs-6 col-md-2">
                 <h2 class="site-bottom__title"><a href="<fmt:message key="siteUrl"/><fmt:message key="footer.title3Url"/>"><fmt:message key="footer.title3Text"/></a></h2>
                 <nav role="navigation">
                     <ul class="menu-bottom">
@@ -61,7 +61,7 @@
                         <li class="menu-item"><a href="<fmt:message key="siteUrl"/><fmt:message key="footer.link4Url"/>"><fmt:message key="footer.link4Text"/></a></li>
                     </ul>
                 </nav>
-            </section>
+            </section> -->
             <section class="site-bottom__mobile-col col-xs-6 col-md-2">
                 <h2 class="site-bottom__title"><fmt:message key="footer.followUsText"/></h2>
                 <ul class="site-bottom__social">
