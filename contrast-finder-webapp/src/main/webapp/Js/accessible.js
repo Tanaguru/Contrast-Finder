@@ -42,7 +42,7 @@
 
 					$(this).attr("aria-sort", "ascending");//give it aria-sort attribute with value of ascending
 					var text = $('html').attr('lang') === 'fr' ? 'Triez dans l\'ordre croissant' : 'Sortable, Sorted Ascending';
-					$(this).append( $('<span>').addClass('offscreen').text( ));// add some offscreen text to the header
+					$(this).append( $('<span>').addClass('offscreen').text(text));// add some offscreen text to the header
 				});
 			});
 		}
