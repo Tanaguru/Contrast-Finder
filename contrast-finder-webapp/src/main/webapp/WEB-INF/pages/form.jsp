@@ -45,7 +45,7 @@
                             </c:choose>
                             <div class="form-group ${foregroundOnError}">
                                 <fieldset>
-                                    <legend><fmt:message key="form.foregroundColor"/><div id="foreground-sample" class="color-sample sample-bordered">
+                                    <legend><fmt:message key="form.foregroundColor"/> <div id="foreground-sample" class="color-sample sample-bordered">
                                         <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                     </div></legend>
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
@@ -76,7 +76,7 @@
                             </c:choose>
                             <div class="form-group ${backgroundOnError}">
                                 <fieldset>
-                                    <legend><fmt:message key="form.backgroundColor"/><div id="background-sample" class="color-sample sample-bordered">
+                                    <legend><fmt:message key="form.backgroundColor"/> <div id="background-sample" class="color-sample sample-bordered">
                                         <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                     </div></legend>
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
