@@ -211,7 +211,6 @@ fieldset .form-control {
 }
 @media (min-width: 1200px) {
     .invalid-color {
-        margin-left: -15px;
         margin-top: 7px;
     }
 }
