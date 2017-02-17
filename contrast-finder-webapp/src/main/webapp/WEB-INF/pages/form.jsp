@@ -58,10 +58,10 @@
                                     </label>
                                     <span id="help-block-foreground" class="help-block"><fmt:message key="form.help"/></span> 
                                     <label for="foreground-input">
-                                        <fmt:message key="form.hexadecimal"/><input id="foreground-input" name="foreground" class="form-control" type="text" value="#468847" aria-describedby="help-block-foreground">
+                                        <fmt:message key="form.hexadecimal"/><form:input id="foreground-input" path="foreground" type="text" class="form-control" aria-describedby="help-block-foreground"/>
                                     </label>
                                 </fieldset>
-                                <form:input id="foreground-input" path="foreground" type="text" class="form-control"/>
+                                
                                 <div id="foreground-sample" class="color-sample sample-bordered">
                                     <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                 </div>   
@@ -91,10 +91,9 @@
                                     </label>
                                     <span id="help-block-background" class="help-block"><fmt:message key="form.help"/></span>
                                     <label for="background-input" class="control-label">
-                                        <fmt:message key="form.hexadecimal"/><input id="background-input" name="background" class="form-control" type="text" value="#DFF0D8" aria-describedby="help-block-background">
+                                        <fmt:message key="form.hexadecimal"/><form:input id="background-input" path="background" type="text" class="form-control" aria-describedby="help-block-background"/>
                                     </label>
                                 </fielset>
-                                <form:input id="background-input" path="background" type="text" class="form-control"/>
                                 <div id="background-sample" class="color-sample sample-bordered">
                                     <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                 </div>
