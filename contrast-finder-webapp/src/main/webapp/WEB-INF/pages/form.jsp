@@ -119,10 +119,10 @@
                                 <form:errors path="ratio" cssClass="help-block"/>
                                 <div>
                                     <p class="help-block">
-                                        <a href="<fmt:message key="form.wcagLink"/>">
-                                            <span lang="en"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr></span> <fmt:message key="form.sc"/> 1.4.3
-                                        </a> 
-                                        <fmt:message key="form.sc-info"/>
+                                        <fmt:message key="form.sc-intro"/> <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>, <a href="<fmt:message key="form.wcagLink"/>"><fmt:message key="form.sc"/> 1.4.3</a> <fmt:message key="form.sc-info"/>
+                                    </p>
+                                     <p class="help-block">
+                                        <fmt:message key="form.sc-intro-fr"/> <abbr title="Référentiel Général d'Accessibilité des Administrations" lang="fr">RGAA</abbr> 3.0 2016, <fmt:message key="form.sc-intro-fr-2"/> <a href="<fmt:message key="form.rgaaLink"/>"><fmt:message key="form.sc-fr"/></a>.
                                     </p>
                                 </div>
                             </div>
