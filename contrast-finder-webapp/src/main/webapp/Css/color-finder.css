@@ -205,6 +205,7 @@ fieldset .form-control {
 .invalid-color {
     color : #b94a48;
     display : none;
+    font-size: 1.2rem;
 }
 .sample-bordered {
     border : solid 1px #CCC;
