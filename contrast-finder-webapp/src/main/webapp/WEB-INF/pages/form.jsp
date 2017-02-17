@@ -50,13 +50,13 @@
                                         <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                     </div>   
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
-                                    <label>
+                                    <label for="foreground-red">
                                         <fmt:message key="form.red"/><input id="foreground-red" class="form-control" type="number" min="0" max="255" aria-describedby="foreground-sample-invalid">
                                     </label>
-                                    <label>
+                                    <label for="foreground-green">
                                         <fmt:message key="form.green"/><input id="foreground-green" class="form-control" type="number" min="0" max="255" aria-describedby="foreground-sample-invalid">
                                     </label>
-                                    <label>
+                                    <label for="foreground-blue">
                                         <fmt:message key="form.blue"/><input id="foreground-blue" class="form-control" type="number" min="0" max="255" aria-describedby="foreground-sample-invalid">
                                     </label>
                                     <span id="help-block-foreground" class="help-block"><fmt:message key="form.help"/></span> 
@@ -82,13 +82,13 @@
                                         <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                     </div>
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
-                                    <label>
+                                    <label for="background-red">
                                         <fmt:message key="form.red"/><input id="background-red" class="form-control" type="number" min="0" max="255" aria-describedby="background-sample-invalid">
                                     </label>
-                                    <label>
+                                    <label for="background-green">
                                         <fmt:message key="form.green"/><input id="background-green" class="form-control" type="number" min="0" max="255" aria-describedby="background-sample-invalid">
                                     </label>
-                                    <label>
+                                    <label for="background-blue">
                                         <fmt:message key="form.blue"/><input id="background-blue" class="form-control" type="number" min="0" max="255" aria-describedby="background-sample-invalid">
                                     </label>
                                     <span id="help-block-background" class="help-block"><fmt:message key="form.help"/></span>
@@ -128,11 +128,11 @@
                                 <fieldset>
                                     <legend><fmt:message key="form.component"/></legend>
                                     <div class="fieldset-fields">
-                                        <label>
-                                            <form:radiobutton name="" path="isBackgroundTested" value="false" checked="checked"/>
+                                        <label for="isBackgroundTested1">
+                                            <form:radiobutton name="" path="isBackgroundTested" value="false"/>
                                             <fmt:message key="form.componentForeground"/>
                                         </label>
-                                        <label>
+                                        <label for="isBackgroundTested2">
                                             <form:radiobutton name="" path="isBackgroundTested" value="true"/>
                                             <fmt:message key="form.componentBackground"/>
                                         </label>   
@@ -154,11 +154,11 @@
                                     <legend><fmt:message key="form.objectifs"/></legend>
                                     <div class="fieldset-fields">
                                         <label for="algo1">
-                                            <form:radiobutton name="algo1" path="algo" value="HSV" checked="checked"/>
+                                            <form:radiobutton path="algo" value="HSV"/>
                                             <fmt:message key="form.algoHSV"/>
                                         </label>
                                         <label for="algo2">
-                                            <form:radiobutton name="algo2" path="algo" value="Rgb"/>
+                                            <form:radiobutton path="algo" value="Rgb"/>
                                             <fmt:message key="form.algoRGB"/>
                                         </label>                                        
                                         <c:if test="${algoOnError == 'has-error'}">
