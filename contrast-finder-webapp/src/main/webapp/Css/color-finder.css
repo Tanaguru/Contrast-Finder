@@ -308,13 +308,15 @@ fieldset .form-control {
     font-size: 1.8rem;
     font-weight: 700;
     color: #4c4c4c;
+    width: calc(100% - 60px);
+    line-height: 1;
 }
 
 .toggle {
     border: 0;
     background: none;
     float: right;
-    margin: 1.5rem 0.5rem 0px;
+    margin: 1.5rem 0.5rem;
     width: 2.5rem;
     cursor: pointer
 }
@@ -438,7 +440,7 @@ fieldset label {
     margin-right: 0.5rem;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 767px) {
     fieldset label {
         width: 100%;
     }
