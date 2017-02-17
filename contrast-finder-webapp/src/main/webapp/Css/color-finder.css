@@ -100,6 +100,9 @@ fieldset {
     margin-top: 10px;
     font-weight: 300;
 }
+.help-block a {
+    text-decoration: underline;
+}
 .alert-warning {
     color: #6c4a1e; 
 }
