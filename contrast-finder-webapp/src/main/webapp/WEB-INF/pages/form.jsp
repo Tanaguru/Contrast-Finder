@@ -93,7 +93,8 @@
                                     <label for="background-input" class="control-label">
                                         <fmt:message key="form.hexadecimal"/><form:input id="background-input" path="background" type="text" class="form-control" aria-describedby="help-block-background"/>
                                     </label>
-                                </fielset>
+                                </fieldset>
+
                                 <div id="background-sample" class="color-sample sample-bordered">
                                     <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                 </div>
