@@ -48,17 +48,17 @@
                                     <legend><fmt:message key="form.foregroundColor"/></legend>
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
                                     <label>
-                                        <fmt:message key="form.red"/><input id="foreground-red" class="form-control" type="number" min="0" max="255">
+                                        <fmt:message key="form.red"/><input id="foreground-red" class="form-control" type="number" min="0" max="255" aria-describedby="foreground-sample-invalid">
                                     </label>
                                     <label>
-                                        <fmt:message key="form.green"/><input id="foreground-green" class="form-control" type="number" min="0" max="255">
+                                        <fmt:message key="form.green"/><input id="foreground-green" class="form-control" type="number" min="0" max="255" aria-describedby="foreground-sample-invalid">
                                     </label>
                                     <label>
-                                        <fmt:message key="form.blue"/><input id="foreground-blue" class="form-control" type="number" min="0" max="255">
+                                        <fmt:message key="form.blue"/><input id="foreground-blue" class="form-control" type="number" min="0" max="255" aria-describedby="foreground-sample-invalid">
                                     </label>
                                     <span id="help-block-foreground" class="help-block"><fmt:message key="form.help"/></span> 
                                     <label for="foreground-input">
-                                        <fmt:message key="form.hexadecimal"/><form:input id="foreground-input" path="foreground" type="text" class="form-control" aria-describedby="help-block-foreground"/>
+                                        <fmt:message key="form.hexadecimal"/><form:input id="foreground-input" path="foreground" type="text" class="form-control" aria-describedby="help-block-foreground foreground-sample-invalid"/>
                                     </label>
                                 </fieldset>
                                 
@@ -81,17 +81,17 @@
                                     <legend><fmt:message key="form.backgroundColor"/></legend>
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
                                     <label>
-                                        <fmt:message key="form.red"/><input id="background-red" class="form-control" type="number" min="0" max="255">
+                                        <fmt:message key="form.red"/><input id="background-red" class="form-control" type="number" min="0" max="255" aria-describedby="background-sample-invalid">
                                     </label>
                                     <label>
-                                        <fmt:message key="form.green"/><input id="background-green" class="form-control" type="number" min="0" max="255">
+                                        <fmt:message key="form.green"/><input id="background-green" class="form-control" type="number" min="0" max="255" aria-describedby="background-sample-invalid">
                                     </label>
                                     <label>
-                                        <fmt:message key="form.blue"/><input id="background-blue" class="form-control" type="number" min="0" max="255">
+                                        <fmt:message key="form.blue"/><input id="background-blue" class="form-control" type="number" min="0" max="255" aria-describedby="background-sample-invalid">
                                     </label>
                                     <span id="help-block-background" class="help-block"><fmt:message key="form.help"/></span>
                                     <label for="background-input" class="control-label">
-                                        <fmt:message key="form.hexadecimal"/><form:input id="background-input" path="background" type="text" class="form-control" aria-describedby="help-block-background"/>
+                                        <fmt:message key="form.hexadecimal"/><form:input id="background-input" path="background" type="text" class="form-control" aria-describedby="help-block-background background-sample-invalid"/>
                                     </label>
                                 </fieldset>
 
