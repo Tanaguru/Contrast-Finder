@@ -206,6 +206,8 @@ fieldset .form-control {
     color : #b94a48;
     display : none;
     font-size: 1.2rem;
+    position: relative;
+    top: -2px;
 }
 .sample-bordered {
     border : solid 1px #CCC;
