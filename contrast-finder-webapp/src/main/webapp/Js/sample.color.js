@@ -172,7 +172,6 @@ function updateForegroundHexColor() {
         $foregroundSample.classList.add('sample-bordered');
         $foregroundSampleInvalid.style.display = "none";
     } else {
-        $foregroundInput.value = '';
         $foregroundInput.classList.add('error');
         $foregroundSample.style.backgroundColor = "rgba(0,0,0,0)";
         $foregroundSample.classList.remove('color-sample');
@@ -198,7 +197,6 @@ function updateBackgroundHexColor() {
         $backgroundSample.classList.add('sample-bordered');
         $backgroundSampleInvalid.style.display = "none";
     } else {
-        $backgroundInput.value = '';
         $backgroundInput.classList.add('error');
         $backgroundSample.style.backgroundColor = "rgba(0,0,0,0)";
         $backgroundSample.classList.remove('color-sample');
