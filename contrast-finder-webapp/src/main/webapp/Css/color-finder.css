@@ -44,7 +44,7 @@
     font-style: normal
 }
 
-/* HTML componants override */ 
+/* Base */ 
 
 *, :after, :before {
     box-sizing: border-box;
@@ -97,12 +97,30 @@ fieldset {
 .help-block {
     font-size : 12px;
     color: #5A5151;
+    margin-top: 10px;
+    font-weight: 300;
 }
 .alert-warning {
     color: #6c4a1e; 
 }
 .alert-warning .alert-link {
     color: #6b4b0a;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group {
+    margin: 2.5rem 0;
+}
+.form-control {
+    max-width: 100px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+fieldset .form-control {
+   width: auto;
 }
 
 /* Form view*/
@@ -316,12 +334,6 @@ fieldset {
     }
 }
 
-@media screen and (max-width: 520px) {
-    .toggle {
-        margin: 0 0.5rem 0.5rem;
-    }
-}
-
 .menu {
     text-align: right;
     line-height: 70px;
@@ -346,7 +358,7 @@ fieldset {
     border-right: 20px solid transparent;
     border-top: 10px solid #d90b0b;
     position: absolute;
-    top: -29px;
+    top: -28px;
     left: calc(50% - 19px);
 }
 
@@ -375,7 +387,6 @@ fieldset {
         border: none;
         padding: .7rem 0;
         text-align: left;
-        line-height: 1;
     }
 
     .menu.is-opened {
@@ -410,7 +421,7 @@ input[type=radio] {
 legend {
     margin-bottom: 10px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.2rem;
     border-bottom: 0;
     display: inline-block;
     vertical-align: middle;
@@ -421,8 +432,14 @@ legend {
     vertical-align: middle;
 }
 
-#submit-button {
-    margin: 3rem 0;
+fieldset label {
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 479px) {
+    fieldset label {
+        width: 100%;
+    }
 }
 
 /* site bottom */
