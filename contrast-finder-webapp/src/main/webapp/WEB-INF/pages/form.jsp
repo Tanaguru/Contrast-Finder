@@ -44,14 +44,27 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="form-group ${foregroundOnError}">
-                                <label for="foreground-input" class="control-label"><fmt:message key="form.foregroundColor"/></label>
-                                <div>
-                                    <form:input id="foreground-input" path="foreground" type="text" class="form-control"/>
-                                    <div id="foreground-sample" class="color-sample sample-bordered">
-                                        <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
-                                    </div>
-                                    <span class="help-block"><fmt:message key="form.help"/></span>
-                                </div>
+                                <fieldset>
+                                    <legend><fmt:message key="form.foregroundColor"/></legend>
+                                    <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
+                                    <label>
+                                        <fmt:message key="form.red"/><input id="foreground-red" class="form-control" type="number" min="0" max="255">
+                                    </label>
+                                    <label>
+                                        <fmt:message key="form.green"/><input id="foreground-green" class="form-control" type="number" min="0" max="255">
+                                    </label>
+                                    <label>
+                                        <fmt:message key="form.blue"/><input id="foreground-blue" class="form-control" type="number" min="0" max="255">
+                                    </label>
+                                    <span id="help-block-foreground" class="help-block"><fmt:message key="form.help"/></span> 
+                                    <label for="foreground-input">
+                                        <fmt:message key="form.hexadecimal"/><input id="foreground-input" name="foreground" class="form-control" type="text" value="#468847" aria-describedby="help-block-foreground">
+                                    </label>
+                                </fieldset>
+                                <form:input id="foreground-input" path="foreground" type="text" class="form-control"/>
+                                <div id="foreground-sample" class="color-sample sample-bordered">
+                                    <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
+                                </div>   
                             </div>
                             <c:set var="backgroundOnError">
                                 <form:errors path="background"/>
@@ -64,13 +77,26 @@
                                 </c:otherwise>
                             </c:choose>
                             <div class="form-group ${backgroundOnError}">
-                                <label for="background-input" class="control-label"><fmt:message key="form.backgroundColor"/></label>
-                                <div>
-                                    <form:input id="background-input" path="background" type="text" class="form-control"/>
-                                    <div id="background-sample" class="color-sample sample-bordered">
-                                        <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
-                                    </div>
-                                    <span class="help-block"><fmt:message key="form.help"/></span>
+                                <fieldset>
+                                    <legend><fmt:message key="form.backgroundColor"/></legend>
+                                    <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
+                                    <label>
+                                        <fmt:message key="form.red"/><input id="background-red" class="form-control" type="number" min="0" max="255">
+                                    </label>
+                                    <label>
+                                        <fmt:message key="form.green"/><input id="background-green" class="form-control" type="number" min="0" max="255">
+                                    </label>
+                                    <label>
+                                        <fmt:message key="form.blue"/><input id="background-blue" class="form-control" type="number" min="0" max="255">
+                                    </label>
+                                    <span id="help-block-background" class="help-block"><fmt:message key="form.help"/></span>
+                                    <label for="background-input" class="control-label">
+                                        <fmt:message key="form.hexadecimal"/><input id="background-input" name="background" class="form-control" type="text" value="#DFF0D8" aria-describedby="help-block-background">
+                                    </label>
+                                </fielset>
+                                <form:input id="background-input" path="background" type="text" class="form-control"/>
+                                <div id="background-sample" class="color-sample sample-bordered">
+                                    <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
                                 </div>
                             </div>
                             <c:set var="ratioOnError">
