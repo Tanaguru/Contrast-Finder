@@ -66,12 +66,14 @@
                 <h2 class="site-bottom__title"><fmt:message key="footer.followUsText"/></h2>
                 <ul class="site-bottom__social">
                     <li class="site-bottom__social-item">
-                        <a class="site-bottom__social-link site-bottom__social-link--facebook" href="https://github.com/Tanaguru" title="<fmt:message key="footer.githubText"/>">
+                        <a class="site-bottom__social-link site-bottom__social-link--facebook" href="https://github.com/Tanaguru">
+                            <span class="sr-only"><fmt:message key="footer.githubText"/></span>
                             <span class="fa fa-github"></span>
                         </a>
                     </li>
                     <li class="site-bottom__social-item">
-                        <a class="site-bottom__social-link" href="https://twitter.com/tanaguruapp" title="<fmt:message key="footer.twitterText"/>">
+                        <a class="site-bottom__social-link" href="https://twitter.com/tanaguruapp">
+                            <span class="sr-only"><fmt:message key="footer.twitterText"/></span>
                             <span class="site-bottom__circled-link fa fa-twitter"></span>
                         </a>
                     </li>
