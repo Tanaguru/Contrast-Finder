@@ -55,6 +55,10 @@ function changeForegroundSample() {
 
         $foregroundInput.classList.remove('error');
 
+        for (var i = 0; i < foregroundRGBInputs.length; i++) {
+            foregroundRGBInputs[i].classList.remove('error');
+        }
+
         changeForegroundRGBValues();
     } else {
         $foregroundSample.style.backgroundColor = "rgba(0,0,0,0)";
@@ -83,6 +87,10 @@ function changeBackgroundSample() {
         $backgroundSampleInvalid.style.display = "none";
 
         $backgroundInput.classList.remove('error');
+
+        for (var i = 0; i < backgroundRGBInputs.length; i++) {
+            backgroundRGBInputs[i].classList.remove('error');
+        }
 
         changeBackgroundRGBValues();
     } else {
