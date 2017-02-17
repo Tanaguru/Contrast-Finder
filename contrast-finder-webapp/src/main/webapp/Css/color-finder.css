@@ -171,6 +171,11 @@ fieldset .form-control {
     margin-right: 5px;
 }
 
+.legend-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .control-fieldset legend {
     border: none;
     font-size: 14px;
@@ -203,16 +208,14 @@ fieldset .form-control {
 }
 .sample-bordered {
     border : solid 1px #CCC;
+}
+#foreground-sample,
+#background-sample {
     display: inline-block;
     vertical-align: middle;
 }
 .form-control.error {
     border-color: #b94a48;
-}
-@media (min-width: 1200px) {
-    .invalid-color {
-        margin-top: 7px;
-    }
 }
 @media (max-width: 1199px) {
     .control-fieldset legend {
@@ -423,12 +426,10 @@ input[type=radio] {
 }
 
 legend {
-    margin-bottom: 10px;
+    margin-bottom: 0;
     font-weight: bold;
     font-size: 1.2rem;
     border-bottom: 0;
-    display: inline-block;
-    vertical-align: middle;
 }
 
 .fieldset-fields {
