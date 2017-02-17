@@ -45,7 +45,10 @@
                             </c:choose>
                             <div class="form-group ${foregroundOnError}">
                                 <fieldset>
-                                    <legend><fmt:message key="form.foregroundColor"/></legend>
+                                    <div class="legend-wrapper"><legend><fmt:message key="form.foregroundColor"/></legend></div>
+                                    <div id="foreground-sample" class="color-sample sample-bordered">
+                                        <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
+                                    </div>   
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
                                     <label>
                                         <fmt:message key="form.red"/><input id="foreground-red" class="form-control" type="number" min="0" max="255" aria-describedby="foreground-sample-invalid">
@@ -61,10 +64,6 @@
                                         <fmt:message key="form.hexadecimal"/><form:input id="foreground-input" path="foreground" type="text" class="form-control" aria-describedby="help-block-foreground foreground-sample-invalid"/>
                                     </label>
                                 </fieldset>
-                                
-                                <div id="foreground-sample" class="color-sample sample-bordered">
-                                    <span id="foreground-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
-                                </div>   
                             </div>
                             <c:set var="backgroundOnError">
                                 <form:errors path="background"/>
@@ -78,7 +77,10 @@
                             </c:choose>
                             <div class="form-group ${backgroundOnError}">
                                 <fieldset>
-                                    <legend><fmt:message key="form.backgroundColor"/></legend>
+                                    <div class="legend-wrapper"><legend><fmt:message key="form.backgroundColor"/></legend></div>
+                                    <div id="background-sample" class="color-sample sample-bordered">
+                                        <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
+                                    </div>
                                     <span class="help-block"><fmt:message key="form.rgbHelp"/></span>
                                     <label>
                                         <fmt:message key="form.red"/><input id="background-red" class="form-control" type="number" min="0" max="255" aria-describedby="background-sample-invalid">
@@ -94,10 +96,6 @@
                                         <fmt:message key="form.hexadecimal"/><form:input id="background-input" path="background" type="text" class="form-control" aria-describedby="help-block-background background-sample-invalid"/>
                                     </label>
                                 </fieldset>
-
-                                <div id="background-sample" class="color-sample sample-bordered">
-                                    <span id="background-sample-invalid" class="invalid-color"><fmt:message key="form.invalidColor"/></span>
-                                </div>
                             </div>
                             <c:set var="ratioOnError">
                                 <form:errors path="ratio"/>
