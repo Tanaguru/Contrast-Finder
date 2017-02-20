@@ -1,4 +1,4 @@
-/*$('#old-contrast').affix(
+$('#old-contrast').affix(
     {
         offset: {
             top: function() {
@@ -7,4 +7,4 @@
                 return (this.top = header + setUpForm + 135)
             }
         }
-    })*/
+    })
