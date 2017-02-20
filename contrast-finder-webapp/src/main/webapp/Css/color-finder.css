@@ -234,6 +234,16 @@ fieldset .form-control {
     background-color: #f6f6f6;
     top : 0;
 }
+
+@media (min-width: 767px) {
+    #old-contrast.affix {
+        position: static;
+        width: auto;
+        top: 0;
+        background-color: transparent;
+    }
+}
+
 @media (min-width: 768px) {
     #old-contrast.affix {
         width: 750px;
