@@ -164,9 +164,9 @@ fieldset .form-control {
     border: solid 1px #CCC;
 }
 
-.color-sample{
-    width:7rem;
-    height:2rem;
+.color-sample {
+    width: 110px;
+    height: 30px;
     border-radius: 0.3rem;
     margin-right: 5px;
 }
