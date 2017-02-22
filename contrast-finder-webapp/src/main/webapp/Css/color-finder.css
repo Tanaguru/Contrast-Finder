@@ -164,9 +164,9 @@ fieldset .form-control {
     border: solid 1px #CCC;
 }
 
-.color-sample {
-    width: 110px;
-    height: 30px;
+.color-sample{
+    width:7rem;
+    height:2rem;
     border-radius: 0.3rem;
     margin-right: 5px;
 }
@@ -235,8 +235,15 @@ fieldset .form-control {
     top : 0;
 }
 
-@media (min-width: 767px) {
-    #old-contrast.affix {
+#contrast-solution thead.affix {
+    top: 136px;
+    width: 100%;
+    margin-left: -4px;
+}
+
+@media (max-width: 767px) {
+    #old-contrast.affix,
+    #contrast-solution thead.affix {
         position: static;
         width: auto;
         top: 0;
