@@ -122,7 +122,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group modify">
                                 <fieldset>
                                     <legend><fmt:message key="form.component"/></legend>
                                     <div class="fieldset-fields">
@@ -147,7 +147,7 @@
                                 <c:otherwise>
                                 </c:otherwise>
                             </c:choose>
-                            <div class="form-group ${algoOnError}">
+                            <div class="form-group suggest ${algoOnError}">
                                 <fieldset>
                                     <legend><fmt:message key="form.objectifs"/></legend>
                                     <div class="fieldset-fields">
