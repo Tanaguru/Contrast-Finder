@@ -114,7 +114,27 @@ fieldset {
     margin-right: 0;
 }
 .form-group {
-    margin: 2.5rem 0;
+    margin: 2.5rem 0; 
+    float: left;
+    width: 50%;
+    padding-right: 4rem;
+}
+.form-group.modify {
+    margin-bottom: 0;
+}
+.form-group.suggest {
+    margin-top: 1rem;
+}
+.form-group.modify label,
+.form-group.suggest label {
+    display: block;
+}
+@media (max-width: 1023px) {
+    .form-group {
+        float: none;
+        width: 100%;
+        padding-right: 0;
+    }
 }
 .form-control {
     max-width: 100px;
@@ -465,6 +485,26 @@ fieldset label {
     fieldset label {
         width: 100%;
     }
+}
+
+#submit-button {
+    font-family: Montserrat,Helvetica,sans-serif;
+    font-size: 1.2rem;
+    padding: 0 1.5rem;
+    line-height: 1.6;
+    border: 2px solid #d90b0b;
+    color: #d90b0b;
+    background: #fff;
+    border-radius: 20px;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    text-shadow: none;
+}
+#submit-button:focus,
+#submit-button:hover {
+    color: #fff;
+    background-color: #ef362c;
+    text-decoration: none;
 }
 
 /* site bottom */
