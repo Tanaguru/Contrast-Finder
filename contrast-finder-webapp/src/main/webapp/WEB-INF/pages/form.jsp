@@ -151,14 +151,14 @@
                                 <fieldset>
                                     <legend><fmt:message key="form.objectifs"/></legend>
                                     <div class="fieldset-fields">
-                                        <label for="algo1">
+                                         <label for="algo1">
+                                            <form:radiobutton path="algo" value="Rgb"/>
+                                            <fmt:message key="form.algoRGB"/>
+                                        </label>  
+                                        <label for="algo2">
                                             <form:radiobutton path="algo" value="HSV"/>
                                             <fmt:message key="form.algoHSV"/>
                                         </label>
-                                        <label for="algo2">
-                                            <form:radiobutton path="algo" value="Rgb"/>
-                                            <fmt:message key="form.algoRGB"/>
-                                        </label>                                        
                                         <c:if test="${algoOnError == 'has-error'}">
                                             <span class="help-block"><fmt:message key="form.invalidAlgo"/></span>
                                         </c:if>

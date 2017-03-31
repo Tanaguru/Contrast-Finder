@@ -32,7 +32,7 @@ public class ColorModel {
     private static final String DEFAULT_RATIO = "4.5";
     private String foreground = DEFAULT_FOREGROUND;
     private boolean highratio = false;
-    private String algo = "HSV";
+    private String algo = "Rgb";
 
     /**
      *
