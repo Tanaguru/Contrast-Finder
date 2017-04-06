@@ -48,24 +48,38 @@ $(document).ready(function() {
 		}
 	});
 
-	// Check if the sorting by distance is defined in the URL
-	var sort = 0,
-			urlParams = window.location.search.substring(1);
-
-	if ( urlParams.indexOf('distance') > -1 && urlParams.split('distance=')[1] == 'desc') sort = 1;
+	/** 
+	 * Check if url contains the parameters "ratioSort" & "distanceSort"
+	 * to set the good sorting to the table
+	 * and edit the url if necessary
+	 */ 
 	
-	if ( urlParams.indexOf('distance') > -1)
-		urlParams = urlParams.substring(0, urlParams.indexOf('&distance='));
-	
-	// update URL with the parameter "distance" when page is loaded
-	var distanceSort = sort == 0 ? 'asc' : 'desc';
-	history.pushState('', '', '?' + urlParams + '&distance=' + distanceSort); 	
+	function getTableSort() {
+		// Get the params in the url
+		var urlParams = window.location.search;
 
+		// Param "ratioSort" in the url
+		if ( urlParams.indexOf('ratioSort') > -1 )
+			// Depending on its value, return the corresponding sorting setting
+			return urlParams.indexOf('ratioSort=asc') > -1  ? [[3, 0]] : [[3, 1]];
+
+		// Param "distanceSort" in the url
+		if ( urlParams.indexOf('distanceSort') > -1 )
+			// Depending on its value, return the corresponding sorting setting
+			return urlParams.indexOf('distanceSort=asc') > -1  ? [[4, 0]] : [[4, 1]];
+
+		// If no parameter "ratioSort" or "distanceSort" is present in the parameter
+		// then we add the "distanceSort" parameter in the url
+		history.pushState('', '', urlParams + '&distanceSort=asc'); 
+		// We sort the table by distance asc
+		return [[4, 0]];
+	}
+	
 	// make the good table
 	$("#contrast-solution")
 		.tablesorter({
 			widgets: ['addA11y'],
-			sortList: [[4, sort]]
+			sortList: getTableSort()
 		})
 		.wrap('<div role="application">') // wrap it in a DIV with a role of application
 		.attr("role", "grid") // add role of grid to the table itself
@@ -110,19 +124,39 @@ $(document).ready(function() {
 		'aria-atomic': 'true'
 	});
 
-
-  // Update the parameter "distance" in the URL 
-  // when man click the "sort by distance" button
-	$('#contrast-solution .col05 div').on('click', function() {
-		// Get value of the parameter or set one
-		var urlParams = window.location.search.substring(1),
-				currentSort = urlParams.indexOf('distance') > -1 ? (urlParams.indexOf('asc') > -1 ? 'desc' : 'asc') : 'desc';
-
-		// If url contains the string "&distance=[...]", we delete the string in order to update the url afterwards 
-		if ( urlParams.indexOf('distance') > -1 )
-			urlParams = urlParams.substring(0, urlParams.indexOf('&distance='));
-
-		// Update the url with the good "distance" param
-		history.pushState('', '', '?' + urlParams + '&distance=' + currentSort); 	
+	// Set the good params in the url
+	// When we click on one of the column headers in the results table
+	$('#contrast-solution th').on('click', function() {
+		var $this = $(this);
+		// If it is the "ratio" or the "distance" header
+		if ( $this.hasClass('col03') || $this.hasClass('col05') ) {
+			// Delay of 200ms to be sure the attribute "aria-sort" has been updated 
+			setTimeout(function() {
+				var ariaSort = $this.attr('aria-sort'),
+					sort = ariaSort == 'ascending' ? 'asc' : 'desc',
+					paramName = $this.hasClass('col03') ? 'ratioSort' : 'distanceSort';
+					
+				// Update the url with the good "distance" param
+				history.pushState('', '', getOriginalUrlParams() + '&' + paramName + '=' + sort); 
+			}, 200);
+		} else {
+			history.pushState('', '', getOriginalUrlParams()); 
+		}
 	});
+
+	/**
+	 * Return the original paramaters in the url 
+	 * (not the one adding with JS: ratioSort & distanceSort)
+	 */ 
+	function getOriginalUrlParams() {
+		var urlParams = window.location.search;
+
+		if ( urlParams.indexOf('ratioSort') > -1 ) 
+			return urlParams.substring(0, urlParams.indexOf('&ratioSort'));
+		else if ( urlParams.indexOf('distanceSort') > -1 )
+			return urlParams.substring(0, urlParams.indexOf('&distanceSort'));
+
+		return urlParams;
+	}
+
 });
