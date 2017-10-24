@@ -127,17 +127,18 @@ $(document).ready(function() {
 	// Set the good params in the url
 	// When we click on one of the column headers in the results table
 	$('#contrast-solution th').on('click', function() {
-		var $this = $(this);
+		var $this = $(this), 
+			urlParams = window.location.search;
 		// If it is the "ratio" or the "distance" header
 		if ( $this.hasClass('col03') || $this.hasClass('col05') ) {
 			// Delay of 200ms to be sure the attribute "aria-sort" has been updated 
 			setTimeout(function() {
-				var ariaSort = $this.attr('aria-sort'),
-					sort = ariaSort == 'ascending' ? 'asc' : 'desc',
+				var sort = $this.attr('aria-sort') == 'ascending' ? 'asc' : 'desc',
 					paramName = $this.hasClass('col03') ? 'ratioSort' : 'distanceSort';
 					
 				// Update the url with the good "distance" param
 				history.pushState('', '', getOriginalUrlParams() + '&' + paramName + '=' + sort); 
+
 			}, 200);
 		} else {
 			history.pushState('', '', getOriginalUrlParams()); 
@@ -145,8 +146,7 @@ $(document).ready(function() {
 	});
 
 	/**
-	 * Return the original paramaters in the url 
-	 * (not the one adding with JS: ratioSort & distanceSort)
+	 * Return the original url without the parameter ratioSort or distanceSort
 	 */ 
 	function getOriginalUrlParams() {
 		var urlParams = window.location.search;
@@ -155,8 +155,25 @@ $(document).ready(function() {
 			return urlParams.substring(0, urlParams.indexOf('&ratioSort'));
 		else if ( urlParams.indexOf('distanceSort') > -1 )
 			return urlParams.substring(0, urlParams.indexOf('&distanceSort'));
+        else if ( urlParams.indexOf('sketchCss=on') > -1 )
+        	return urlParams.substring(0, urlParams.indexOf('&sketchCss=on')) + '&sketchCss=on'; 
 
 		return urlParams;
 	}
+
+	/** 
+	 * Active the Sketch CSS depending on the paramater sketchCss
+	 */
+	function toggleSketchCss() {
+	 	var urlParams = window.location.search;
+	 	if ( urlParams.indexOf('sketchCss=on') > -1 ) {
+	 		var link = '<link rel="stylesheet" type="text/css" href="Css/sketch.css">'
+   			$('head').append(link)
+	 	}
+	}
+
+	toggleSketchCss();
+
+
 
 });
